@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070a11">
-<title>ShortForge Studio v8.2 Animation Intelligence</title>
+<title>ShortForge Studio v8.3 Mobile Safe AI</title>
 <meta name="description" content="A free local-first production studio for Shorts and long-form videos.">
 <style>
 :root{
@@ -1045,7 +1045,7 @@ input:focus,select:focus,textarea:focus{
               <h3>Animation Intelligence Engine</h3>
               <div class="mini">Local controller runs immediately. Deep Mode adds a real on-device neural model and turns its decisions into validated ShortForge tool actions.</div>
             </div>
-            <span class="animProBadge">v8.2</span>
+            <span class="animProBadge">v8.3</span>
           </div>
 
           <div class="aieStatusRow">
@@ -1054,7 +1054,7 @@ input:focus,select:focus,textarea:focus{
             <span id="aieControlStatus" class="aieStatus good"><span class="aieDot"></span>Tool control ready</span>
           </div>
           <div class="aieProgress"><span id="aieLoadProgress"></span></div>
-          <div id="aieLoadDetail" class="mini" style="margin-top:5px">No model download happens until you tap Enable Deep Model. ShortForge will not show 100% until a verification inference succeeds.</div>
+          <div id="aieLoadDetail" class="mini" style="margin-top:5px">No model download happens until you tap Enable Deep Model. On iPhone, ShortForge uses Mobile Safe AI and does not use WebGPU for the neural model.</div>
 
           <div class="grid2" style="margin-top:10px">
             <div>
@@ -1211,9 +1211,9 @@ input:focus,select:focus,textarea:focus{
         <div class="card" style="margin-top:12px">
           <h3>Deep Model Engine</h3>
           <div class="aieDeepCard">
-            <div class="aiTiny"><b>Deep Mode is real local inference.</b> When enabled, ShortForge loads a quantized instruction model in the browser and uses it for higher-level production planning. The model never receives permission to directly mutate the page: it proposes actions, then the ShortForge tool controller validates and applies only supported operations.</div>
-            <div class="aiTiny" style="margin-top:8px">Model: <code>onnx-community/SmolLM2-135M-Instruct-ONNX-MHA</code></div>
-            <div class="aiTiny" style="margin-top:4px">Acceleration: WebGPU is attempted when available; if that fails, ShortForge automatically retries with browser CPU/WASM. Model files are cached by the browser after the first successful load.</div>
+            <div class="aiTiny"><b>Deep Mode is real local inference.</b> On iPhone, ShortForge now uses a lightweight neural semantic model on CPU/WASM and avoids the heavier WebGPU planner that can restart Safari. Desktop-class browsers can still use the larger instruction planner. The model never directly mutates the page; ShortForge validates every action first.</div>
+            <div class="aiTiny" style="margin-top:8px">iPhone model: <code>Xenova/all-MiniLM-L6-v2</code> (quantized, about 23 MB). Desktop planner: <code>onnx-community/SmolLM2-135M-Instruct-ONNX-MHA</code>.</div>
+            <div class="aiTiny" style="margin-top:4px">iPhone Safe AI intentionally avoids WebGPU for model loading. Model files are cached by the browser after the first successful load.</div>
             <div class="aiTiny" style="margin-top:8px">No API key is stored in this page. The existing provider interface remains available for a future secure server-side model if you ever want a stronger cloud model.</div>
           </div>
         </div>
@@ -4527,16 +4527,20 @@ window.addEventListener("load",()=>setTimeout(async()=>{
 </script>
 <script>
 /* ===== ShortForge v8 Animation Intelligence Engine ===== */
-const AIE_VERSION="8.0";
+const AIE_VERSION="8.3";
 const AIE_MODEL_ID="onnx-community/SmolLM2-135M-Instruct-ONNX-MHA";
 const AIE_TRANSFORMERS_URL="https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1";
+const AIE_MOBILE_MODEL_ID="Xenova/all-MiniLM-L6-v2";
+const AIE_MOBILE_TRANSFORMERS_URL="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2";
 let aieGenerator=null;
 let aieModelModule=null;
+let aieModelKind="none";
 let aieModelLoading=false;
 let aieLoadTicker=null;
 let aieBusy=false;
 let aieUndoStack=[];
 let aieLastPlan=null;
+let aieMobileIntentCache=null;
 
 const AIE_TECHNIQUES={
   cinematic:{label:"Cinematic 2D anime",preset:"darkAction",cameraMove:"push",cadence:"twos",transition:"hard",targetShot:7.4,impactAt:.52,smear:24,renderFPS:24},
@@ -4587,7 +4591,15 @@ function aieLog(msg){
   const lines=box.textContent.split("\n");if(lines.length>80)box.textContent=lines.slice(-80).join("\n");
   box.scrollTop=box.scrollHeight
 }
+function aieIsIOSDevice(){
+  return /iPad|iPhone|iPod/.test(navigator.userAgent||"") ||
+    (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1)
+}
 function aieDetectDevice(){
+  if(aieIsIOSDevice()){
+    aieSetStatus("aieDeviceStatus","iPhone Safe AI • CPU/WASM","good");
+    return false
+  }
   const gpu=!!navigator.gpu;
   aieSetStatus("aieDeviceStatus",gpu?"WebGPU available":"CPU/WASM fallback",gpu?"good":"warn");
   return gpu
@@ -4665,42 +4677,47 @@ function aieStartLoadTicker(startedAt){
 }
 async function aieVerifyGenerator(gen){
   aieSetStatus("aieModelStatus","Verifying model…","warn");
-  aieProgress(94,"Model files are loaded. Running a tiny inference test…");
+  aieProgress(94,"Model files are loaded. Running a tiny neural verification…");
+  if(aieModelKind==="mobile-semantic"){
+    const test=await gen("animation timing camera continuity",{pooling:"mean",normalize:true});
+    const data=test?.data;
+    if(!data || !data.length)throw new Error("Mobile neural verification returned no embedding");
+    return true
+  }
   const test=await gen("Reply with READY only.",{max_new_tokens:4,do_sample:false});
   const raw=aieExtractModelText(test).toUpperCase();
-  if(!raw.includes("READY") && !raw.trim())throw new Error("Verification inference returned no output");
+  if(!raw.trim())throw new Error("Verification inference returned no output");
   return true
 }
 async function aieLoadDeepModel(){
   if(aieGenerator){
-    aieSetStatus("aieModelStatus","Deep model ready","good");
-    aieProgress(100,"Deep Model is ready for neural production planning.");
+    const mobile=aieModelKind==="mobile-semantic";
+    aieSetStatus("aieModelStatus",mobile?"Deep model ready • Mobile Safe":"Deep model ready","good");
+    aieProgress(100,mobile?"Mobile Safe neural model is ready.":"Deep Model is ready for neural production planning.");
     return true
   }
   if(aieModelLoading)return false;
-
   aieModelLoading=true;
-  const startedAt=Date.now();
   const btn=$("aieLoadBtn");
   if(btn){btn.disabled=true;btn.textContent="Loading Model…"}
-  aieStartLoadTicker(startedAt);
-
+  aieStartLoadTicker(Date.now());
+  try{localStorage.setItem("sf_aie_load_pending",JSON.stringify({at:Date.now(),version:AIE_VERSION}))}catch(_){}
   try{
-    aieSetStatus("aieModelStatus","Loading runtime…","warn");
-    aieProgress(3,"Loading the local AI runtime…");
-    aieLog("Deep Model load started.");
-
-    if(!aieModelModule)aieModelModule=await import(AIE_TRANSFORMERS_URL);
+    const mobile=aieIsIOSDevice();
+    const runtimeURL=mobile?AIE_MOBILE_TRANSFORMERS_URL:AIE_TRANSFORMERS_URL;
+    aieSetStatus("aieModelStatus",mobile?"Loading iPhone Safe AI…":"Loading runtime…","warn");
+    aieProgress(3,mobile?"Loading lightweight iPhone neural runtime…":"Loading the local AI runtime…");
+    aieLog(mobile?"Mobile Safe Deep Model load started.":"Deep Model load started.");
+    aieModelModule=await import(runtimeURL);
     const {pipeline,env}=aieModelModule;
     if(env){
       env.allowLocalModels=false;
       env.allowRemoteModels=true;
-      if("useBrowserCache" in env)env.useBrowserCache=true
+      if("useBrowserCache" in env)env.useBrowserCache=true;
+      if(mobile && env.backends?.onnx?.wasm){
+        try{env.backends.onnx.wasm.numThreads=1}catch(_){}
+      }
     }
-
-    /* Transformers.js reports progress per file. Do NOT map an individual file's
-       100% to the whole model's 100%; cap downloads below 90% until pipeline()
-       actually resolves. */
     const seenFiles=new Map();
     const progress_callback=(p)=>{
       const name=String(p?.file||p?.name||"model file");
@@ -4708,83 +4725,72 @@ async function aieLoadDeepModel(){
       if(Number.isFinite(raw)){
         if(raw<=1)raw*=100;
         raw=Math.max(0,Math.min(100,raw));
-        seenFiles.set(name,raw);
+        seenFiles.set(name,raw)
       }
-
       let avg=0;
-      if(seenFiles.size){
-        avg=[...seenFiles.values()].reduce((a,b)=>a+b,0)/seenFiles.size
-      }else if(Number.isFinite(raw)){
-        avg=raw
-      }
-
+      if(seenFiles.size)avg=[...seenFiles.values()].reduce((a,b)=>a+b,0)/seenFiles.size;
+      else if(Number.isFinite(raw))avg=raw;
       const mapped=Math.min(88,8+(avg*.80));
-      const status=String(p?.status||"").toLowerCase();
-
-      aieSetStatus(
-        "aieModelStatus",
-        status.includes("download") || p?.file ? "Downloading model…" : "Preparing model…",
-        "warn"
-      );
-
-      const fileText=p?.file ? `Downloading ${name}` : (p?.status||"Preparing model files…");
-      aieProgress(mapped,`${fileText}${Number.isFinite(raw)?` • ${Math.round(raw)}% of this file`:""}`);
+      aieSetStatus("aieModelStatus",mobile?"Loading iPhone Safe AI…":"Downloading model…","warn");
+      const fileText=p?.file?`Downloading ${name}`:(p?.status||"Preparing model files…");
+      aieProgress(mapped,`${fileText}${Number.isFinite(raw)?` • ${Math.round(raw)}% of this file`:""}`)
     };
-
-    const gpu=aieDetectDevice();
-
-    const loadCPU=async()=>{
-      aieSetStatus("aieModelStatus","Loading CPU/WASM model…","warn");
-      aieProgress(10,"Loading quantized CPU/WASM model…");
-      return await pipeline("text-generation",AIE_MODEL_ID,{
-        dtype:"q4",
-        progress_callback
-      })
-    };
-
-    if(gpu){
-      try{
-        aieSetStatus("aieModelStatus","Loading WebGPU model…","warn");
-        aieProgress(8,"WebGPU available. Loading quantized neural model…");
-        aieGenerator=await pipeline("text-generation",AIE_MODEL_ID,{
-          device:"webgpu",
-          dtype:"q4f16",
-          progress_callback
-        })
-      }catch(gpuError){
-        console.warn("[ShortForge AIE WebGPU fallback]",gpuError);
-        aieLog("WebGPU model load failed; retrying with browser CPU/WASM.");
-        aieSetStatus("aieDeviceStatus","CPU/WASM fallback","warn");
-        seenFiles.clear();
+    if(mobile){
+      aieSetStatus("aieDeviceStatus","iPhone Safe AI • CPU/WASM","good");
+      aieProgress(8,"Loading about 23 MB quantized semantic model. WebGPU is intentionally off.");
+      aieGenerator=await pipeline("feature-extraction",AIE_MOBILE_MODEL_ID,{
+        quantized:true,progress_callback
+      });
+      aieModelKind="mobile-semantic"
+    }else{
+      const gpu=aieDetectDevice();
+      const loadCPU=async()=>{
+        aieSetStatus("aieModelStatus","Loading CPU/WASM model…","warn");
+        aieProgress(10,"Loading quantized CPU/WASM model…");
+        const gen=await pipeline("text-generation",AIE_MODEL_ID,{dtype:"q4",progress_callback});
+        aieModelKind="generative";
+        return gen
+      };
+      if(gpu){
+        try{
+          aieSetStatus("aieModelStatus","Loading WebGPU model…","warn");
+          aieProgress(8,"WebGPU available. Loading quantized neural model…");
+          aieGenerator=await pipeline("text-generation",AIE_MODEL_ID,{
+            device:"webgpu",dtype:"q4f16",progress_callback
+          });
+          aieModelKind="generative"
+        }catch(gpuError){
+          console.warn("[ShortForge AIE WebGPU fallback]",gpuError);
+          aieLog("WebGPU model load failed; retrying with browser CPU/WASM.");
+          aieSetStatus("aieDeviceStatus","CPU/WASM fallback","warn");
+          seenFiles.clear();
+          aieGenerator=await loadCPU()
+        }
+      }else{
         aieGenerator=await loadCPU()
       }
-    }else{
-      aieGenerator=await loadCPU()
     }
-
-    /* pipeline() resolving means files/model initialization succeeded, but do one
-       actual generation before telling the user it is ready. */
     aieSetStatus("aieModelStatus","Initializing model…","warn");
     aieProgress(90,"Download complete. Initializing the neural model…");
-
     await aieVerifyGenerator(aieGenerator);
-
-    aieSetStatus("aieModelStatus","Deep model ready","good");
-    aieProgress(100,"Deep Model verified and ready for neural production planning.");
-    aieLog(`Deep Model verified • ${navigator.gpu?"WebGPU preferred / CPU fallback enabled":"CPU/WASM"}.`);
-    v7Toast?.("Deep Model is ready.","ok",2600);
+    const safe=aieModelKind==="mobile-semantic";
+    aieSetStatus("aieModelStatus",safe?"Deep model ready • Mobile Safe":"Deep model ready","good");
+    aieProgress(100,safe?"Mobile Safe neural model verified and ready.":"Deep Model verified and ready for neural production planning.");
+    aieLog(safe?"Mobile Safe Deep Model verified • CPU/WASM.":"Deep Model verified.");
+    try{localStorage.removeItem("sf_aie_load_pending")}catch(_){}
+    v7Toast?.(safe?"Mobile Safe Deep Model is ready.":"Deep Model is ready.","ok",2800);
     return true
-
   }catch(e){
     console.error("[ShortForge AIE model]",e);
     try{aieGenerator?.dispose?.()}catch(_){}
     aieGenerator=null;
+    aieModelKind="none";
     aieSetStatus("aieModelStatus","Deep model unavailable","bad");
     aieProgress(0,"Deep Model could not finish loading. Local tool-control mode still works.");
     aieLog("Deep Model load failed: "+(e?.message||e));
+    try{localStorage.removeItem("sf_aie_load_pending")}catch(_){}
     v7Toast?.("Deep Model could not load. Local AIE still works.","bad",4500);
     return false
-
   }finally{
     aieModelLoading=false;
     aieStopLoadTicker();
@@ -4795,6 +4801,8 @@ function aieUnloadDeepModel(){
   aieStopLoadTicker();
   try{aieGenerator?.dispose?.()}catch(e){}
   aieGenerator=null;
+  aieModelKind="none";
+  aieMobileIntentCache=null;
   aieModelLoading=false;
   const btn=$("aieLoadBtn");
   if(btn){btn.disabled=false;btn.textContent="Enable Deep Model"}
@@ -4823,8 +4831,69 @@ Return ONLY one JSON object:
 {"summary":"short explanation","actions":[{"tool":"direct_scene","sceneIndex":0,"preset":"darkAction|boss|emotional|speed","cameraMove":"push|pull|panLeft|panRight|tiltUp|tiltDown|handheld|punch|locked","cadence":"mixed|ones|twos|threes","transition":"hard|flash|whip|fade","targetShot":7,"impactAt":0.5,"smear":30},{"tool":"set_render","quality":"720|1080|1440|2160","fps":"24|30|60","ratio":"9:16|16:9|1:1","compQuality":"balanced|high|max"}]}
 Use zero or more actions. Keep the JSON compact.`;
 }
+async function aieMobileEmbed(text){
+  const out=await aieGenerator(String(text||""),{pooling:"mean",normalize:true});
+  const data=out?.data;
+  return data?Array.from(data):[]
+}
+function aieCosineUnit(a,b){
+  const n=Math.min(a.length,b.length);let s=0;
+  for(let i=0;i<n;i++)s+=a[i]*b[i];
+  return s
+}
+const AIE_MOBILE_INTENTS=[
+  {tool:"direct_scene",text:"direct the selected scene camera timing shot pacing cuts and animation direction"},
+  {tool:"direct_episode",text:"auto direct the whole episode all scenes and create a coherent shot plan"},
+  {tool:"continuity_pass",text:"check continuity consistency characters locations props and screen direction"},
+  {tool:"animate_selected_layer",text:"animate the selected layer with keyframes motion poses timing and arcs"},
+  {tool:"set_render",text:"optimize final render export master resolution frame rate and quality"},
+  {tool:"run_qc",text:"analyze inspect review quality control production readiness and find problems"},
+  {tool:"compile_prompt",text:"compile create art prompt video prompt or production prompt"}
+];
+async function aieMobilePlan(userText){
+  aieSetStatus("aieModelStatus","Mobile Deep Model thinking…","warn");
+  if(!aieMobileIntentCache){
+    aieMobileIntentCache=[];
+    for(const intent of AIE_MOBILE_INTENTS){
+      aieMobileIntentCache.push(await aieMobileEmbed(intent.text));
+      await new Promise(r=>setTimeout(r,0))
+    }
+  }
+  const q=await aieMobileEmbed(userText);
+  let best=0,bestScore=-Infinity;
+  aieMobileIntentCache.forEach((v,i)=>{
+    const s=aieCosineUnit(q,v);
+    if(s>bestScore){bestScore=s;best=i}
+  });
+  const intent=AIE_MOBILE_INTENTS[best]||AIE_MOBILE_INTENTS[0];
+  const i=Math.max(0,Math.min(project.scenes.length-1,aiSceneIndex?.()||0));
+  const d=aieClassifyForScene(i);
+  let actions=[];
+  if(intent.tool==="direct_scene")actions=[{tool:"direct_scene",sceneIndex:i,preset:d.preset,cameraMove:d.cameraMove,cadence:d.cadence,transition:d.transition,targetShot:d.targetShot,impactAt:d.impactAt,smear:d.smear}];
+  else if(intent.tool==="direct_episode")actions=[{tool:"direct_episode"}];
+  else if(intent.tool==="continuity_pass")actions=[{tool:"continuity_pass"}];
+  else if(intent.tool==="animate_selected_layer")actions=[{tool:"animate_selected_layer"}];
+  else if(intent.tool==="set_render")actions=aieLocalPlan("optimize render master").actions;
+  else if(intent.tool==="run_qc")actions=[{tool:"run_qc"}];
+  else if(intent.tool==="compile_prompt")actions=[{tool:"compile_prompt"}];
+  aieSetStatus("aieModelStatus","Deep model ready • Mobile Safe","good");
+  return {
+    source:"deep-mobile",
+    summary:`Mobile neural planner selected ${intent.tool.replaceAll("_"," ")} (${Math.round(bestScore*100)}% semantic match).`,
+    actions
+  }
+}
 async function aieDeepPlan(userText){
   if(!aieGenerator)return null;
+  if(aieModelKind==="mobile-semantic"){
+    try{return await aieMobilePlan(userText)}
+    catch(e){
+      console.error("[ShortForge Mobile Deep Model]",e);
+      aieSetStatus("aieModelStatus","Deep model ready • Mobile Safe","good");
+      aieLog("Mobile neural planning failed; local controller took over.");
+      return null
+    }
+  }
   try{
     const context=aieCurrentContext();
     const messages=[
@@ -5015,12 +5084,12 @@ async function aiePlanAndExecute(text,respectMode=true){
   if(!plan)plan=aieLocalPlan(requestText);
   if(!plan.actions)plan.actions=[];
   aieLastPlan=plan;
-  aieLog(`${plan.source==="deep"?"Deep Model":"Local Controller"} plan: ${plan.summary||"Production plan"}`);
+  aieLog(`${plan.source==="deep-mobile"?"Mobile Deep Model":plan.source==="deep"?"Deep Model":"Local Controller"} plan: ${plan.summary||"Production plan"}`);
   const exec=aieExecute(plan);
   return {plan,exec}
 }
 function aieSummaryText(plan,exec){
-  const source=plan.source==="deep"?"Deep Model":"Local Controller";
+  const source=plan.source==="deep-mobile"?"Mobile Deep Model":plan.source==="deep"?"Deep Model":"Local Controller";
   const lines=[`${source}: ${plan.summary||"Production plan complete."}`];
   if(exec.log.length)lines.push("",...exec.log.map(x=>"• "+x));
   if(($("aieAutonomy")?.value||"apply")==="apply"&&exec.changed)lines.push("","An undo snapshot was saved before the changes.");
@@ -5106,6 +5175,15 @@ window.ShortForgeAIProvider={
 
 window.addEventListener("load",()=>setTimeout(()=>{
   aieDetectDevice();
+  try{
+    const interrupted=localStorage.getItem("sf_aie_load_pending");
+    if(interrupted && aieIsIOSDevice()){
+      localStorage.removeItem("sf_aie_load_pending");
+      aieSetStatus("aieModelStatus","Previous load interrupted • Safe AI ready","warn");
+      aieProgress(0,"iOS restarted the previous model load. v8.3 now uses a much smaller CPU/WASM neural model and avoids WebGPU on iPhone.");
+      aieLog("Detected an iOS model-load restart. Mobile Safe AI route is active.")
+    }
+  }catch(_){}
   aiEnsureProject();
   if(project.ai?.aieStyle&&$("aieStyleProfile")&&AIE_TECHNIQUES[project.ai.aieStyle])$("aieStyleProfile").value=project.ai.aieStyle;
   aieSetStatus("aieControlStatus","Tool control ready","good");

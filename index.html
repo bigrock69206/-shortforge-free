@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070a11">
-<title>ShortForge Studio v8.3 Mobile Safe AI</title>
+<title>ShortForge Studio v8.4 Visible AI Actions</title>
 <meta name="description" content="A free local-first production studio for Shorts and long-form videos.">
 <style>
 :root{
@@ -820,6 +820,16 @@ input:focus,select:focus,textarea:focus{
 @media(max-width:760px){.aieHeroGrid{grid-template-columns:1fr}}
 .aieStatusRow{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0}
 .aieStatus{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;border:1px solid rgba(119,147,205,.28);background:rgba(7,12,22,.76);font-size:11px;font-weight:800}
+.aieResultBox{
+  margin-top:10px;padding:12px 13px;border-radius:14px;
+  border:1px solid rgba(105,128,180,.28);
+  background:rgba(7,12,22,.82);min-height:62px;
+}
+.aieResultBox.working{border-color:rgba(255,200,107,.48)}
+.aieResultBox.good{border-color:rgba(82,210,141,.46);background:rgba(12,34,25,.70)}
+.aieResultBox.bad{border-color:rgba(255,122,140,.46);background:rgba(42,17,24,.62)}
+.aieResultTitle{font-size:12px;font-weight:900;margin-bottom:5px}
+.aieResultText{font-size:12px;line-height:1.5;color:var(--muted);white-space:pre-wrap}
 .aieStatus.good{border-color:rgba(76,210,142,.44);color:#98efbd}
 .aieStatus.warn{border-color:rgba(255,199,89,.42);color:#ffd98c}
 .aieStatus.bad{border-color:rgba(255,89,111,.45);color:#ff9aaa}
@@ -1045,7 +1055,7 @@ input:focus,select:focus,textarea:focus{
               <h3>Animation Intelligence Engine</h3>
               <div class="mini">Local controller runs immediately. Deep Mode adds a real on-device neural model and turns its decisions into validated ShortForge tool actions.</div>
             </div>
-            <span class="animProBadge">v8.3</span>
+            <span class="animProBadge">v8.4</span>
           </div>
 
           <div class="aieStatusRow">
@@ -1096,6 +1106,11 @@ input:focus,select:focus,textarea:focus{
             <button class="secondary aieToolButton" onclick="aieRunCommand('continuity')"><b>Continuity Pass</b><span>Normalize screen direction, locks and production consistency.</span></button>
             <button class="secondary aieToolButton" onclick="aieRunCommand('animate')"><b>Animate Selected Layer</b><span>Create useful keyframes for the currently selected animation layer.</span></button>
             <button class="secondary aieToolButton" onclick="aieRunCommand('master')"><b>Optimize Master</b><span>Choose a device-safe resolution, frame rate and render profile.</span></button>
+          </div>
+
+          <div id="aieResult" class="aieResultBox">
+            <div id="aieResultTitle" class="aieResultTitle">AI Result</div>
+            <div id="aieResultText" class="aieResultText">Choose a production action above. The result will appear here immediately.</div>
           </div>
 
           <div class="aieTechniqueTags">
@@ -5048,7 +5063,11 @@ function aieExecute(plan){
       else if(a.tool==="continuity_pass"){line=aieContinuityPass();changed=true}
       else if(a.tool==="animate_selected_layer"){line=aieAnimateSelectedLayer();changed=!line.startsWith("No animation")}
       else if(a.tool==="set_render"){line=aieSetRender(a);changed=true}
-      else if(a.tool==="run_qc"){studioRunQC?.();aiRunStudioReview?.();line="Studio QC and production intelligence refreshed."}
+      else if(a.tool==="run_qc"){
+        studioRunQC?.();aiRunStudioReview?.();
+        const notes=$("studioQCNotes")?.textContent?.trim();
+        line=notes?`Studio QC refreshed. ${notes}`:"Studio QC and production intelligence refreshed."
+      }
       else if(a.tool==="compile_prompt"){aiCompilePrompt?.();line="Selected scene production prompt recompiled."}
       else{line=`Ignored unsupported tool: ${a.tool}`}
       log.push(line);aieLog(line)
@@ -5070,6 +5089,23 @@ function aieModeInstruction(text){
   if(aiMode==="ask"||!hints[aiMode])return raw;
   return `${hints[aiMode]} User request: ${raw||"Use the current production context."}`
 }
+function aieShowResult(title,text,state=""){
+  const box=$("aieResult"),head=$("aieResultTitle"),body=$("aieResultText");
+  if(box)box.className="aieResultBox "+state;
+  if(head)head.textContent=title||"AI Result";
+  if(body)body.textContent=String(text||"");
+}
+function aieExactCommandPlan(kind){
+  const i=Math.max(0,Math.min(project.scenes.length-1,aiSceneIndex?.()||0));
+  const d=aieClassifyForScene(i);
+  if(kind==="analyze")return {source:"control",summary:"Analyze the current production and refresh quality control.",actions:[{tool:"run_qc"}]};
+  if(kind==="scene")return {source:"control",summary:`Direct Scene ${i+1} using the selected animation technique profile.`,actions:[{tool:"direct_scene",sceneIndex:i,preset:d.preset,cameraMove:d.cameraMove,cadence:d.cadence,transition:d.transition,targetShot:d.targetShot,impactAt:d.impactAt,smear:d.smear}]};
+  if(kind==="episode")return {source:"control",summary:"Auto-direct the entire episode.",actions:[{tool:"direct_episode"}]};
+  if(kind==="continuity")return {source:"control",summary:"Run a continuity normalization pass.",actions:[{tool:"continuity_pass"}]};
+  if(kind==="animate")return {source:"control",summary:"Animate the currently selected animation layer.",actions:[{tool:"animate_selected_layer"}]};
+  if(kind==="master")return {source:"control",summary:"Optimize the final master settings.",actions:aieLocalPlan("optimize final render master").actions};
+  return {source:"control",summary:"Analyze the current production.",actions:[{tool:"run_qc"}]}
+}
 function aieSetBusy(on,label="Working…"){
   aieBusy=!!on;
   const send=$("aiSendBtn");if(send){send.disabled=aieBusy;send.textContent=aieBusy?label:"Send"}
@@ -5084,12 +5120,12 @@ async function aiePlanAndExecute(text,respectMode=true){
   if(!plan)plan=aieLocalPlan(requestText);
   if(!plan.actions)plan.actions=[];
   aieLastPlan=plan;
-  aieLog(`${plan.source==="deep-mobile"?"Mobile Deep Model":plan.source==="deep"?"Deep Model":"Local Controller"} plan: ${plan.summary||"Production plan"}`);
+  aieLog(`${plan.source==="control"?"Tool Control":plan.source==="deep-mobile"?"Mobile Deep Model":plan.source==="deep"?"Deep Model":"Local Controller"} plan: ${plan.summary||"Production plan"}`);
   const exec=aieExecute(plan);
   return {plan,exec}
 }
 function aieSummaryText(plan,exec){
-  const source=plan.source==="deep-mobile"?"Mobile Deep Model":plan.source==="deep"?"Deep Model":"Local Controller";
+  const source=plan.source==="control"?"Tool Control":plan.source==="deep-mobile"?"Mobile Deep Model":plan.source==="deep"?"Deep Model":"Local Controller";
   const lines=[`${source}: ${plan.summary||"Production plan complete."}`];
   if(exec.log.length)lines.push("",...exec.log.map(x=>"• "+x));
   if(($("aieAutonomy")?.value||"apply")==="apply"&&exec.changed)lines.push("","An undo snapshot was saved before the changes.");
@@ -5098,22 +5134,35 @@ function aieSummaryText(plan,exec){
 async function aieRunCommand(kind){
   if(aieBusy)return;
   aieSetBusy(true,"Working…");
-  const prompts={
-    analyze:"Analyze the current production. Run QC and identify the highest-value production issue. Do not invent missing assets.",
-    scene:"Direct the selected scene using the selected technique profile. Apply camera, cadence, cuts, impact timing and a valid cinematic preset.",
-    episode:"Auto-direct the entire episode. Create a coherent visual-shot plan across every story scene using the selected technique profile.",
-    continuity:"Run a continuity pass across the whole project. Preserve canonical character/location/prop IDs and stable screen direction.",
-    animate:"Animate the currently selected animation layer with professional key poses and readable timing appropriate to the selected technique profile.",
-    master:"Optimize the final render settings for this project's duration, format, animation style and an iPhone-class device."
+  const labels={
+    analyze:"Analyzing production…",
+    scene:"Directing selected scene…",
+    episode:"Auto-directing episode…",
+    continuity:"Checking continuity…",
+    animate:"Building animation keyframes…",
+    master:"Optimizing master…"
   };
-  const text=prompts[kind]||prompts.analyze;
+  aieShowResult("Working",labels[kind]||"Working…","working");
   aieLog(`Command: ${kind}`);
   try{
-    const {plan,exec}=await aiePlanAndExecute(text,false);
-    aiAddMessage?.("assistant",aieSummaryText(plan,exec))
+    aiEnsureProject();
+    /* Dedicated buttons already state the user's intent exactly. Execute the
+       validated ShortForge tool immediately instead of asking the semantic
+       model to rediscover which button was pressed. */
+    const plan=aieExactCommandPlan(kind);
+    aieLastPlan=plan;
+    aieLog(`Tool Control plan: ${plan.summary}`);
+    await new Promise(r=>requestAnimationFrame(()=>r()));
+    const exec=aieExecute(plan);
+    const out=aieSummaryText(plan,exec);
+    aieShowResult("Complete",out,"good");
+    aiAddMessage?.("assistant",out);
+    v7Toast?.(`${kind==="analyze"?"Analysis":"AI action"} complete.`,"ok",1800)
   }catch(e){
     console.error("[ShortForge AIE command]",e);
-    aieLog("Command failed: "+(e?.message||e));
+    const msg="Command failed: "+(e?.message||e);
+    aieLog(msg);
+    aieShowResult("Could not complete",msg,"bad");
     v7Toast?.("Animation Intelligence command failed. Your project is still available.","bad",4200)
   }finally{
     aieSetBusy(false)
@@ -5131,8 +5180,10 @@ aiQuick=async function(text){
   const msg=String(text||"").trim();if(!msg)return;
   aiEnsureProject();aiAddMessage("user",msg);aieSetBusy(true,"Thinking…");
   try{
+    aieShowResult("Thinking","The neural planner is interpreting the quick action…","working");
     const {plan,exec}=await aiePlanAndExecute(msg,false);
     const out=aieSummaryText(plan,exec);
+    aieShowResult("Complete",out,"good");
     aiAddMessage("assistant",out);
     aiSession.push({at:Date.now(),mode:"quick",user:msg,assistant:out,source:plan.source,actions:plan.actions});
     project.ai.history=aiSession.slice(-50);saveDraft()
@@ -5149,13 +5200,16 @@ aiSend=async function(){
   aiAddMessage("user",text);input.value="";
   aieSetBusy(true,"Thinking…");
   try{
+    aieShowResult("Thinking","The neural planner is interpreting your request…","working");
     const {plan,exec}=await aiePlanAndExecute(text);
     const out=aieSummaryText(plan,exec);
+    aieShowResult("Complete",out,"good");
     aiAddMessage("assistant",out);
     aiSession.push({at:Date.now(),mode:aiMode,user:text,assistant:out,source:plan.source,actions:plan.actions});
     project.ai.history=aiSession.slice(-50);saveDraft()
   }catch(e){
     console.error("[ShortForge AIE chat]",e);
+    aieShowResult("Could not complete",e?.message||"AIE could not finish that command.","bad");
     aiAddMessage("assistant","AIE could not finish that command. Your project was left intact.");
     aieLog("Command failed: "+(e?.message||e))
   }finally{

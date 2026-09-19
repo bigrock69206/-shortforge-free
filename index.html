@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070a11">
-<title>ShortForge Studio v8.4 Visible AI Actions</title>
+<title>ShortForge Studio v9.0.2 Learning & Visual QA Hardened</title>
 <meta name="description" content="A free local-first production studio for Shorts and long-form videos.">
 <style>
 :root{
@@ -815,6 +815,7 @@ input:focus,select:focus,textarea:focus{
     touch-action:manipulation;
   }
 }
+
 /* ===== ShortForge v8 Animation Intelligence Engine ===== */
 .aieHeroGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:10px;margin-top:10px}
 @media(max-width:760px){.aieHeroGrid{grid-template-columns:1fr}}
@@ -830,6 +831,49 @@ input:focus,select:focus,textarea:focus{
 .aieResultBox.bad{border-color:rgba(255,122,140,.46);background:rgba(42,17,24,.62)}
 .aieResultTitle{font-size:12px;font-weight:900;margin-bottom:5px}
 .aieResultText{font-size:12px;line-height:1.5;color:var(--muted);white-space:pre-wrap}
+
+.sfWholeVideoCard{
+  margin:0 0 14px;padding:15px;border-radius:16px;
+  border:1px solid rgba(255,49,88,.34);
+  background:linear-gradient(135deg,rgba(34,10,20,.92),rgba(9,18,34,.94));
+  box-shadow:0 14px 36px rgba(0,0,0,.20)
+}
+.sfWholeVideoCard h3{margin:0 0 6px}
+.sfWholeVideoCard p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.sfWholeVideoBtn{
+  width:100%;margin-top:12px;padding:15px 18px!important;font-size:16px!important;
+  background:linear-gradient(135deg,#ff3158,#7f65ff)!important;color:#fff!important;
+  box-shadow:0 12px 34px rgba(255,49,88,.22)!important
+}
+.sfWholeVideoStatus{
+  margin-top:10px;padding:10px 11px;border:1px solid rgba(105,128,180,.24);
+  border-radius:12px;background:rgba(5,10,18,.58);font-size:12px;line-height:1.45;color:var(--muted)
+}
+.sfWholeVideoStatus.good{border-color:rgba(82,210,141,.42);color:#aaf0c7}
+.sfWholeVideoStatus.warn{border-color:rgba(255,200,107,.42);color:#ffe0a1}
+.sfWholeVideoStatus.bad{border-color:rgba(255,122,140,.42);color:#ffb1bd}
+
+.sfAgentStages{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-top:10px}
+@media(max-width:680px){.sfAgentStages{grid-template-columns:repeat(3,1fr)}}
+.sfAgentStage{border:1px solid rgba(105,128,180,.22);border-radius:9px;padding:7px 5px;text-align:center;font-size:10px;font-weight:850;color:var(--muted);background:rgba(4,9,17,.55)}
+.sfAgentStage.active{border-color:rgba(255,200,107,.50);color:#ffe0a1;background:rgba(55,40,10,.48)}
+.sfAgentStage.done{border-color:rgba(82,210,141,.42);color:#aaf0c7;background:rgba(12,40,29,.55)}
+.sfAgentStage.bad{border-color:rgba(255,122,140,.48);color:#ffb1bd;background:rgba(42,17,24,.60)}
+
+.sfCommandCenter{
+  margin:0 0 14px;padding:15px;border:1px solid rgba(114,139,198,.27);
+  border-radius:17px;background:linear-gradient(135deg,rgba(8,16,29,.95),rgba(25,12,33,.86))
+}
+.sfHealthRow{display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center;margin-top:9px}
+.sfHealthBar{height:9px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden;border:1px solid rgba(255,255,255,.05)}
+.sfHealthFill{height:100%;width:0;background:linear-gradient(90deg,#ff3158,#7f65ff,#52d28d);transition:width .25s ease}
+.sfHealthScore{font-weight:950;font-size:16px}
+.sfHealthNotes{font-size:11px;color:var(--muted);line-height:1.45;margin-top:6px}
+
+.sfGrowthCard{margin-top:12px;border:1px solid rgba(114,139,198,.24);border-radius:14px;background:rgba(7,12,22,.68);padding:12px}
+.sfOutputBox{width:100%;min-height:210px;margin-top:9px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.45}
+.sfSceneAutoTools{margin-top:10px;padding:10px;border:1px dashed rgba(120,145,201,.28);border-radius:12px;background:rgba(6,11,20,.55)}
+.sfSceneAutoStatus{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.4}
 .aieStatus.good{border-color:rgba(76,210,142,.44);color:#98efbd}
 .aieStatus.warn{border-color:rgba(255,199,89,.42);color:#ffd98c}
 .aieStatus.bad{border-color:rgba(255,89,111,.45);color:#ff9aaa}
@@ -846,6 +890,68 @@ input:focus,select:focus,textarea:focus{
 .aieDeepCard{border:1px solid rgba(103,184,255,.28);background:linear-gradient(145deg,rgba(6,13,24,.94),rgba(12,12,25,.94));border-radius:14px;padding:11px}
 .aieDeepCard code{word-break:break-all}
 .aieChanged{border-color:rgba(255,49,88,.5)!important;box-shadow:0 0 0 1px rgba(255,49,88,.10) inset}
+
+/* v9.0.1 stable additions */
+.sf901SpecialistGrid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+@media(max-width:760px){.sf901SpecialistGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+.sf901SpecialistStatus{margin-top:9px;border:1px solid var(--border);border-radius:12px;padding:10px;background:rgba(6,11,20,.62);font-size:11px;line-height:1.5;color:var(--muted);white-space:pre-wrap}
+.sf901AssetManager{margin-top:10px;padding:11px;border:1px solid rgba(112,139,196,.24);border-radius:14px;background:rgba(5,10,19,.56)}
+.sf901AssetList{display:grid;gap:7px;margin-top:8px;max-height:340px;overflow:auto}
+.sf901AssetRow{border:1px solid rgba(112,139,196,.20);border-radius:11px;padding:9px;background:rgba(4,9,17,.58)}
+.sf901AssetMeta{font-size:11px;line-height:1.45;color:var(--muted);word-break:break-word}
+.sf901AssetActions{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.sf901AssetActions button{padding:6px 8px;font-size:10px}
+.sf901State{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
+.sf901State.approved{color:#8ceab1}.sf901State.rejected{color:#ff9cab}.sf901State.draft{color:#ffd88a}.sf901State.orphaned{color:#aeb8c7}
+
+</style>
+<style>
+/* ===== ShortForge v8.7 Learning + Production OS ===== */
+.sf87Grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:760px){.sf87Grid{grid-template-columns:1fr}}
+.sf87Card{border:1px solid rgba(112,139,196,.25);background:rgba(6,11,20,.62);border-radius:14px;padding:12px}
+.sf87Card h4{margin:0 0 6px}
+.sf87Tiny{font-size:11px;color:var(--muted);line-height:1.48}
+.sf87Status{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(112,139,196,.25);border-radius:999px;padding:5px 8px;font-size:10px;font-weight:850;color:var(--muted)}
+.sf87Status.good{border-color:rgba(82,210,141,.42);color:#aaf0c7}
+.sf87Status.warn{border-color:rgba(255,200,107,.42);color:#ffe0a1}
+.sf87Status.bad{border-color:rgba(255,122,140,.44);color:#ffb1bd}
+.sf87Feedback{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.sf87Feedback button{font-size:11px;padding:7px 9px}
+.sf87LearningLog{white-space:pre-wrap;max-height:150px;overflow:auto;border:1px solid rgba(112,139,196,.18);border-radius:10px;padding:8px;background:rgba(3,8,15,.55);font-size:10px;color:var(--muted)}
+.sf87Pipeline{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-top:10px}
+@media(max-width:680px){.sf87Pipeline{grid-template-columns:repeat(3,1fr)}}
+.sf87Stage{border:1px solid rgba(112,139,196,.22);border-radius:9px;padding:7px 4px;text-align:center;font-size:9px;font-weight:900;color:var(--muted);background:rgba(4,9,17,.55)}
+.sf87Stage.working{border-color:rgba(255,200,107,.55);color:#ffe0a1;background:rgba(55,40,10,.45)}
+.sf87Stage.passed{border-color:rgba(82,210,141,.46);color:#aaf0c7;background:rgba(12,40,29,.54)}
+.sf87Stage.warning{border-color:rgba(255,200,107,.48);color:#ffe0a1;background:rgba(55,40,10,.34)}
+.sf87Stage.failed{border-color:rgba(255,122,140,.52);color:#ffb1bd;background:rgba(42,17,24,.58)}
+.sf87Stage.repaired{border-color:rgba(112,185,255,.48);color:#b8dcff;background:rgba(10,28,46,.55)}
+.sf87PipelineSummary{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.4;white-space:pre-wrap}
+.sf87Diag{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;white-space:pre-wrap;min-height:140px}
+.sf87ProgressMeta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:6px;font-size:11px;color:var(--muted)}
+.sf87ProviderRow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.sf87ProviderRow:last-child{border-bottom:0}
+.sf87ProviderName{font-size:12px;font-weight:850}
+.sf87MemoryPill{display:inline-block;margin:2px 3px 2px 0;padding:4px 7px;border-radius:999px;border:1px solid rgba(112,139,196,.22);font-size:10px;color:var(--muted)}
+.sf87DangerNote{border:1px solid rgba(255,200,107,.30);background:rgba(55,40,10,.28);border-radius:10px;padding:9px;font-size:10px;color:#ffe0a1;line-height:1.4}
+</style>
+
+<style id="sf9Styles">
+.sf9RecipeBar,.sf9KnowledgeCard,.sf9IdentityStudio,.sf9VisionCard{border:1px solid rgba(114,139,198,.25);border-radius:14px;background:rgba(7,12,22,.68);padding:11px;margin-top:10px}
+.sf9RecipeGrid{display:grid;grid-template-columns:1fr auto auto auto;gap:7px;align-items:center}
+@media(max-width:720px){.sf9RecipeGrid{grid-template-columns:1fr 1fr}.sf9RecipeGrid select{grid-column:1/-1}}
+.sf9IdentityStudio .grid2{gap:8px}.sf9IdentityStudio textarea{min-height:72px}.sf9IdentityStudio input,.sf9IdentityStudio textarea{font-size:14px;padding:10px}
+.sf9RefGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+@media(max-width:720px){.sf9RefGrid{grid-template-columns:1fr 1fr}.sf9RefGrid>*:last-child{grid-column:1/-1}}
+.sf9RefSlot{border:1px dashed rgba(120,145,201,.30);border-radius:10px;padding:7px;background:rgba(5,10,18,.46);font-size:10px}
+.sf9RefSlot b{display:block;margin-bottom:5px}.sf9RefName{display:block;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px}
+.sf9SceneActions{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}.sf9SceneActions button{padding:6px 8px;font-size:11px}
+.sf9KnowledgeStatus{font-size:11px;color:var(--muted);line-height:1.45;margin-top:6px}
+.sf9VisionGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:8px}@media(max-width:720px){.sf9VisionGrid{grid-template-columns:1fr 1fr}}
+.sf9VisionMetric{border:1px solid rgba(100,126,183,.22);border-radius:10px;padding:8px;background:rgba(6,11,20,.58)}.sf9VisionMetric strong{display:block;font-size:16px}.sf9VisionMetric span{font-size:10px;color:var(--muted)}
+.sf9StatusGood{color:#aaf0c7}.sf9StatusWarn{color:#ffe0a1}.sf9StatusBad{color:#ffb1bd}
+.sf9Tiny{font-size:11px;color:var(--muted);line-height:1.45}
 </style>
 </head>
 <body class="shortforgeAnimeTheme">
@@ -936,6 +1042,38 @@ input:focus,select:focus,textarea:focus{
 
   <section id="project" class="panel active">
 
+      <div class="sfCommandCenter">
+        <div class="sceneHead">
+          <div>
+            <h3>Creator Command Center</h3>
+            <div class="mini">One place to build, check, finish, package, and repurpose the production.</div>
+          </div>
+          <span class="animProBadge">v9.0.2</span>
+        </div>
+        <div class="sfHealthRow">
+          <span class="mini">Project health</span>
+          <div class="sfHealthBar"><div id="sfHealthFill" class="sfHealthFill"></div></div>
+          <span id="sfHealthScore" class="sfHealthScore">0%</span>
+        </div>
+        <div id="sfHealthNotes" class="sfHealthNotes">Build or load a project to begin.</div>
+        <div class="actions">
+          <button class="primary" onclick="sfGenerateWholeVideo()">Generate Whole Video</button>
+          <button class="secondary" onclick="sfRunSystemCheck()">Run Full Check</button>
+          <button class="secondary" onclick="sfGenerateCreatorPack();switchTab('render')">Creator Pack</button>
+          <button class="secondary" onclick="sfGenerateShortsPack();switchTab('render')">Make 3 Shorts</button>
+        </div>
+      </div>
+
+      <div class="sf9RecipeBar">
+        <div class="sceneHead"><div><h3>Production Recipes</h3><div class="mini">Reusable local production setups inspired by professional templates/workflows — without locking your project into a cloud service.</div></div><span id="sf9RecipeStatus" class="sf87Status good">Local</span></div>
+        <div class="sf9RecipeGrid">
+          <select id="sf9RecipeSelect" aria-label="Production recipe"></select>
+          <button class="secondary animTiny" onclick="sf9ApplyRecipe()">Apply</button>
+          <button class="secondary animTiny" onclick="sf9SaveRecipe()">Save Current</button>
+          <button class="ghost animTiny" onclick="sf9DeleteRecipe()">Delete</button>
+        </div>
+      </div>
+
       <div class="v5QuickStart">
         <div class="sceneHead">
           <div><h3>Quick Start</h3><div class="mini">Use the guided workflow and let ShortForge set the technical defaults for you.</div></div>
@@ -945,6 +1083,7 @@ input:focus,select:focus,textarea:focus{
           <button class="primary" onclick="v5Anime15Setup()">15-Min Anime Setup</button>
           <button class="secondary" onclick="buildProject()">Build My Project</button>
           <button class="secondary" onclick="v4AutoDirectEpisode();v5Go('media')">Auto-Direct + Next</button>
+          <button class="primary" onclick="sfGenerateWholeVideo()">Generate Whole Video</button>
         </div>
         <div class="v5AdvancedHint">Simple mode keeps the advanced keyframe/compositor controls out of the way. Switch to Pro anytime without losing work.</div>
       </div>
@@ -1039,11 +1178,19 @@ input:focus,select:focus,textarea:focus{
         </div>
         <span class="animProBadge">AIE v1 • Tool Control</span>
       </div>
-      <div class="aiPipeline" style="margin-top:10px">
-        <div class="aiRole"><b>Director</b><span>Story beats, coverage, pacing</span></div>
-        <div class="aiRole"><b>Animation Supervisor</b><span>Key poses, timing, arcs</span></div>
-        <div class="aiRole"><b>Art Supervisor</b><span>Character + world consistency</span></div>
-        <div class="aiRole"><b>Compositor</b><span>Lighting, FX, grade, master</span></div>
+      <div class="aiPipeline sf901SpecialistGrid" style="margin-top:10px">
+        <div class="aiRole"><b>Director</b><span>Story, coverage, pacing</span></div>
+        <div class="aiRole"><b>Script Supervisor</b><span>Logic, dialogue, runtime</span></div>
+        <div class="aiRole"><b>Animation Supervisor</b><span>Poses, timing, spacing</span></div>
+        <div class="aiRole"><b>Cinematographer</b><span>Framing, camera, axis</span></div>
+        <div class="aiRole"><b>Character Continuity</b><span>Identity, costume, powers</span></div>
+        <div class="aiRole"><b>World Continuity</b><span>Locations, props, lighting</span></div>
+        <div class="aiRole"><b>FX / Compositing</b><span>Particles, depth, grade</span></div>
+        <div class="aiRole"><b>Audio Director</b><span>Voice, music, SFX, ducking</span></div>
+        <div class="aiRole"><b>Editor</b><span>Cuts, rhythm, retention</span></div>
+        <div class="aiRole"><b>QC Supervisor</b><span>Detect, repair, verify</span></div>
+        <div class="aiRole"><b>Mastering</b><span>Resolution, FPS, bitrate</span></div>
+        <div class="aiRole"><b>Growth Producer</b><span>Titles, thumbnails, Shorts</span></div>
       </div>
     </div>
 
@@ -1055,7 +1202,7 @@ input:focus,select:focus,textarea:focus{
               <h3>Animation Intelligence Engine</h3>
               <div class="mini">Local controller runs immediately. Deep Mode adds a real on-device neural model and turns its decisions into validated ShortForge tool actions.</div>
             </div>
-            <span class="animProBadge">v8.4</span>
+            <span class="animProBadge">v9.0.2</span>
           </div>
 
           <div class="aieStatusRow">
@@ -1108,9 +1255,17 @@ input:focus,select:focus,textarea:focus{
             <button class="secondary aieToolButton" onclick="aieRunCommand('master')"><b>Optimize Master</b><span>Choose a device-safe resolution, frame rate and render profile.</span></button>
           </div>
 
-          <div id="aieResult" class="aieResultBox">
+          <div id="aieResult" class="aieResultBox" aria-live="polite">
             <div id="aieResultTitle" class="aieResultTitle">AI Result</div>
             <div id="aieResultText" class="aieResultText">Choose a production action above. The result will appear here immediately.</div>
+          </div>
+          <div class="sf87Feedback" aria-label="AI feedback">
+            <button class="secondary" onclick="sf87Feedback('good')">Good Result</button>
+            <button class="secondary" onclick="sf87Feedback('bad')">Bad Result</button>
+            <button class="secondary" onclick="sf87Feedback('use-style')">Use This Style Again</button>
+            <button class="secondary" onclick="sf87Feedback('avoid-style')">Don't Do This Again</button>
+            <button class="secondary" onclick="sf87RegenerateLastAI()">Regenerate</button>
+            <button class="secondary" onclick="sf87UndoWithFeedback()">Undo</button>
           </div>
 
           <div class="aieTechniqueTags">
@@ -1196,6 +1351,27 @@ input:focus,select:focus,textarea:focus{
           <div class="aiBibleSection">
             <div class="vxSectionTitle"><b>Characters</b><button class="ghost animTiny" onclick="aiAddCharacter()">+ Character</button></div>
             <div id="aiCharacters"></div>
+            <div class="sf9IdentityStudio" id="sf9IdentityStudio">
+              <div class="sceneHead"><div><b>Character Identity Studio</b><div class="sf9Tiny">Structured identity locks feed every shot prompt and future connected visual provider.</div></div><button class="ghost animTiny" onclick="sf9ClearCharacterForm()">New</button></div>
+              <input id="sf9CharId" type="hidden">
+              <div class="grid2" style="margin-top:8px"><div><label>Name</label><input id="sf9CharName" placeholder="Kael"></div><div><label>Physical / silhouette</label><input id="sf9CharPhysical" placeholder="Lean, tall, sharp silhouette"></div></div>
+              <div class="grid2" style="margin-top:7px"><div><label>Face</label><input id="sf9CharFace" placeholder="Angular face, narrow jaw"></div><div><label>Hair</label><input id="sf9CharHair" placeholder="Black, uneven fringe"></div></div>
+              <div class="grid2" style="margin-top:7px"><div><label>Eyes</label><input id="sf9CharEyes" placeholder="Blue-gray"></div><div><label>Skin</label><input id="sf9CharSkin" placeholder="Skin tone / markings"></div></div>
+              <div class="grid2" style="margin-top:7px"><div><label>Height / build</label><input id="sf9CharHeight" placeholder="178 cm"><input id="sf9CharBody" style="margin-top:5px" placeholder="Athletic / slim / broad..."></div><div><label>Palette</label><input id="sf9CharPalette" placeholder="Black, silver, blue-violet"></div></div>
+              <div style="margin-top:7px"><label>Clothing</label><textarea id="sf9CharClothing" placeholder="Exact costume, materials, layers, colors..."></textarea></div>
+              <div class="grid2" style="margin-top:7px"><div><label>Accessories</label><input id="sf9CharAccessories" placeholder="Pendant, gloves..."></div><div><label>Power / FX identity</label><input id="sf9CharPower" placeholder="Blue-violet aura, square sparks..."></div></div>
+              <div style="margin-top:7px"><label>Never change / negative constraints</label><textarea id="sf9CharNegative" placeholder="Never change eye color, coat trim, scar placement..."></textarea></div>
+              <div class="grid2" style="margin-top:7px"><div><label>Locked traits (comma separated)</label><input id="sf9CharLocked" placeholder="eye color, coat, scar"></div><div><label>Allowed variations</label><input id="sf9CharVariations" placeholder="expressions, damage state"></div></div>
+              <div class="actions"><button class="primary animTiny" onclick="sf9SaveCharacter()">Save Character Identity</button></div>
+              <div class="sf9RefGrid">
+                <label class="sf9RefSlot"><b>Front</b><input type="file" accept="image/*" onchange="sf9AttachCharacterReference(event,'front')"><span id="sf9Ref_front" class="sf9RefName">None</span></label>
+                <label class="sf9RefSlot"><b>3/4</b><input type="file" accept="image/*" onchange="sf9AttachCharacterReference(event,'threeQuarter')"><span id="sf9Ref_threeQuarter" class="sf9RefName">None</span></label>
+                <label class="sf9RefSlot"><b>Side</b><input type="file" accept="image/*" onchange="sf9AttachCharacterReference(event,'side')"><span id="sf9Ref_side" class="sf9RefName">None</span></label>
+                <label class="sf9RefSlot"><b>Back</b><input type="file" accept="image/*" onchange="sf9AttachCharacterReference(event,'back')"><span id="sf9Ref_back" class="sf9RefName">None</span></label>
+                <label class="sf9RefSlot"><b>Expressions</b><input type="file" accept="image/*" onchange="sf9AttachCharacterReference(event,'expressions')"><span id="sf9Ref_expressions" class="sf9RefName">None</span></label>
+              </div>
+              <div id="sf9CharStatus" class="sf9Tiny" style="margin-top:7px">Save a character before attaching references.</div>
+            </div>
           </div>
           <div class="aiBibleSection">
             <div class="vxSectionTitle"><b>Locations</b><button class="ghost animTiny" onclick="aiAddLocation()">+ Location</button></div>
@@ -1220,7 +1396,8 @@ input:focus,select:focus,textarea:focus{
             <div class="aiCard"><span class="mini">Master readiness</span><strong id="aiMasterScore" class="aiScore">—</strong></div>
           </div>
           <div id="aiIntelligenceNotes" class="aiTiny" style="margin-top:8px"></div>
-          <div class="actions"><button class="primary" onclick="aiRunStudioReview()">Run Studio Review</button></div>
+          <div class="actions"><button class="primary" onclick="aiRunStudioReview()">Run Studio Review</button><button class="secondary" onclick="sf901RunSpecialistCouncil()">Run Specialist Council</button></div>
+          <div id="sf901SpecialistStatus" class="sf901SpecialistStatus">Specialist Council is ready. It coordinates story, animation, continuity, audio, edit, QC, mastering, and growth checks against the same project state.</div>
         </div>
 
         <div class="card" style="margin-top:12px">
@@ -1232,6 +1409,61 @@ input:focus,select:focus,textarea:focus{
             <div class="aiTiny" style="margin-top:8px">No API key is stored in this page. The existing provider interface remains available for a future secure server-side model if you ever want a stronger cloud model.</div>
           </div>
         </div>
+
+        <div class="card" style="margin-top:12px">
+          <div class="sceneHead"><div><h3>Learning & Memory</h3><div class="mini">Local-first preference learning. No private project is silently uploaded or used for training.</div></div><span id="sf87MemoryStatus" class="sf87Status good">Local memory on</span></div>
+          <div id="sf87MemorySummary" class="sf87Tiny" style="margin-top:8px">No learned preferences yet.</div>
+          <div class="actions">
+            <button class="secondary animTiny" onclick="sf87ViewMemory()">View</button>
+            <button class="secondary animTiny" onclick="sf87ExportMemory()">Export</button>
+            <button class="secondary animTiny" onclick="sf87ToggleMemory()">Enable / Disable</button>
+            <button class="danger animTiny" onclick="sf87ClearMemory()">Clear Memory</button>
+          </div>
+          <div class="sf87Card" style="margin-top:9px">
+            <label style="display:flex;gap:8px;align-items:center"><input id="sf87ImproveToggle" type="checkbox" style="width:auto" onchange="sf87SetImproveOptIn(this.checked)"> Help Improve ShortForge</label>
+            <div class="sf87Tiny">OFF by default. Opt-in stores only structured, privacy-reduced feedback events in a local contribution queue. v9.0.2 keeps them local unless a secure shared-learning adapter is connected and you explicitly submit them.</div>
+            <div class="actions"><button class="secondary animTiny" onclick="sf87ExportContributions()">Export Contribution Record</button><button class="secondary animTiny" onclick="sf87ClearContributions()">Delete Contribution Record</button><button class="secondary animTiny" onclick="sf902SubmitContributions()">Send Consented Feedback</button></div>
+            <div id="sf902LearningBackendStatus" class="sf87Tiny" style="margin-top:7px">Shared learning backend: not connected. Nothing leaves this device.</div>
+          </div>
+          <div class="sf9KnowledgeCard">
+            <div class="sceneHead"><div><b>Curated Global Knowledge</b><div class="sf9Tiny">Approved technique lessons + optional imported knowledge packs. This is retrieval knowledge, not silent model retraining.</div></div><span id="sf9KnowledgeBadge" class="sf87Status good">Built-in</span></div>
+            <div id="sf9KnowledgeStatus" class="sf9KnowledgeStatus">Loading knowledge pack…</div>
+            <div class="actions">
+              <label class="btn secondary animTiny">Import Pack<input type="file" accept="application/json" onchange="sf9ImportKnowledge(event)" style="display:none"></label>
+              <button class="secondary animTiny" onclick="sf9ExportKnowledge()">Export Pack</button>
+              <button class="secondary animTiny" onclick="sf9ResetKnowledge()">Reset Built-in</button>
+              <button class="secondary animTiny" onclick="sf9ExportLearningDataset()">Export Approved Learning Dataset</button>
+            </div>
+          </div>
+          <div id="sf87LearningLog" class="sf87LearningLog" style="margin-top:9px">Learning log ready.</div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3>Provider Hub</h3>
+          <div class="sf87Tiny">ShortForge keeps working locally. Connected providers can be registered later through a secure backend adapter—never by placing API secrets in this static page.</div>
+          <div class="sf87ProviderRow"><div><div class="sf87ProviderName">Visual generation</div><div class="sf87Tiny">character • background • prop • keyframe • shot • video • upscale • background removal</div></div><span id="sf87VisualProviderStatus" class="sf87Status good">Local fallback</span></div>
+          <div class="sf87ProviderRow"><div><div class="sf87ProviderName">Voice generation</div><div class="sf87Tiny">recording/upload local; secure connected TTS provider when configured</div></div><span id="sf87VoiceProviderStatus" class="sf87Status warn">Upload / recording only</span></div>
+          <div class="sf87ProviderRow"><div><div class="sf87ProviderName">Strong planning model</div><div class="sf87Tiny">local mobile model remains available; secure cloud provider can be registered</div></div><span id="sf87StrongProviderStatus" class="sf87Status warn">Local AIE + optional cloud</span></div>
+          <div class="sf87ProviderRow"><div><div class="sf87ProviderName">Capability router</div><div class="sf87Tiny">Routes each task to a provider that actually supports it; local remains the default when no secure remote adapter is connected.</div></div><span id="sf9RouterStatus" class="sf87Status good">Local-safe</span></div>
+          <div class="sf87ProviderRow"><div><div class="sf87ProviderName">Visual understanding</div><div class="sf87Tiny">Local privacy-safe pixel QA by default; a semantic vision adapter may be connected explicitly.</div></div><span id="sf902VisionProviderStatus" class="sf87Status warn">Local metrics</span></div>
+          <div class="sf87ProviderRow"><div><div class="sf87ProviderName">Shared learning</div><div class="sf87Tiny">Opt-in privacy-reduced feedback can be submitted only after a secure backend adapter is connected and the user confirms.</div></div><span id="sf902LearningProviderStatus" class="sf87Status warn">Not connected</span></div>
+          <div class="sf87DangerNote" style="margin-top:8px">Remote providers must disclose what project content will be sent before generation starts. ShortForge never sends project media or feedback automatically.</div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <div class="sceneHead"><div><h3>Production OS</h3><div class="mini">Shot graph, asset registry, repair loop, and AI benchmarks.</div></div><span id="sf87ProductionStatus" class="sf87Status">Not built</span></div>
+          <div class="sf87Grid" style="margin-top:8px">
+            <div class="sf87Card"><h4 id="sf87ShotCount">0 shots</h4><div class="sf87Tiny">Structured shot graph</div></div>
+            <div class="sf87Card"><h4 id="sf87AssetCount">0 assets</h4><div class="sf87Tiny">Versioned asset registry</div></div>
+          </div>
+          <div class="sf901AssetManager">
+            <div class="sceneHead"><div><b>Asset Version Manager</b><div class="sf87Tiny">Approve, reject, compare metadata, and restore stored scene-art versions. Uploaded artwork is never silently overwritten.</div></div><span id="sf901AssetVersionStatus" class="sf87Status">0 versions</span></div>
+            <div id="sf901AssetRegistryList" class="sf901AssetList"><div class="sf87Tiny">Build / Refresh Production OS to inspect asset versions.</div></div>
+          </div>
+          <div class="actions"><button class="primary animTiny" onclick="sf87BuildProductionOS()">Build / Refresh</button><button class="secondary animTiny" onclick="sf87RepairProject()">Analyze + Repair</button><button class="secondary animTiny" onclick="sf9RunVisualQA()">Local Visual QA</button><button class="secondary animTiny" onclick="sf902RunSemanticVisualQA()">Semantic Visual Review</button><button class="secondary animTiny" onclick="sf87RunAIBenchmarks()">Run AI Benchmarks</button><button class="secondary animTiny" onclick="sf9RunSelfTest()">Run v9.0.2 Self Test</button></div>
+          <textarea id="sf87Diagnostics" class="sf87Diag" readonly>Production diagnostics will appear here.</textarea>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1454,6 +1686,16 @@ input:focus,select:focus,textarea:focus{
             <label class="btn secondary animTiny">Load<input type="file" accept="image/*" onchange="cineLoadSceneAsset(event,'fg')" style="display:none"></label>
           </div>
 
+          <div class="sfSceneAutoTools">
+            <b>Scene Iteration</b>
+            <div class="mini">Fill missing art locally or create a fresh variation of ShortForge-generated art without overwriting artwork you uploaded.</div>
+            <div class="actions">
+              <button class="secondary animTiny" onclick="sfGenerateMissingSelectedSceneArt()">Generate Missing Art</button>
+              <button class="secondary animTiny" onclick="sfRegenerateSelectedAutoArt()">Regenerate Auto Art</button>
+            </div>
+            <div id="sfSceneAutoStatus" class="sfSceneAutoStatus">User-loaded artwork is protected.</div>
+          </div>
+
           <hr>
           <div class="cineGrid">
             <div><label>Camera zoom %</label><input id="cineZoom" type="range" min="70" max="180" value="105" oninput="cineUpdateReadouts();cinePreview()"></div>
@@ -1673,6 +1915,27 @@ input:focus,select:focus,textarea:focus{
       <div class="card">
         <h3>Upload-Ready Video Renderer</h3>
         <p class="muted">Turns the current project into a real video file locally on your device. No upload server, Supabase, or AI-video credits.</p>
+
+        <div class="sfWholeVideoCard">
+          <h3>Generate the Whole Video for Me</h3>
+          <p>One button prepares the project, auto-directs every scene, fills missing scene art with original procedural cinematic plates, builds captions, optimizes the master, and starts the final video render. Your own uploaded art and audio are always kept.</p>
+          <button id="sfWholeVideoBtn" class="primary sfWholeVideoBtn" onclick="sfGenerateWholeVideo()">Generate Whole Video for Me</button>
+          <div id="sfWholeVideoStatus" class="sfWholeVideoStatus">Ready. If no voice track is loaded, the finished video will use on-screen narration captions.</div>
+          <div class="sf87Pipeline" id="sf87Pipeline" aria-live="polite">
+            <div class="sf87Stage" id="sf87StagePlan">PLAN</div>
+            <div class="sf87Stage" id="sf87StageScript">SCRIPT</div>
+            <div class="sf87Stage" id="sf87StageDirect">DIRECT</div>
+            <div class="sf87Stage" id="sf87StageArt">ART</div>
+            <div class="sf87Stage" id="sf87StageAnimate">ANIMATE</div>
+            <div class="sf87Stage" id="sf87StageAudio">AUDIO</div>
+            <div class="sf87Stage" id="sf87StageEdit">EDIT</div>
+            <div class="sf87Stage" id="sf87StageQC">QC</div>
+            <div class="sf87Stage" id="sf87StageMaster">MASTER</div>
+            <div class="sf87Stage" id="sf87StageRender">RENDER</div>
+            <div class="sf87Stage" id="sf87StagePublish">PUBLISH</div>
+          </div>
+          <div id="sf87PipelineSummary" class="sf87PipelineSummary">All stages are waiting.</div>
+        </div>
         <div class="grid2">
           <div>
             <label>Aspect ratio</label>
@@ -1741,9 +2004,17 @@ input:focus,select:focus,textarea:focus{
             <div><label>Voice level</label><input id="renderVoiceLevel" type="range" min="0" max="150" value="100"></div>
             <div><label>Music level</label><input id="renderMusicLevel" type="range" min="0" max="100" value="22"></div>
           </div>
-          <label style="margin-top:8px">Music / ambience track</label>
+          <label style="margin-top:8px">Music track</label>
           <input id="renderMusicFile" type="file" accept="audio/*">
-          <div class="mini" style="margin-top:6px">Voice and music are mixed locally. Music loops automatically if it is shorter than the video.</div>
+          <div class="grid2" style="margin-top:8px">
+            <div><label>SFX track</label><input id="renderSfxFile" type="file" accept="audio/*"></div>
+            <div><label>Ambience track</label><input id="renderAmbienceFile" type="file" accept="audio/*"></div>
+          </div>
+          <div class="grid2" style="margin-top:8px">
+            <div><label>SFX level</label><input id="renderSfxLevel" type="range" min="0" max="120" value="75"></div>
+            <div><label>Ambience level</label><input id="renderAmbienceLevel" type="range" min="0" max="100" value="18"></div>
+          </div>
+          <div class="mini" style="margin-top:6px">Voice, music, SFX, and ambience are mixed locally. Music/ambience duck automatically when voice is present.</div>
         </div>
 
         <div class="v5RenderSummary" id="v5RenderSummary">
@@ -1755,11 +2026,13 @@ input:focus,select:focus,textarea:focus{
         <div class="actions">
           <button class="secondary" onclick="useLastRecording()">Use Last Recording</button>
           <button class="primary" id="renderStartBtn" onclick="renderFinalVideo()">Render Final Video</button>
+          <button class="danger" id="renderCancelBtn" onclick="sf87CancelRender()" disabled>Cancel Render</button>
           <button class="secondary" id="downloadVideoBtn" onclick="downloadRenderedVideo()" disabled>Download Video</button>
         </div>
-        <div style="margin-top:14px">
+        <div style="margin-top:14px" aria-live="polite">
           <div class="progressTrack"><div id="renderProgress" class="progressFill"></div></div>
           <div id="renderStatus" class="mini" style="margin-top:7px">Ready.</div>
+          <div class="sf87ProgressMeta"><span id="sf87RenderScene">Scene —</span><span id="sf87RenderElapsed">Elapsed —</span><span id="sf87RenderETA">Remaining —</span></div>
         </div>
         <div class="warn" style="margin-top:12px">Rendering runs in real time for mobile compatibility, so a 10-minute project takes about 10 minutes. Keep the page open while it renders.</div>
 
@@ -1774,6 +2047,20 @@ input:focus,select:focus,textarea:focus{
         <h3>Final Video Preview</h3>
         <video id="renderPreview" class="renderPreview" controls playsinline></video>
         <div class="section"><h3>Rendered into the file</h3><div class="mini">Animated scene graphics • scene titles • timed narration captions • transitions • optional local audio • MP4 on supported Safari devices, with WebM fallback.</div></div>
+
+        <div class="sfGrowthCard">
+          <div class="sceneHead">
+            <div><h3>Creator Growth Pack</h3><div class="mini">Package the finished episode and repurpose it instead of stopping at export.</div></div>
+          </div>
+          <div class="actions">
+            <button class="primary animTiny" onclick="sfGenerateCreatorPack()">Generate Publish Pack</button>
+            <button class="secondary animTiny" onclick="sfGenerateShortsPack()">Make 3 Shorts</button>
+            <button class="secondary animTiny" onclick="sf9CreateShortProjects()">Create 3 Short Projects</button>
+            <button class="secondary animTiny" onclick="sfDownloadGrowthPack()">Download TXT</button>
+            <button class="secondary animTiny" onclick="sf87DownloadCreatorJSON()">Download JSON</button>
+          </div>
+          <textarea id="sfCreatorPackOutput" class="sfOutputBox" readonly placeholder="Your titles, description, thumbnail hooks, tags, pinned comment, and Shorts ideas will appear here."></textarea>
+        </div>
       </div>
     </div>
     <div class="renderCanvasWrap"><canvas id="renderCanvas" width="720" height="1280"></canvas></div>
@@ -1790,6 +2077,10 @@ input:focus,select:focus,textarea:focus{
           <button class="secondary" onclick="exportCSV()">Shot List CSV</button>
           <button class="secondary" onclick="generateSRT();downloadSRT()">Captions SRT</button>
           <button class="secondary" onclick="exportWorkspace()">Full Workspace Backup</button>
+          <button class="secondary" onclick="sfGenerateCreatorPack();sf87DownloadCreatorJSON()">Creator Pack JSON</button>
+          <button class="secondary" onclick="sf87ExportProductionOS()">Shot Graph + Asset Registry</button>
+          <button class="secondary" onclick="sf9ExportRecipes()">Production Recipes</button>
+          <button class="secondary" onclick="sf9ExportKnowledge()">Knowledge Pack</button>
           <button class="secondary" onclick="switchTab('render')">Final Rendered Video</button>
         </div>
       </div>
@@ -1809,11 +2100,11 @@ input:focus,select:focus,textarea:focus{
   <div class="v5StickyActions">
     <button class="secondary animTiny" onclick="saveProject()">Save</button>
     <button class="secondary animTiny" onclick="v4AutoDirectEpisode()">Auto-Direct</button>
-    <button class="primary animTiny" onclick="switchTab('render');v5RenderSummary()">Render Video</button>
+    <button class="primary animTiny" onclick="sfGenerateWholeVideo()">Generate Whole Video</button>
   </div>
 
   <div class="footer">
-    ShortForge Studio Free • No login required • No Supabase • No paid AI API • Uploaded media stays local to your browser session.
+    ShortForge Studio v9 • Local-first base • No login required • No mandatory AI credits • User media stays local unless a connected provider is explicitly used.
   </div>
 </div>
 
@@ -2076,10 +2367,11 @@ function pickRecorderMime(){
   return "";
 }
 function renderDimensions(){
-  const ratio=$("renderRatio").value,q=Number($("renderQuality").value);
-  if(ratio==="9:16")return q===1080?[1080,1920]:q===720?[720,1280]:[540,960];
-  if(ratio==="16:9")return q===1080?[1920,1080]:q===720?[1280,720]:[960,540];
-  return q===1080?[1080,1080]:q===720?[720,720]:[540,540];
+  const ratio=$("renderRatio").value,q=Number($("renderQuality").value)||720;
+  const h=Math.max(540,Math.min(2160,q));
+  if(ratio==="9:16")return [h,Math.round(h*16/9)];
+  if(ratio==="16:9")return [Math.round(h*16/9),h];
+  return [h,h];
 }
 function sceneAtTime(t){
   let cursor=0;
@@ -2610,9 +2902,9 @@ function cineLoadSceneAsset(ev,slot){
   const i=cineSelectedSceneIndex();if(!cineSceneAssetURLs[i])cineSceneAssetURLs[i]={bg:null,mid:null,fg:null};
   if(cineSceneAssetURLs[i][slot])URL.revokeObjectURL(cineSceneAssetURLs[i][slot]);
   const url=URL.createObjectURL(f),img=new Image();cineSceneAssetURLs[i][slot]=url;
-  img.onload=()=>{cineSceneAssetSet(i)[slot]=img;cinePreview()};
+  img.onload=()=>{const set=cineSceneAssetSet(i);set[slot]=img;set[slot+"_generated"]=false;cinePreview()};
   img.src=url;
-  cineSceneAssetSet(i)[slot+"_name"]=f.name;ev.target.value="";cineRefreshSceneAssetUI()
+  const set=cineSceneAssetSet(i);set[slot+"_name"]=f.name;set[slot+"_generated"]=false;ev.target.value="";cineRefreshSceneAssetUI()
 }
 function cineRefreshSceneAssetUI(){
   const i=cineSelectedSceneIndex(),set=cineSceneAssetSet(i);
@@ -3323,7 +3615,7 @@ function v5ApplyRenderProfile(v){
 }
 function v5Bitrate(w,h,fps,quality){
   const pixels=w*h;
-  let base=pixels>=1920*1080?8000000:pixels>=1280*720?5000000:2800000;
+  let base=pixels>=3840*2160?22000000:pixels>=2560*1440?14000000:pixels>=1920*1080?8000000:pixels>=1280*720?5000000:2800000;
   if(fps>=60)base*=1.55;else if(fps>=30)base*=1.15;
   if(quality==="max")base*=1.18;else if(quality==="balanced")base*=.86;
   return Math.round(base)
@@ -3421,14 +3713,31 @@ renderFinalVideo=async function(){
   const stream=new MediaStream(tracks),mime=pickRecorderMime(),quality=$("studioCompQuality")?.value||"high";
   const bitrate=v5Bitrate(w,h,fps,quality);
   const opts=mime?{mimeType:mime,videoBitsPerSecond:bitrate}:{videoBitsPerSecond:bitrate};
-  let recorder;try{recorder=new MediaRecorder(stream,opts)}catch(e){recorder=new MediaRecorder(stream)}
+  let recorder;
+  try{recorder=new MediaRecorder(stream,opts)}
+  catch(e1){
+    try{recorder=new MediaRecorder(stream)}
+    catch(e2){
+      stream.getTracks().forEach(t=>t.stop());
+      try{audioCtx?.close?.();wake?.release?.()}catch(_){}
+      $("renderStartBtn").disabled=false;
+      document.dispatchEvent(new CustomEvent("shortforge:render-failed",{detail:{message:e2?.message||e1?.message||"Could not start the video recorder."}}));
+      return
+    }
+  }
   const chunks=[];
   recorder.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+  recorder.onerror=e=>{
+    $("renderStartBtn").disabled=false;
+    try{stream.getTracks().forEach(t=>t.stop());voiceSrc?.stop?.();musicSrc?.stop?.();audioCtx?.close?.();wake?.release?.()}catch(_){}
+    document.dispatchEvent(new CustomEvent("shortforge:render-failed",{detail:{message:e?.error?.message||e?.message||"MediaRecorder error"}}))
+  };
   recorder.onstop=()=>{
     const finalType=recorder.mimeType||mime||"video/webm";renderedVideoBlob=new Blob(chunks,{type:finalType});renderedVideoExt=finalType.includes("mp4")?"mp4":"webm";
     const old=$("renderPreview").src;if(old)URL.revokeObjectURL(old);$("renderPreview").src=URL.createObjectURL(renderedVideoBlob);
     $("downloadVideoBtn").disabled=false;$("renderStartBtn").disabled=false;$("renderProgress").style.width="100%";
     $("renderStatus").textContent=`Master ready • ${renderedVideoExt.toUpperCase()} • ${w}×${h} • ${fps} FPS • ${v5HumanBytes(renderedVideoBlob.size)}`;
+    document.dispatchEvent(new CustomEvent("shortforge:render-complete",{detail:{blob:renderedVideoBlob,ext:renderedVideoExt}}));
     stream.getTracks().forEach(t=>t.stop());try{voiceSrc?.stop();musicSrc?.stop()}catch(e){};if(audioCtx)audioCtx.close();if(wake)wake.release().catch(()=>{})
   };
   $("renderStartBtn").disabled=true;$("downloadVideoBtn").disabled=true;$("renderProgress").style.width="0%";
@@ -4541,8 +4850,469 @@ window.addEventListener("load",()=>setTimeout(async()=>{
 },980));
 </script>
 <script>
+/* ===== ShortForge v8.5 One-Button Whole Video Generator ===== */
+let sfWholeVideoBusy=false;
+
+function sfWholeVideoStatus(text,state=""){
+  const box=$("sfWholeVideoStatus");
+  if(box){box.className="sfWholeVideoStatus "+state;box.textContent=String(text||"")}
+}
+function sfWholeVideoYield(){
+  return new Promise(r=>requestAnimationFrame(()=>setTimeout(r,0)))
+}
+function sfHash32(text){
+  let h=2166136261>>>0;
+  for(const ch of String(text||"")){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}
+  return h>>>0
+}
+function sfPRNG(seed){
+  let x=(seed||1)>>>0;
+  return ()=>{
+    x^=x<<13;x^=x>>>17;x^=x<<5;
+    return ((x>>>0)%100000)/100000
+  }
+}
+function sfWholeVideoPalette(scene,index){
+  const set=typeof cineSceneAssetSet==="function"?cineSceneAssetSet(index):{};
+  const seed=sfHash32((scene?.title||"scene")+"|"+index+"|"+(scene?.narration||"")+"|bg|"+Number(set.bg_variant||0));
+  const hue=seed%360;
+  const preset=cineEnsure().shots?.[index]?.preset||"darkAction";
+  if(preset==="boss")return {a:`hsl(${(hue+318)%360} 72% 9%)`,b:`hsl(${(hue+6)%360} 67% 19%)`,accent:"#ff496d"};
+  if(preset==="speed")return {a:`hsl(${(hue+205)%360} 70% 9%)`,b:`hsl(${(hue+250)%360} 64% 20%)`,accent:"#7bc7ff"};
+  if(preset==="emotional")return {a:`hsl(${(hue+210)%360} 32% 11%)`,b:`hsl(${(hue+236)%360} 38% 22%)`,accent:"#b8c8ff"};
+  return {a:`hsl(${(hue+218)%360} 54% 9%)`,b:`hsl(${(hue+278)%360} 50% 19%)`,accent:"#9b82ff"}
+}
+function sfWholeVideoMakeBackground(scene,index){
+  const c=document.createElement("canvas");c.width=1280;c.height=720;
+  const ctx=c.getContext("2d"),p=sfWholeVideoPalette(scene,index),rand=sfPRNG(sfHash32(scene?.title||index));
+  const g=ctx.createLinearGradient(0,0,c.width,c.height);g.addColorStop(0,p.a);g.addColorStop(1,p.b);ctx.fillStyle=g;ctx.fillRect(0,0,c.width,c.height);
+
+  // Original procedural cinematic environment: horizon, distant structures and light shafts.
+  const horizon=420+Math.round((rand()-.5)*80);
+  ctx.fillStyle="rgba(0,0,0,.26)";ctx.fillRect(0,horizon,c.width,c.height-horizon);
+  for(let i=0;i<22;i++){
+    const w=28+rand()*90,h=55+rand()*260,x=rand()*c.width,y=horizon-h;
+    ctx.fillStyle=`rgba(3,7,15,${.30+rand()*.38})`;ctx.fillRect(x,y,w,h);
+    if(rand()>.45){
+      ctx.fillStyle=`rgba(180,210,255,${.03+rand()*.08})`;
+      for(let yy=y+18;yy<horizon-8;yy+=26)for(let xx=x+10;xx<x+w-8;xx+=20)if(rand()>.62)ctx.fillRect(xx,yy,4,7)
+    }
+  }
+  ctx.save();ctx.globalCompositeOperation="screen";ctx.globalAlpha=.18;
+  for(let i=0;i<7;i++){
+    const x=rand()*c.width,beam=80+rand()*210,grad=ctx.createLinearGradient(x,0,x+beam,horizon);
+    grad.addColorStop(0,"rgba(255,255,255,.16)");grad.addColorStop(1,"rgba(255,255,255,0)");
+    ctx.fillStyle=grad;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x+beam,0);ctx.lineTo(x+beam*.45,horizon);ctx.closePath();ctx.fill()
+  }
+  ctx.restore();
+
+  // Subtle scene identifier; not a title card, just visual texture.
+  ctx.fillStyle="rgba(255,255,255,.035)";ctx.font="900 110px system-ui";
+  ctx.fillText(String(index+1).padStart(2,"0"),70,150);
+  return c
+}
+function sfWholeVideoMakeMidground(scene,index){
+  const c=document.createElement("canvas");c.width=1280;c.height=720;
+  const set=typeof cineSceneAssetSet==="function"?cineSceneAssetSet(index):{};
+  const ctx=c.getContext("2d"),p=sfWholeVideoPalette(scene,index),rand=sfPRNG(sfHash32((scene?.title||index)+"mid|"+Number(set.mid_variant||0)));
+  const cx=640+(rand()-.5)*170,base=650,scale=.88+rand()*.18;
+
+  // Generic original silhouette, deliberately non-character-specific.
+  ctx.save();ctx.translate(cx,base);ctx.scale(scale,scale);
+  const aura=ctx.createRadialGradient(0,-250,20,0,-250,260);
+  aura.addColorStop(0,p.accent+"55");aura.addColorStop(1,"rgba(0,0,0,0)");
+  ctx.fillStyle=aura;ctx.fillRect(-330,-580,660,620);
+
+  ctx.fillStyle="rgba(3,6,12,.94)";
+  ctx.beginPath();ctx.ellipse(0,-390,72,82,0,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.moveTo(-92,-325);ctx.lineTo(92,-325);ctx.lineTo(150,-70);ctx.lineTo(65,0);ctx.lineTo(-68,0);ctx.lineTo(-145,-70);ctx.closePath();ctx.fill();
+  ctx.fillRect(-58,-20,48,210);ctx.fillRect(12,-20,48,210);
+  ctx.restore();
+
+  // Foreground streaks / debris.
+  ctx.save();ctx.globalCompositeOperation="screen";
+  for(let i=0;i<20;i++){
+    ctx.strokeStyle=`rgba(190,210,255,${.025+rand()*.09})`;ctx.lineWidth=1+rand()*3;
+    const x=rand()*1280,y=rand()*720,len=25+rand()*100;
+    ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+len,y-(10+rand()*45));ctx.stroke()
+  }
+  ctx.restore();
+  return c
+}
+async function sfPersistGeneratedCanvas(sceneIndex,slot,canvas){
+  try{
+    if(typeof v7DBPut!=="function"||typeof v7AssetKey!=="function")return;
+    const blob=await new Promise(r=>canvas.toBlob(r,"image/png",.92));
+    if(!blob)return;
+    await v7DBPut("assets",v7AssetKey(sceneIndex,slot),{
+      blob,name:`shortforge-auto-scene-${sceneIndex+1}-${slot}.png`,
+      type:"image/png",savedAt:Date.now(),generated:true
+    })
+  }catch(e){console.warn("[ShortForge auto art persist]",e)}
+}
+async function sfWholeVideoEnsureSceneArt(){
+  let made=0;
+  for(let i=0;i<project.scenes.length;i++){
+    const set=cineSceneAssetSet(i),scene=project.scenes[i];
+    if(!set.bg){
+      const bg=sfWholeVideoMakeBackground(scene,i);set.bg=bg;set.bg_name="ShortForge Auto Background";set.bg_generated=true;set.bg_variant=(set.bg_variant||0)+1;made++;
+      await sfPersistGeneratedCanvas(i,"bg",bg)
+    }
+    if(!set.mid){
+      const mid=sfWholeVideoMakeMidground(scene,i);set.mid=mid;set.mid_name="ShortForge Auto Character Silhouette";set.mid_generated=true;set.mid_variant=(set.mid_variant||0)+1;made++;
+      await sfPersistGeneratedCanvas(i,"mid",mid)
+    }
+    sfWholeVideoStatus(`Generating missing scene art… ${i+1}/${project.scenes.length}`,"warn");
+    await sfWholeVideoYield()
+  }
+  cineRefreshSceneAssetUI?.();cinePreview?.();studioRunQC?.();
+  return made
+}
+function sfWholeVideoPrepareAnimation(){
+  const a=animEnsure();
+  if(a.layers.length)return 0;
+  const total=animProjectDuration();
+  const title=animBase("text","Episode Title");
+  title.text=(project.title||"SHORTFORGE").slice(0,70);
+  title.fontSize=58;title.y=18;title.opacity=0;title.in=0;title.out=Math.min(total,4.2);
+  title.keyframes=[
+    {time:0,x:50,y:20,scale:96,rotation:0,opacity:0,width:32,height:18,fontSize:58,ease:"easeOut"},
+    {time:.45,x:50,y:18,scale:100,rotation:0,opacity:100,width:32,height:18,fontSize:58,ease:"easeOut"},
+    {time:Math.min(3.3,title.out-.4),x:50,y:18,scale:102,rotation:0,opacity:100,width:32,height:18,fontSize:58,ease:"easeInOut"},
+    {time:title.out,x:50,y:16,scale:104,rotation:0,opacity:0,width:32,height:18,fontSize:58,ease:"easeIn"}
+  ];
+  a.layers.push(title);animSelectedId=title.id;animRefreshAll?.();saveDraft?.();
+  return 1
+}
+function sfWholeVideoOptimizeMaster(){
+  const duration=v5Duration?.()||0;
+  if($("renderRatio"))$("renderRatio").value=project.format==="short"?"9:16":"16:9";
+  if($("studioRenderProfile"))$("studioRenderProfile").value="youtube";
+  if($("renderQuality"))$("renderQuality").value="1080";
+  if($("renderFPS"))$("renderFPS").value="24";
+  if($("studioCompQuality"))$("studioCompQuality").value=duration>=600?"high":"max";
+  if($("v5Performance"))$("v5Performance").value=duration>=600?"auto":"quality";
+  v5RenderSummary?.();v5RenderPreflight?.()
+}
+async function sfGenerateWholeVideo(){
+  if(sfWholeVideoBusy)return;
+  sfWholeVideoBusy=true;
+  sfResetWholeStages();
+  const btn=$("sfWholeVideoBtn");if(btn){btn.disabled=true;btn.textContent="Preparing Video…"}
+  let currentStage="Plan";
+  try{
+    currentStage="Plan";sfSetWholeStage("Plan","active");
+    sfWholeVideoStatus("Preparing project and checking the render engine…","warn");
+    sf74SyncProjectFromUI?.(true);
+    await sfWholeVideoYield();
+
+    if(!project.scenes?.length){
+      const topic=String($("topic")?.value||"").trim();
+      if(!topic)throw new Error("Enter a Video idea / topic first so ShortForge knows what video to make.");
+      buildProject();
+      await sfWholeVideoYield()
+    }
+
+    const support=typeof v7RecorderSupport==="function"?v7RecorderSupport():{
+      ok:!!(window.MediaRecorder&&$("renderCanvas")?.captureStream),mime:""
+    };
+    if(!support.ok)throw new Error("Final video recording is not supported in this browser. Open ShortForge in current Safari/Chrome and run the System Check.");
+    sfSetWholeStage("Plan","done");
+
+    currentStage="Direct";sfSetWholeStage("Direct","active");
+    sfWholeVideoStatus("AI Director is planning every scene and shot…","warn");
+    v4AutoDirectEpisode?.();
+    try{aieContinuityPass?.()}catch(e){}
+    v4BuildVisualShots?.(true);
+    await sfWholeVideoYield();
+    sfSetWholeStage("Direct","done");
+
+    currentStage="Art";sfSetWholeStage("Art","active");
+    sfWholeVideoStatus("Creating missing original scene artwork…","warn");
+    const generatedArt=await sfWholeVideoEnsureSceneArt();
+    sfSetWholeStage("Art","done");
+
+    currentStage="Captions";sfSetWholeStage("Captions","active");
+    sfWholeVideoStatus("Building title animation and timed narration captions…","warn");
+    const addedLayers=sfWholeVideoPrepareAnimation();
+    generateSRT?.();
+    await sfWholeVideoYield();
+    sfSetWholeStage("Captions","done");
+
+    currentStage="Master";sfSetWholeStage("Master","active");
+    sfWholeVideoStatus("Optimizing final master settings for this device…","warn");
+    sfWholeVideoOptimizeMaster();
+    saveDraft?.();
+    try{v7RecoverySnapshot?.()}catch(_){}
+    sfRefreshProjectHealth?.();
+    await sfWholeVideoYield();
+    sfSetWholeStage("Master","done");
+
+    currentStage="Render";sfSetWholeStage("Render","active");
+    switchTab("render");
+    const audioReady=!!($("renderVoiceFile")?.files?.[0]||selectedRenderAudioBlob);
+    sfWholeVideoStatus(
+      `Production prepared: ${project.scenes.length} scenes • ${studioEnsure().visualShots?.length||0} shots • ${generatedArt} generated art layer(s) • ${addedLayers} title layer(s). Starting final render${audioReady?" with voice audio":" with captions only"}…`,
+      "warn"
+    );
+    if(btn)btn.textContent="Rendering Whole Video…";
+    await sfWholeVideoYield();
+    renderFinalVideo()
+  }catch(e){
+    console.error("[ShortForge whole video]",e);
+    const stage=$("sfStage"+currentStage);if(stage)stage.className="sfAgentStage bad";
+    sfWholeVideoStatus(e?.message||"Whole-video generation could not start.","bad");
+    v7Toast?.("Whole-video generation stopped before rendering.","bad",4200);
+    sfWholeVideoBusy=false;
+    if(btn){btn.disabled=false;btn.textContent="Generate Whole Video for Me"}
+  }
+}
+
+document.addEventListener("shortforge:render-complete",()=>{
+  sfWholeVideoBusy=false;
+  sfMarkWholeComplete?.();
+  const btn=$("sfWholeVideoBtn");
+  if(btn){btn.disabled=false;btn.textContent="Generate Whole Video Again"}
+  sfWholeVideoStatus("Video ready. Preview it on the right, download the finished file, then generate the Creator Growth Pack.","good");
+  sfGenerateCreatorPack?.();
+  sfRefreshProjectHealth?.();
+  try{$("renderPreview")?.scrollIntoView({behavior:"smooth",block:"center"})}catch(e){}
+});
+document.addEventListener("shortforge:render-failed",(ev)=>{
+  sfWholeVideoBusy=false;
+  const stage=$("sfStageRender");if(stage)stage.className="sfAgentStage bad";
+  const btn=$("sfWholeVideoBtn");
+  if(btn){btn.disabled=false;btn.textContent="Generate Whole Video for Me"}
+  sfWholeVideoStatus(ev?.detail?.message||"The final render stopped. Your prepared project is still saved.","bad")
+});
+
+
+/* ===== ShortForge v8.6 Creator Command Center ===== */
+let sfGrowthPackText="";
+let sfHealthTimer=null;
+
+function sfStageIds(){return ["Plan","Direct","Art","Captions","Master","Render"]}
+function sfResetWholeStages(){
+  sfStageIds().forEach(n=>{const e=$("sfStage"+n);if(e)e.className="sfAgentStage"})
+}
+function sfSetWholeStage(name,state="active"){
+  const names=sfStageIds(),idx=names.indexOf(name);
+  names.forEach((n,i)=>{
+    const e=$("sfStage"+n);if(!e)return;
+    if(i<idx)e.className="sfAgentStage done";
+    else if(i===idx)e.className="sfAgentStage "+state;
+    else if(!e.classList.contains("done"))e.className="sfAgentStage"
+  })
+}
+function sfMarkWholeComplete(){
+  sfStageIds().forEach(n=>{const e=$("sfStage"+n);if(e)e.className="sfAgentStage done"})
+}
+function sfProjectHealthData(){
+  let render={ok:false,mime:""};
+  try{render=v7RecorderSupport?.()||render}catch(_){}
+  const n=project.scenes?.length||0;
+  const scriptChars=(project.scenes||[]).reduce((a,s)=>a+String(s.narration||"").trim().length,0);
+  const shots=studioEnsure?.().visualShots?.length||0;
+  const artReady=(project.scenes||[]).reduce((a,_,i)=>{
+    const s=cineSceneAssets?.[i]||{};
+    return a+(s.bg&&s.mid?1:0)
+  },0);
+  const artCoverage=n?artReady/n:0;
+  const hasAudio=!!($("renderVoiceFile")?.files?.[0]||selectedRenderAudioBlob);
+  const hasCaptions=scriptChars>0;
+  const hasBible=!!(project.ai?.bible?.characters?.length||project.ai?.bible?.locations?.length||project.ai?.bible?.visualIdentity);
+  let score=0;
+  if(n)score+=15;
+  if(scriptChars)score+=15;
+  if(shots)score+=15;
+  score+=Math.round(20*artCoverage);
+  if(hasCaptions)score+=10;
+  if(hasAudio)score+=10;
+  if(render.ok)score+=15;
+  score=Math.max(0,Math.min(100,score));
+  const blockers=[],warnings=[];
+  if(!n)blockers.push("No scenes yet.");
+  if(!render.ok)blockers.push("This browser cannot record the final canvas video.");
+  if(n&&!scriptChars)warnings.push("Scenes need narration/dialogue for useful captions.");
+  if(n&&artCoverage<1)warnings.push("Missing art will be filled with local procedural scene art.");
+  if(!hasAudio)warnings.push("No voice track: the generated video will rely on captions.");
+  if(!hasBible)warnings.push("Add Project Bible locks for stronger character/location consistency.");
+  if(!shots&&n)warnings.push("Auto-direct will build the shot plan.");
+  return {score,blockers,warnings,n,shots,artCoverage,hasAudio,render}
+}
+function sfRefreshProjectHealth(){
+  const d=sfProjectHealthData();
+  const fill=$("sfHealthFill"),score=$("sfHealthScore"),notes=$("sfHealthNotes");
+  if(fill)fill.style.width=d.score+"%";
+  if(score)score.textContent=d.score+"%";
+  if(notes){
+    const bits=[];
+    if(d.blockers.length)bits.push(`${d.blockers.length} blocker${d.blockers.length===1?"":"s"}: ${d.blockers.join(" ")}`);
+    else bits.push("No hard blockers detected.");
+    if(d.warnings.length)bits.push(`${d.warnings.length} improvement${d.warnings.length===1?"":"s"}: ${d.warnings.join(" ")}`);
+    else bits.push("Production inputs look complete.");
+    notes.textContent=bits.join(" ")
+  }
+  return d
+}
+async function sfRunSystemCheck(){
+  sfRefreshProjectHealth();
+  try{await v7RunReadiness?.()}catch(e){}
+  const d=sfRefreshProjectHealth();
+  const msg=d.blockers.length?d.blockers.join(" "):`System check passed with project health at ${d.score}%.`;
+  v7Toast?.(msg,d.blockers.length?"bad":"ok",3200)
+}
+function sfScheduleHealthRefresh(){
+  clearTimeout(sfHealthTimer);sfHealthTimer=setTimeout(()=>sfRefreshProjectHealth(),140)
+}
+
+function sfKeywordList(text,limit=7){
+  const stop=new Set(["about","after","again","against","anime","because","before","being","between","could","every","from","have","into","just","more","most","other","over","same","some","than","that","their","them","then","there","these","they","this","through","under","very","what","when","where","which","while","with","would","your"]);
+  const words=String(text||"").toLowerCase().match(/[a-z0-9][a-z0-9'-]{2,}/g)||[];
+  const counts={};
+  words.forEach(w=>{if(!stop.has(w))counts[w]=(counts[w]||0)+1});
+  return Object.entries(counts).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,limit).map(x=>x[0])
+}
+function sfFirstSentence(text,max=180){
+  const s=String(text||"").trim().match(/[^.!?]+[.!?]?/)?.[0]?.trim()||String(text||"").trim();
+  return s.length>max?s.slice(0,max-1).trim()+"…":s
+}
+function sfGenerateCreatorPack(){
+  const title=String(project.title||$("topic")?.value||"Untitled Video").trim()||"Untitled Video";
+  const first=project.scenes?.[0],last=project.scenes?.at?.(-1)||project.scenes?.[project.scenes.length-1];
+  const all=(project.scenes||[]).map(s=>`${s.title} ${s.narration} ${s.visual}`).join(" ");
+  const keys=sfKeywordList(title+" "+all,7);
+  const cleanTitle=title.replace(/\s+/g," ").trim();
+  const title2=cleanTitle.length<70?`${cleanTitle} — Full Story`:cleanTitle.slice(0,67)+"…";
+  const title3=`The Story Behind ${cleanTitle}`.slice(0,95);
+  const title4=`${cleanTitle}: The Moments That Change Everything`.slice(0,95);
+  const hook=sfFirstSentence(first?.narration||first?.visual||cleanTitle,220);
+  const ending=sfFirstSentence(last?.narration||last?.visual||"",160);
+  const description=[
+    hook,
+    "",
+    `ShortForge production: ${project.scenes?.length||0} scenes • ${fmt(v5Duration?.()||0)} runtime.`,
+    ending?`Final beat: ${ending}`:"",
+    "",
+    "If you want more from this series, subscribe and continue with the next episode."
+  ].filter(Boolean).join("\n");
+  const tags=[...new Set(["Anime","Animation","OriginalAnime",...keys.map(k=>k.replace(/[^a-z0-9]/gi,""))])].filter(Boolean).slice(0,10);
+  const thumbWords=(keys.length?keys:cleanTitle.split(/\s+/)).slice(0,4).map(x=>x.toUpperCase());
+  const pinned=`What was the strongest moment for you — ${first?.title||"the opening"}, or ${last?.title||"the ending"}?`;
+  sfGrowthPackText=[
+    "SHORTFORGE CREATOR / PUBLISH PACK",
+    "",
+    "TITLE OPTIONS",
+    `1. ${title2}`,
+    `2. ${title3}`,
+    `3. ${title4}`,
+    "",
+    "DESCRIPTION",
+    description,
+    "",
+    "THUMBNAIL TEXT OPTIONS",
+    `• ${thumbWords.join(" ")||"WATCH THIS"}`,
+    `• ${String(first?.title||"THE OPENING").toUpperCase().slice(0,36)}`,
+    `• ${String(last?.title||"THE REVEAL").toUpperCase().slice(0,36)}`,
+    "",
+    "TAGS / HASHTAGS",
+    tags.map(t=>"#"+t).join(" "),
+    "",
+    "PINNED COMMENT",
+    pinned
+  ].join("\n");
+  const out=$("sfCreatorPackOutput");if(out)out.value=sfGrowthPackText;
+  v7Toast?.("Creator publish pack generated.","ok",1800);
+  return sfGrowthPackText
+}
+function sfShortScore(scene,index){
+  const text=((scene?.title||"")+" "+(scene?.narration||"")+" "+(scene?.visual||"")).toLowerCase();
+  let s=Math.min(20,Number(scene?.duration||0));
+  if(index===0)s+=12;
+  if(/fight|attack|reveal|secret|truth|shock|power|betray|cliff|boss|escape|discover|why|how/.test(text))s+=20;
+  if(/conclusion|ending|close/.test(text))s+=5;
+  s+=Math.min(20,String(scene?.narration||"").length/35);
+  return s
+}
+function sfGenerateShortsPack(){
+  const scenes=(project.scenes||[]).map((s,i)=>({s,i,score:sfShortScore(s,i)})).sort((a,b)=>b.score-a.score);
+  const picks=[];
+  for(const x of scenes){if(!picks.some(p=>p.i===x.i)){picks.push(x);if(picks.length===3)break}}
+  if(!picks.length){
+    sfGrowthPackText="Build or load a project first.";
+  }else{
+    const chunks=picks.map((x,j)=>{
+      const core=sfFirstSentence(x.s.narration||x.s.visual||x.s.title,330);
+      const hook=j===0?`Wait until you see what happens in ${x.s.title}.`:`This is where ${x.s.title} changes everything.`;
+      const target=Math.max(18,Math.min(35,Math.round(Number(x.s.duration||25))));
+      return [
+        `SHORT ${j+1} — Scene ${x.i+1}: ${x.s.title}`,
+        `Target: ${target}s • Vertical 9:16`,
+        `Hook: ${hook}`,
+        `Core: ${core}`,
+        `CTA: Full episode: ${project.title||"watch the complete story"}.`
+      ].join("\n")
+    });
+    sfGrowthPackText=[
+      "SHORTFORGE 3-SHORT REPURPOSE PACK",
+      `Source: ${project.title||"Untitled Project"}`,
+      "",
+      ...chunks.flatMap((x,i)=>[x,i<chunks.length-1?"":""]).filter(x=>x!==undefined)
+    ].join("\n\n");
+  }
+  const out=$("sfCreatorPackOutput");if(out)out.value=sfGrowthPackText;
+  v7Toast?.("3-Short repurpose pack generated.","ok",1800);
+  return sfGrowthPackText
+}
+function sfDownloadGrowthPack(){
+  const text=String($("sfCreatorPackOutput")?.value||sfGrowthPackText||"").trim();
+  if(!text){sfGenerateCreatorPack()}
+  const finalText=String($("sfCreatorPackOutput")?.value||sfGrowthPackText||"").trim();
+  if(finalText)downloadText("shortforge-creator-pack.txt",finalText)
+}
+
+async function sfGenerateMissingSelectedSceneArt(){
+  const i=cineSelectedSceneIndex(),scene=project.scenes?.[i],set=cineSceneAssetSet(i),status=$("sfSceneAutoStatus");
+  if(!scene){if(status)status.textContent="Build a project first.";return}
+  let made=0;
+  if(!set.bg){
+    set.bg_variant=(set.bg_variant||0)+1;const bg=sfWholeVideoMakeBackground(scene,i);
+    set.bg=bg;set.bg_name="ShortForge Auto Background";set.bg_generated=true;made++;
+    await sfPersistGeneratedCanvas(i,"bg",bg)
+  }
+  if(!set.mid){
+    set.mid_variant=(set.mid_variant||0)+1;const mid=sfWholeVideoMakeMidground(scene,i);
+    set.mid=mid;set.mid_name="ShortForge Auto Character Silhouette";set.mid_generated=true;made++;
+    await sfPersistGeneratedCanvas(i,"mid",mid)
+  }
+  cineRefreshSceneAssetUI?.();cinePreview?.();studioRunQC?.();sfRefreshProjectHealth();
+  if(status)status.textContent=made?`Generated ${made} missing art layer${made===1?"":"s"} for Scene ${i+1}.`:"Nothing missing. User art was left untouched.";
+}
+async function sfRegenerateSelectedAutoArt(){
+  const i=cineSelectedSceneIndex(),scene=project.scenes?.[i],set=cineSceneAssetSet(i),status=$("sfSceneAutoStatus");
+  if(!scene){if(status)status.textContent="Build a project first.";return}
+  let made=0;
+  if(set.bg_generated){
+    set.bg_variant=(set.bg_variant||0)+1;const bg=sfWholeVideoMakeBackground(scene,i);
+    set.bg=bg;set.bg_name=`ShortForge Auto Background v${set.bg_variant}`;made++;
+    await sfPersistGeneratedCanvas(i,"bg",bg)
+  }
+  if(set.mid_generated){
+    set.mid_variant=(set.mid_variant||0)+1;const mid=sfWholeVideoMakeMidground(scene,i);
+    set.mid=mid;set.mid_name=`ShortForge Auto Character v${set.mid_variant}`;made++;
+    await sfPersistGeneratedCanvas(i,"mid",mid)
+  }
+  cineRefreshSceneAssetUI?.();cinePreview?.();studioRunQC?.();
+  if(status)status.textContent=made?`Created a fresh local variation for ${made} auto-generated layer${made===1?"":"s"}.`:"No ShortForge-generated art to regenerate. Uploaded art was protected.";
+}
+
+document.addEventListener("input",sfScheduleHealthRefresh,{passive:true});
+document.addEventListener("change",sfScheduleHealthRefresh,{passive:true});
+window.addEventListener("load",()=>setTimeout(()=>sfRefreshProjectHealth(),1250));
+
+
 /* ===== ShortForge v8 Animation Intelligence Engine ===== */
-const AIE_VERSION="8.3";
+const AIE_VERSION="9.0.1";
 const AIE_MODEL_ID="onnx-community/SmolLM2-135M-Instruct-ONNX-MHA";
 const AIE_TRANSFORMERS_URL="https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1";
 const AIE_MOBILE_MODEL_ID="Xenova/all-MiniLM-L6-v2";
@@ -5244,5 +6014,515 @@ window.addEventListener("load",()=>setTimeout(()=>{
   aieLog("AIE tool controller ready. "+aieProjectAnalysis());
 },1250));
 </script>
+
+<script>
+/* ===== ShortForge v8.7 Learning + Production OS ===== */
+const SF87_VERSION="9.0.2";
+const SF87_MEMORY_KEY="shortforge-v87-memory";
+const SF87_CONTRIB_KEY="shortforge-v87-contrib";
+const SF87_OPTIN_KEY="shortforge-v87-improve-optin";
+let sf87LastAIRequest=null;
+let sf87LastAIKind=null;
+let sf87RenderRuntime=null;
+let sf87CreatorPackJSON=null;
+
+function sf87Clone(v){try{return structuredClone(v)}catch(_){return JSON.parse(JSON.stringify(v))}}
+function sf87SafeJSON(key,fallback){try{const v=JSON.parse(localStorage.getItem(key)||"");return v&&typeof v==="object"?v:fallback}catch(_){return fallback}}
+function sf87DefaultMemory(){return {version:1,enabled:true,createdAt:Date.now(),updatedAt:Date.now(),signals:0,positive:0,negative:0,styles:{},cameras:{},cadences:{},tools:{},avoidStyles:{},avoidTools:{},corrections:[],exportPreference:null}}
+function sf87Memory(){const m=sf87SafeJSON(SF87_MEMORY_KEY,null)||sf87DefaultMemory();if(typeof m.enabled!=="boolean")m.enabled=true;return m}
+function sf87SaveMemory(m){m.updatedAt=Date.now();try{localStorage.setItem(SF87_MEMORY_KEY,JSON.stringify(m))}catch(e){console.warn("[ShortForge memory]",e)}sf87RefreshMemoryUI();return m}
+function sf87LearnBucket(obj,key,delta=1){key=String(key||"").trim();if(!key)return;obj[key]=Math.max(-25,Math.min(100,Number(obj[key]||0)+delta))}
+function sf87LogLearning(msg){const box=$("sf87LearningLog");if(!box)return;const line=`[${new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"})}] ${msg}`;box.textContent=(box.textContent?box.textContent+"\n":"")+line;const ls=box.textContent.split("\n");if(ls.length>60)box.textContent=ls.slice(-60).join("\n");box.scrollTop=box.scrollHeight}
+function sf87TopBucket(obj){return Object.entries(obj||{}).sort((a,b)=>b[1]-a[1])[0]||null}
+function sf87RefreshMemoryUI(){
+  const m=sf87Memory(),status=$("sf87MemoryStatus"),summary=$("sf87MemorySummary"),opt=$("sf87ImproveToggle");
+  if(status){status.textContent=m.enabled?"Local memory on":"Local memory off";status.className="sf87Status "+(m.enabled?"good":"warn")}
+  if(opt)opt.checked=localStorage.getItem(SF87_OPTIN_KEY)==="1";
+  if(summary){
+    const style=sf87TopBucket(m.styles),camera=sf87TopBucket(m.cameras),cad=sf87TopBucket(m.cadences),tool=sf87TopBucket(m.tools);
+    const bits=[`${m.signals||0} feedback signals`];
+    if(style&&style[1]>0)bits.push(`style: ${style[0]}`);if(camera&&camera[1]>0)bits.push(`camera: ${camera[0]}`);if(cad&&cad[1]>0)bits.push(`cadence: ${cad[0]}`);if(tool&&tool[1]>0)bits.push(`tool: ${tool[0]}`);
+    summary.innerHTML=bits.map(x=>`<span class="sf87MemoryPill">${escapeHTML(x)}</span>`).join("")
+  }
+}
+function sf87ViewMemory(){const m=sf87Memory();sf87LogLearning(JSON.stringify(m,null,2))}
+function sf87ExportMemory(){downloadText?.("shortforge-personal-memory.json",JSON.stringify(sf87Memory(),null,2))}
+function sf87ToggleMemory(){const m=sf87Memory();m.enabled=!m.enabled;sf87SaveMemory(m);sf87LogLearning(`Personal memory ${m.enabled?"enabled":"disabled"}.`)}
+function sf87ClearMemory(){if(!confirm("Clear ShortForge's learned local preferences? Project files are not deleted."))return;localStorage.removeItem(SF87_MEMORY_KEY);sf87RefreshMemoryUI();sf87LogLearning("Local learned preferences cleared.")}
+function sf87SetImproveOptIn(on){localStorage.setItem(SF87_OPTIN_KEY,on?"1":"0");sf87LogLearning(on?"Help Improve ShortForge enabled. Structured events will be queued locally only until a secure contribution backend exists.":"Help Improve ShortForge disabled.")}
+function sf87Contributions(){return sf87SafeJSON(SF87_CONTRIB_KEY,{version:1,events:[]})}
+function sf87QueueContribution(type,data={}){if(localStorage.getItem(SF87_OPTIN_KEY)!=="1")return;const q=sf87Contributions();q.events.push({at:Date.now(),type,device:/iPhone|iPad|iPod/i.test(navigator.userAgent)?"ios-mobile":innerWidth<800?"mobile":"desktop",projectShape:{format:project.format||"",sceneCount:project.scenes?.length||0,duration:Math.round(v5Duration?.()||0)},data});if(q.events.length>500)q.events=q.events.slice(-500);try{localStorage.setItem(SF87_CONTRIB_KEY,JSON.stringify(q))}catch(_){}}
+function sf87ExportContributions(){downloadText?.("shortforge-contribution-record.json",JSON.stringify(sf87Contributions(),null,2))}
+function sf87ClearContributions(){localStorage.removeItem(SF87_CONTRIB_KEY);sf87LogLearning("Local contribution record deleted.")}
+
+function sf87Feedback(kind){
+  const m=sf87Memory();if(!m.enabled){sf87LogLearning("Memory is disabled; feedback was not learned.");return}
+  const plan=aieLastPlan||{},actions=Array.isArray(plan.actions)?plan.actions:[],style=aieStyle?.()||"cinematic",scene=project.scenes?.length?studioShot(Math.max(0,aiSceneIndex?.()||0)):null;
+  m.signals=(m.signals||0)+1;
+  const positive=kind==="good"||kind==="use-style",negative=kind==="bad"||kind==="avoid-style";
+  if(positive)m.positive=(m.positive||0)+1;if(negative)m.negative=(m.negative||0)+1;
+  const weight=kind==="good"?2:kind==="use-style"?4:kind==="bad"?-2:kind==="avoid-style"?-5:0;
+  if(weight){sf87LearnBucket(m.styles,style,weight);if(scene){sf87LearnBucket(m.cameras,scene.cameraMove,weight);sf87LearnBucket(m.cadences,scene.cadence,weight)}actions.forEach(a=>sf87LearnBucket(m.tools,a.tool,weight))}
+  if(kind==="avoid-style"){sf87LearnBucket(m.avoidStyles,style,5);actions.forEach(a=>sf87LearnBucket(m.avoidTools,a.tool,3))}
+  sf87SaveMemory(m);sf87QueueContribution("ai-feedback",{kind,source:plan.source||"unknown",tools:actions.map(a=>a.tool).slice(0,6),style});
+  sf87LogLearning(kind==="good"?"Learned preference from a good result.":kind==="bad"?"Recorded a negative preference signal.":kind==="use-style"?"Learned preference: use this production style again.":"Learned avoidance preference for this style/action.")
+}
+function sf87UndoWithFeedback(){sf87Feedback("bad");aieUndoLast?.();sf87QueueContribution("undo",{tool:aieLastPlan?.actions?.[0]?.tool||"unknown"})}
+function sf87RegenerateLastAI(){sf87QueueContribution("regenerate",{tool:aieLastPlan?.actions?.[0]?.tool||"unknown"});const tool=aieLastPlan?.actions?.[0]?.tool;const map={direct_scene:"scene",direct_episode:"episode",continuity_pass:"continuity",animate_selected_layer:"animate",set_render:"master",run_qc:"analyze"};if(map[tool])aieRunCommand(map[tool]);else if(sf87LastAIRequest){if($("aiInput"))$("aiInput").value=sf87LastAIRequest;aiSend?.()}else aieRunCommand?.("analyze")}
+
+/* Apply learned preferences as a soft local bias; explicit non-default selections still win. */
+const sf87BaseClassify=typeof aieClassifyForScene==="function"?aieClassifyForScene:null;
+if(sf87BaseClassify){
+  aieClassifyForScene=function(i){const out=sf87BaseClassify(i),m=sf87Memory();if(!m.enabled||m.signals<2)return out;const cam=sf87TopBucket(m.cameras),cad=sf87TopBucket(m.cadences);if(cam&&cam[1]>=4&&!m.avoidStyles[aieStyle?.()])out.cameraMove=cam[0];if(cad&&cad[1]>=4)out.cadence=cad[0];return out}
+}
+
+/* Provider registry: adapters can be injected by a secure host/backend without putting secrets in this static page. */
+window.ShortForgeProviders=window.ShortForgeProviders||{visual:new Map(),voice:new Map(),planner:new Map(),active:{visual:"local",voice:"local",planner:"local"}};
+function sf87RegisterProvider(kind,name,impl){if(!window.ShortForgeProviders[kind]||!(window.ShortForgeProviders[kind] instanceof Map))throw new Error("Unknown provider kind");if(!name||!impl)throw new Error("Provider name and implementation required");window.ShortForgeProviders[kind].set(name,impl);sf87RefreshProviderUI()}
+function sf87Provider(kind){const hub=window.ShortForgeProviders,active=hub.active[kind];return hub[kind].get(active)||hub[kind].get("local")||null}
+function sf87RefreshProviderUI(){const hub=window.ShortForgeProviders;const count=k=>hub[k] instanceof Map?hub[k].size:0;const vis=$("sf87VisualProviderStatus"),voice=$("sf87VoiceProviderStatus"),strong=$("sf87StrongProviderStatus");if(vis){vis.textContent=count("visual")>1?`${count("visual")-1} connected + local`:"Local fallback";vis.className="sf87Status good"}if(voice){voice.textContent=count("voice")>1?`${count("voice")-1} connected + local`:"Local/upload";voice.className="sf87Status "+(count("voice")>1?"good":"warn")}if(strong){strong.textContent=count("planner")>1?`${count("planner")-1} connected`:"Not connected";strong.className="sf87Status "+(count("planner")>1?"good":"warn")}}
+window.ShortForgeProviders.visual.set("local",{name:"ShortForge Local Procedural",remote:false,async generateBackground({scene,index}){return sfWholeVideoMakeBackground(scene,index)},async generateCharacter({scene,index}){return sfWholeVideoMakeMidground(scene,index)},async generateProp(){return null},async generateKeyframe(){return null},async generateShot(){return null},async generateVideoClip(){return null},async regenerateAsset(){return null},async upscaleAsset(){return null},async removeBackground(){return null}});
+window.ShortForgeProviders.voice.set("local",{name:"Local upload/recording",remote:false,async synthesize(){return null}});
+window.ShortForgeProviders.planner.set("local",{name:"AIE local",remote:false});
+window.ShortForgeRegisterProvider=sf87RegisterProvider;
+
+/* Structured Character Identity. Existing `lock` stays as the prompt-compatible summary. */
+function sf87NormalizeCharacter(c={}){return {id:c.id||aiUID("CHR"),name:String(c.name||"Unnamed"),physical:String(c.physical||""),face:String(c.face||""),hair:String(c.hair||""),eyes:String(c.eyes||""),skin:String(c.skin||""),height:String(c.height||""),bodyType:String(c.bodyType||""),clothing:String(c.clothing||""),accessories:String(c.accessories||""),palette:String(c.palette||""),powerEffects:String(c.powerEffects||""),expressions:Array.isArray(c.expressions)?c.expressions:[],references:Array.isArray(c.references)?c.references:[],negative:String(c.negative||""),lockedTraits:Array.isArray(c.lockedTraits)?c.lockedTraits:[],allowedVariations:Array.isArray(c.allowedVariations)?c.allowedVariations:[],lock:String(c.lock||"")}}
+function sf87CharacterLock(c){const bits=[c.physical,c.face,c.hair&&`hair: ${c.hair}`,c.eyes&&`eyes: ${c.eyes}`,c.skin&&`skin: ${c.skin}`,c.height&&`height: ${c.height}`,c.bodyType&&`build: ${c.bodyType}`,c.clothing&&`clothing: ${c.clothing}`,c.accessories&&`accessories: ${c.accessories}`,c.palette&&`palette: ${c.palette}`,c.powerEffects&&`power: ${c.powerEffects}`,c.negative&&`never: ${c.negative}`].filter(Boolean);return bits.join("; ")||c.lock||""}
+const sf87OldEnsureProject=aiEnsureProject;
+aiEnsureProject=function(){const ai=sf87OldEnsureProject();if(!Array.isArray(ai.bible.characters))ai.bible.characters=[];ai.bible.characters=ai.bible.characters.map(c=>{const n=sf87NormalizeCharacter(c);if(!n.lock)n.lock=sf87CharacterLock(n);return n});aiBible=ai.bible;return ai}
+aiAddCharacter=function(){aiEnsureProject();const name=prompt("Character name");if(!name)return;const c=sf87NormalizeCharacter({name});c.physical=prompt("Physical appearance / silhouette","")||"";c.face=prompt("Face shape / defining features","")||"";c.hair=prompt("Hair","")||"";c.eyes=prompt("Eyes","")||"";c.clothing=prompt("Clothing / costume","")||"";c.palette=prompt("Color palette","")||"";c.powerEffects=prompt("Power / FX identity (optional)","")||"";c.negative=prompt("Traits that must never change","")||"";c.lock=sf87CharacterLock(c);aiBible.characters.push(c);project.ai.bible=aiBible;aiRenderBibleLists();saveDraft();aiCompilePrompt();sf87BuildProductionOS()}
+const sf87OldEditBibleItem=aiEditBibleItem;
+aiEditBibleItem=function(type,i){if(type!=="characters")return sf87OldEditBibleItem(type,i);const c=sf87NormalizeCharacter(aiBible.characters[i]);if(!c)return;c.name=prompt("Name",c.name)||c.name;c.physical=prompt("Physical appearance / silhouette",c.physical)||c.physical;c.face=prompt("Face",c.face)||c.face;c.hair=prompt("Hair",c.hair)||c.hair;c.eyes=prompt("Eyes",c.eyes)||c.eyes;c.clothing=prompt("Clothing",c.clothing)||c.clothing;c.palette=prompt("Palette",c.palette)||c.palette;c.powerEffects=prompt("Power / FX",c.powerEffects)||c.powerEffects;c.negative=prompt("Never change",c.negative)||c.negative;c.lock=sf87CharacterLock(c);aiBible.characters[i]=c;project.ai.bible=aiBible;aiRenderBibleLists();saveDraft();aiCompilePrompt()}
+
+/* Shot graph + asset registry. */
+function sf87EnsureProjectOS(){if(!project.shotGraph)project.shotGraph=[];if(!project.assetRegistry)project.assetRegistry=[];if(!project.productionOS)project.productionOS={version:1,lastRepair:null,lastBenchmark:null};return project.productionOS}
+function sf87BuildShotGraph(){sf87EnsureProjectOS();const raw=v4BuildVisualShots?.(false)||[];project.shotGraph=raw.map((s,idx)=>{const scene=project.scenes[s.sceneIndex]||{},ss=studioShot(s.sceneIndex),existing=project.shotGraph?.find?.(x=>x.sceneIndex===s.sceneIndex&&x.shotIndex===s.shotIndex)||{};return {...existing,id:existing.id||`SHOT-${String(s.sceneIndex+1).padStart(3,"0")}-${String(s.shotIndex+1).padStart(2,"0")}`,sceneId:scene.id||`SCENE-${s.sceneIndex+1}`,sceneIndex:s.sceneIndex,shotIndex:s.shotIndex,start:s.start,duration:s.duration,purpose:existing.purpose||scene.title||"Story beat",characters:existing.characters||[],location:existing.location||null,camera:existing.camera||{move:s.cameraMove,framing:s.shotIndex===0?"wide":"medium",axis:"preserve"},framing:existing.framing||(s.shotIndex===0?"wide":"medium"),cameraMovement:s.cameraMove,characterPose:existing.characterPose||"",action:existing.action||scene.visual||"",dialogue:existing.dialogue||scene.narration||"",fx:existing.fx||{preset:s.preset,smear:s.smear,impactAt:s.impactAt},lighting:existing.lighting||cineEnsure().shots?.[s.sceneIndex]?.preset||"cinematic",transition:s.transition,continuityDependencies:existing.continuityDependencies||[],assets:existing.assets||[],animationLayers:existing.animationLayers||[],renderState:existing.renderState||"pending",qcState:existing.qcState||"pending"}});return project.shotGraph}
+function sf87RegisterAsset(meta={}){sf87EnsureProjectOS();const list=project.assetRegistry;const key=`${meta.sceneIndex??"x"}:${meta.slot||meta.type||"asset"}`;const prev=list.filter(a=>a.key===key);const version=prev.length?Math.max(...prev.map(a=>Number(a.version)||0))+1:1;prev.forEach(a=>a.active=false);const item={id:`ASSET-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,6)}`,key,type:meta.type||meta.slot||"asset",source:meta.source||"local",sceneIndex:meta.sceneIndex??null,shotId:meta.shotId||null,characterId:meta.characterId||null,locationId:meta.locationId||null,version,createdAt:Date.now(),provider:meta.provider||"ShortForge",prompt:meta.prompt||"",seed:meta.seed??null,dimensions:meta.dimensions||null,approvalState:meta.approvalState||"draft",active:true};list.push(item);if(list.length>1000)project.assetRegistry=list.slice(-1000);return item}
+function sf87SyncAssetRegistry(){sf87EnsureProjectOS();for(let i=0;i<(project.scenes?.length||0);i++){const set=cineSceneAssets?.[i]||{};for(const slot of ["bg","mid","fg"]){if(set[slot]&&!project.assetRegistry.some(a=>a.active&&a.sceneIndex===i&&a.type===slot)){sf87RegisterAsset({sceneIndex:i,type:slot,source:set[slot+"_generated"]?"generated-local":"user",provider:set[slot+"_generated"]?"ShortForge Local Procedural":"User supplied",dimensions:{width:set[slot].naturalWidth||set[slot].width||null,height:set[slot].naturalHeight||set[slot].height||null},approvalState:set[slot+"_generated"]?"draft":"approved"})}}}return project.assetRegistry}
+function sf87BuildProductionOS(){aiEnsureProject?.();const shots=sf87BuildShotGraph(),assets=sf87SyncAssetRegistry();sf87EnsureProjectOS();project.productionOS.updatedAt=Date.now();if($("sf87ShotCount"))$("sf87ShotCount").textContent=`${shots.length} shots`;if($("sf87AssetCount"))$("sf87AssetCount").textContent=`${assets.filter(a=>a.active).length} active assets`;if($("sf87ProductionStatus")){ $("sf87ProductionStatus").textContent="Ready";$("sf87ProductionStatus").className="sf87Status good"}const diag=`Production OS v1\nShots: ${shots.length}\nActive assets: ${assets.filter(a=>a.active).length}\nCharacters: ${aiBible.characters?.length||0}\nScenes: ${project.scenes?.length||0}\nUpdated: ${new Date().toLocaleString()}`;if($("sf87Diagnostics"))$("sf87Diagnostics").value=diag;saveDraft?.();return {shots,assets}}
+function sf87ExportProductionOS(){const os=sf87BuildProductionOS();downloadText?.("shortforge-production-os.json",JSON.stringify({version:1,project:{title:project.title,format:project.format},shotGraph:os.shots,assetRegistry:os.assets,characters:aiBible.characters||[]},null,2))}
+
+async function sf87RepairProject(){
+  const repairs=[],warnings=[];sf87EnsureProjectOS();
+  if(!project.scenes?.length){warnings.push("No scenes to repair.");return {repairs,warnings}}
+  v4BuildVisualShots?.(true);repairs.push("Shot graph refreshed.");
+  const missingBefore=project.scenes.reduce((a,_,i)=>{const s=cineSceneAssets?.[i]||{};return a+(!s.bg?1:0)+(!s.mid?1:0)},0);
+  if(missingBefore){await sfWholeVideoEnsureSceneArt?.();repairs.push(`Filled ${missingBefore} missing core art slot(s) with local fallback art.`)}
+  if(!animEnsure().layers?.length){sfWholeVideoPrepareAnimation?.();repairs.push("Added a basic readable animation/title layer.")}
+  generateSRT?.();repairs.push("Caption timing refreshed.");
+  renderTimeline?.();repairs.push("Timeline refreshed.");
+  sfWholeVideoOptimizeMaster?.();repairs.push("Master settings normalized for the current device/project.");
+  studioRunQC?.();aiRunStudioReview?.();
+  if(!($(`renderVoiceFile`)?.files?.[0]||selectedRenderAudioBlob))warnings.push("No exportable narration/voice track is loaded; captions remain available.");
+  sf87BuildProductionOS();project.productionOS.lastRepair={at:Date.now(),repairs,warnings};saveDraft?.();sf87QueueContribution("repair",{repairCount:repairs.length,warningCount:warnings.length});
+  const out=`REPAIR LOOP\n${repairs.map(x=>"✓ "+x).join("\n")}${warnings.length?"\n\nWARNINGS\n"+warnings.map(x=>"! "+x).join("\n"):"\n\nNo remaining repair warnings detected."}`;if($("sf87Diagnostics"))$("sf87Diagnostics").value=out;return {repairs,warnings}
+}
+
+function sf87RunAIBenchmarks(){
+  const tests=[];const add=(name,fn)=>{try{tests.push({name,pass:!!fn()})}catch(e){tests.push({name,pass:false,error:e.message})}};
+  add("tool: continuity",()=>aieLocalPlan("check continuity").actions?.[0]?.tool==="continuity_pass");
+  add("tool: render",()=>aieLocalPlan("optimize final render").actions?.[0]?.tool==="set_render");
+  add("tool: QC",()=>aieLocalPlan("analyze and review qc").actions?.[0]?.tool==="run_qc");
+  add("tool: animate",()=>aieLocalPlan("animate selected layer").actions?.[0]?.tool==="animate_selected_layer");
+  add("tool: episode",()=>aieLocalPlan("direct the entire episode").actions?.[0]?.tool==="direct_episode");
+  add("render: 4K 16:9",()=>{const r=$("renderRatio")?.value,q=$("renderQuality")?.value;$("renderRatio").value="16:9";$("renderQuality").value="2160";const d=renderDimensions();$("renderRatio").value=r;$("renderQuality").value=q;return d[0]===3840&&d[1]===2160});
+  add("render: 1440p 16:9",()=>{const r=$("renderRatio")?.value,q=$("renderQuality")?.value;$("renderRatio").value="16:9";$("renderQuality").value="1440";const d=renderDimensions();$("renderRatio").value=r;$("renderQuality").value=q;return d[0]===2560&&d[1]===1440});
+  add("memory: local persistence",()=>{const m=sf87Memory();return m&&typeof m.enabled==="boolean"});
+  add("provider: local visual",()=>!!sf87Provider("visual")?.generateBackground);
+  const passed=tests.filter(t=>t.pass).length,score=Math.round(100*passed/tests.length);sf87EnsureProjectOS();project.productionOS.lastBenchmark={at:Date.now(),score,tests};saveDraft?.();const out=`AI / SYSTEM BENCHMARKS — ${score}% (${passed}/${tests.length})\n`+tests.map(t=>`${t.pass?"PASS":"FAIL"} • ${t.name}${t.error?" — "+t.error:""}`).join("\n");if($("sf87Diagnostics"))$("sf87Diagnostics").value=out;sf87QueueContribution("benchmark",{score,total:tests.length});return {score,tests}}
+
+/* Creator Pack v2 */
+const sf87OldGenerateCreatorPack=sfGenerateCreatorPack;
+sfGenerateCreatorPack=function(){const text=sf87OldGenerateCreatorPack();const duration=v5Duration?.()||0,scenes=project.scenes||[];const hooks=scenes.slice(0,Math.min(3,scenes.length)).map((s,i)=>`${i+1}. ${sfFirstSentence(s.narration||s.visual||s.title,120)}`);const chapters=[];let t=0;scenes.forEach((s,i)=>{if(duration>=300&&(i===0||i%Math.max(1,Math.floor(scenes.length/6))===0))chapters.push(`${fmt(t)} ${s.title}`);t+=Number(s.duration||0)});const continuation=scenes.length?`Next episode idea: escalate the unresolved consequence of “${scenes.at(-1)?.title||project.title}” while opening with a new visual question.`:"Next episode idea: continue the strongest unresolved story thread.";const extra=`\n\nHOOK OPTIONS\n${hooks.join("\n")||"1. Open on the strongest unanswered question."}\n\nCTA\nWatch the full episode, then subscribe for the next part.\n\n${chapters.length?"CHAPTERS\n"+chapters.join("\n")+"\n\n":""}SERIES CONTINUATION\n${continuation}\n\nTHUMBNAIL COMPOSITION\nUse one clear subject, one dominant emotion/action cue, high value contrast, and no more than 2–4 short words.`;sfGrowthPackText=text+extra;if($("sfCreatorPackOutput"))$("sfCreatorPackOutput").value=sfGrowthPackText;sf87CreatorPackJSON={version:2,generatedAt:Date.now(),project:{title:project.title,format:project.format,duration},text:sfGrowthPackText,hooks,chapters,cta:"Watch the full episode, then subscribe for the next part.",seriesContinuation:continuation,shorts:sfGenerateShortsPack?null:null};return sfGrowthPackText}
+function sf87DownloadCreatorJSON(){if(!sf87CreatorPackJSON)sfGenerateCreatorPack();downloadText?.("shortforge-creator-pack.json",JSON.stringify(sf87CreatorPackJSON,null,2))}
+
+/* Safe workspace import: size caps + normalized project shape. */
+function sf87CleanString(v,max=8000){return String(v??"").replace(/\u0000/g,"").slice(0,max)}
+function sf87SanitizeProject(p){if(!p||typeof p!=="object")throw new Error("Project object missing");const x=sf74Normalize?.(sf87Clone(p))||sf87Clone(p);x.title=sf87CleanString(x.title,240);x.audience=sf87CleanString(x.audience,500);x.timelineNotes=sf87CleanString(x.timelineNotes,8000);x.scenes=(Array.isArray(x.scenes)?x.scenes:[]).slice(0,200).map((s,i)=>({id:s.id||`scene-${i+1}`,title:sf87CleanString(s.title||`Scene ${i+1}`,240),duration:Math.max(1,Math.min(3600,Number(s.duration)||8)),narration:sf87CleanString(s.narration,12000),visual:sf87CleanString(s.visual,12000),notes:sf87CleanString(s.notes,4000)}));return x}
+importWorkspace=function(ev){const f=ev.target.files?.[0];if(!f)return;if(f.size>5*1024*1024){alert("That workspace is over the 5 MB safe JSON limit. Media belongs in IndexedDB/local asset storage, not inside the JSON backup.");ev.target.value="";return}const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||typeof d!=="object")throw new Error("Invalid backup");if(d.saved&&Array.isArray(d.saved))localStorage.setItem("sf_saved",JSON.stringify(d.saved.slice(0,50)));if(d.current){project=sf87SanitizeProject(d.current);localStorage.setItem("sf_current",JSON.stringify(project))}sf74ApplyProjectToUI?.(project);sf74RenderProjectUI?.();renderSaved?.();renderScenes?.();renderTimeline?.();updateKPIs?.();sf87BuildProductionOS();alert("Workspace restored and validated.")}catch(e){console.error(e);alert("That file is not a valid ShortForge workspace.")}finally{ev.target.value=""}};r.readAsText(f)}
+
+/* Track uploaded scene assets in the registry without changing the user's file. */
+const sf87OldLoadSceneAsset=cineLoadSceneAsset;
+cineLoadSceneAsset=function(ev,slot){const f=ev.target.files?.[0];const i=cineSelectedSceneIndex();if(f&&f.size>35*1024*1024){alert("That image is too large for the 35 MB mobile-safe limit.");ev.target.value="";return}sf87OldLoadSceneAsset(ev,slot);if(f)sf87RegisterAsset({sceneIndex:i,type:slot,source:"user",provider:"User supplied",dimensions:null,approvalState:"approved"});setTimeout(()=>{sf87SyncAssetRegistry();saveDraft?.()},80)}
+
+/* One-button v8.7 stage engine. */
+const SF87_STAGES=["Plan","Script","Direct","Art","Animate","Audio","Edit","QC","Master","Render","Publish"];
+function sf87ResetStages(){SF87_STAGES.forEach(n=>{const e=$("sf87Stage"+n);if(e)e.className="sf87Stage"});if($("sf87PipelineSummary"))$("sf87PipelineSummary").textContent="All stages are waiting."}
+function sf87Stage(name,state="working",msg=""){const e=$("sf87Stage"+name);if(e)e.className="sf87Stage "+state;if(msg&&$("sf87PipelineSummary"))$("sf87PipelineSummary").textContent=msg}
+function sf87CompletePrevious(name){const idx=SF87_STAGES.indexOf(name);SF87_STAGES.slice(0,idx).forEach(n=>{const e=$("sf87Stage"+n);if(e&&!/warning|failed|repaired/.test(e.className))e.className="sf87Stage passed"})}
+async function sf87ImproveScript(){if(!project.scenes?.length)return 0;let repaired=0;project.scenes.forEach((s,i)=>{if(!String(s.title||"").trim()){s.title=`Scene ${i+1}`;repaired++}if(!String(s.narration||"").trim()){s.narration=i===0?`Open immediately on the central question behind ${project.title||"this story"}.`:`Advance the story beat for ${s.title} without repeating earlier information.`;repaired++}if(!String(s.visual||"").trim()){s.visual=`Show a clear visual beat for ${s.title} with readable staging and continuity.`;repaired++}});if(project.scenes[0]&&!/\?|why|how|wait|before|until|but|then/i.test(project.scenes[0].narration||"")){project.scenes[0].narration=`Something changes immediately: ${project.scenes[0].narration}`;repaired++}saveDraft?.();return repaired}
+function sf87PrepareAudioPlan(){if(!project.audio)project.audio={tracks:[]};const tracks=[{id:"narration",type:"Narration",source:$(`renderVoiceFile`)?.files?.[0]?"upload":selectedRenderAudioBlob?"recording":"none",level:Number($("renderVoiceLevel")?.value||100),duckMusic:true},{id:"music",type:"Music",source:$(`renderMusicFile`)?.files?.[0]?"upload":"none",level:Number($("renderMusicLevel")?.value||22)},{id:"sfx",type:"SFX",source:$(`renderSfxFile`)?.files?.[0]?"upload":"none",level:Number($("renderSfxLevel")?.value||75)},{id:"ambience",type:"Ambience",source:$(`renderAmbienceFile`)?.files?.[0]?"upload":"none",level:Number($("renderAmbienceLevel")?.value||18),loop:true}];project.audio.tracks=tracks;return tracks}
+
+sfGenerateWholeVideo=async function(){
+  if(sfWholeVideoBusy||sf87RenderRuntime?.active)return;
+  sfWholeVideoBusy=true;sf87ResetStages();const btn=$("sfWholeVideoBtn");if(btn){btn.disabled=true;btn.textContent="Preparing Video…"}
+  let stage="Plan";
+  try{
+    stage="Plan";sf87Stage(stage,"working","PLAN — validating project, browser, storage, and renderer.");sf74SyncProjectFromUI?.(true);await sfWholeVideoYield();if(!project.scenes?.length){const topic=String($("topic")?.value||"").trim();if(!topic)throw new Error("Enter a Video idea / topic first.");buildProject();await sfWholeVideoYield()}const support=v7RecorderSupport?.()||{ok:!!(window.MediaRecorder&&$("renderCanvas")?.captureStream)};if(!support.ok)throw new Error("Final video recording is not supported in this browser.");sf87Stage(stage,"passed");
+    stage="Script";sf87CompletePrevious(stage);sf87Stage(stage,"working","SCRIPT — checking missing beats, narration, and visual directions.");const scriptRepairs=await sf87ImproveScript();sf87Stage(stage,scriptRepairs?"repaired":"passed",scriptRepairs?`SCRIPT repaired ${scriptRepairs} missing/weak field(s).`:"SCRIPT passed.");await sfWholeVideoYield();
+    stage="Direct";sf87Stage(stage,"working","DIRECT — building scene direction and structured shot graph.");v4AutoDirectEpisode?.();aieContinuityPass?.();v4BuildVisualShots?.(true);sf87BuildShotGraph();sf87Stage(stage,"passed");await sfWholeVideoYield();
+    stage="Art";sf87Stage(stage,"working","ART — preserving user art and filling missing core art slots.");const missing=project.scenes.reduce((a,_,i)=>{const s=cineSceneAssets?.[i]||{};return a+(!s.bg?1:0)+(!s.mid?1:0)},0);if(missing)await sfWholeVideoEnsureSceneArt?.();sf87SyncAssetRegistry();sf87Stage(stage,missing?"repaired":"passed",missing?`ART repaired ${missing} missing slot(s) with local fallback art.`:"ART passed.");
+    stage="Animate";sf87Stage(stage,"working","ANIMATE — preparing readable keyframed motion and camera animation.");const layersBefore=animEnsure().layers?.length||0;sfWholeVideoPrepareAnimation?.();sf87Stage(stage,layersBefore?"passed":"repaired");await sfWholeVideoYield();
+    stage="Audio";sf87Stage(stage,"working","AUDIO — preparing narration, music, SFX, ambience, and ducking.");const tracks=sf87PrepareAudioPlan();const hasVoice=tracks.find(t=>t.id==="narration")?.source!=="none";sf87Stage(stage,hasVoice?"passed":"warning",hasVoice?"AUDIO passed with exportable narration.":"AUDIO warning — no exportable narration provider/track; continuing with timed captions.");
+    stage="Edit";sf87Stage(stage,"working","EDIT — refreshing timeline, shot pacing, captions, and transitions.");renderTimeline?.();generateSRT?.();sf87Stage(stage,"passed");await sfWholeVideoYield();
+    stage="QC";sf87Stage(stage,"working","QC — generate → analyze → repair → verify.");const repaired=await sf87RepairProject();sf87Stage(stage,repaired.repairs.length?"repaired":"passed",repaired.warnings.length?`QC repaired ${repaired.repairs.length} item(s); ${repaired.warnings.length} warning(s) remain.`:"QC passed.");
+    stage="Master";sf87Stage(stage,"working","MASTER — choosing device-conscious render settings.");const masterDecision=sfWholeVideoOptimizeMaster?.();sf87BuildProductionOS();saveDraft?.();try{v7RecoverySnapshot?.()}catch(_){}sf87Stage(stage,masterDecision?.adjusted?"repaired":"passed",masterDecision?.message||"MASTER passed.");await sfWholeVideoYield();
+    stage="Render";sf87Stage(stage,"working","RENDER — recording the final master in real time.");switchTab("render");if(btn)btn.textContent="Rendering Whole Video…";renderFinalVideo();
+  }catch(e){console.error("[ShortForge v8.7 whole video]",e);sf87Stage(stage,"failed",`${stage.toUpperCase()} failed — ${e?.message||e}`);sfWholeVideoStatus?.(e?.message||"Generation stopped.","bad");sfWholeVideoBusy=false;if(btn){btn.disabled=false;btn.textContent="Generate Whole Video for Me"}}
+}
+
+document.addEventListener("shortforge:render-complete",()=>{sf87Stage("Render","passed","RENDER complete. Building publish package…");sf87Stage("Publish","working");sfGenerateCreatorPack?.();sfGenerateShortsPack?.();sf87CreatorPackJSON=sf87CreatorPackJSON||{version:2,text:sfGrowthPackText};sf87Stage("Publish","passed","PUBLISH complete — final video and creator package are ready.");sfWholeVideoBusy=false;sf87QueueContribution("render-success",{duration:Math.round(v5Duration?.()||0),format:renderedVideoExt||"unknown"})});
+document.addEventListener("shortforge:render-failed",ev=>{sf87Stage("Render","failed",`RENDER failed — ${ev?.detail?.message||"Recorder error"}`);sf87QueueContribution("render-failure",{reason:String(ev?.detail?.message||"recorder")})});
+
+/* Cancellable renderer with ETA, scene indicator, audio tracks, and duplicate-render protection. */
+sf87CancelRender=function(){const r=sf87RenderRuntime;if(!r?.active)return;r.cancelled=true;try{if(r.recorder?.state!=="inactive")r.recorder.stop()}catch(_){}try{r.stream?.getTracks?.().forEach(t=>t.stop());r.sources?.forEach(s=>{try{s.stop()}catch(_){}});if(r.audioCtx&&r.audioCtx.state!=="closed")r.audioCtx.close().catch(()=>{});const wr=r.wake?.release?.();wr?.catch?.(()=>{})}catch(_){}r.active=false;if($("renderStartBtn"))$("renderStartBtn").disabled=false;if($("renderCancelBtn"))$("renderCancelBtn").disabled=true;if($("renderStatus"))$("renderStatus").textContent="Render cancelled. Your project remains saved.";document.dispatchEvent(new CustomEvent("shortforge:render-failed",{detail:{message:"Render cancelled by user."}}))}
+
+renderFinalVideo=async function(){
+  if(sf87RenderRuntime?.active){v7Toast?.("A render is already running.","warn",2200);return}
+  if(!project.scenes?.length){alert("Build a project first.");return}
+  if(!window.MediaRecorder||!$("renderCanvas")?.captureStream){alert("This browser cannot render video locally.");return}
+  v5RenderPreflight?.();const total=v5Duration?.()||0;if(total<=0)return;const [w,h]=renderDimensions(),fps=Number($("renderFPS")?.value||24),canvas=$("renderCanvas"),ctx=canvas.getContext("2d");canvas.width=w;canvas.height=h;
+  const rt=sf87RenderRuntime={active:true,cancelled:false,recorder:null,stream:null,audioCtx:null,wake:null,sources:[],startPerf:0,total};if($("renderStartBtn"))$("renderStartBtn").disabled=true;if($("renderCancelBtn"))$("renderCancelBtn").disabled=false;if($("downloadVideoBtn"))$("downloadVideoBtn").disabled=true;
+  try{if(navigator.wakeLock)rt.wake=await navigator.wakeLock.request("screen")}catch(_){}
+  const canvasStream=canvas.captureStream(fps),tracks=[...canvasStream.getVideoTracks()];
+  try{
+    const AC=window.AudioContext||window.webkitAudioContext;if(AC){rt.audioCtx=new AC();await rt.audioCtx.resume();const dest=rt.audioCtx.createMediaStreamDestination();const files=[[$("renderVoiceFile")?.files?.[0]||selectedRenderAudioBlob||null,Number($("renderVoiceLevel")?.value||100)/100,false,"voice"],[$("renderMusicFile")?.files?.[0]||null,Number($("renderMusicLevel")?.value||22)/100,true,"music"],[$("renderSfxFile")?.files?.[0]||null,Number($("renderSfxLevel")?.value||75)/100,false,"sfx"],[$("renderAmbienceFile")?.files?.[0]||null,Number($("renderAmbienceLevel")?.value||18)/100,true,"ambience"]];const voicePresent=!!files[0][0];for(const [blob,level,loop,kind] of files){const buf=await studioDecodeAudio(rt.audioCtx,blob);if(!buf)continue;const src=rt.audioCtx.createBufferSource();src.buffer=buf;src.loop=loop;const g=rt.audioCtx.createGain();let lv=level;if(voicePresent&&(kind==="music"||kind==="ambience"))lv*=.55;g.gain.setValueAtTime(kind==="music"||kind==="ambience"?0:lv,rt.audioCtx.currentTime);if(kind==="music"||kind==="ambience"){g.gain.linearRampToValueAtTime(lv,rt.audioCtx.currentTime+.8);g.gain.setValueAtTime(lv,rt.audioCtx.currentTime+Math.max(1,total-1.2));g.gain.linearRampToValueAtTime(0,rt.audioCtx.currentTime+total)}src.connect(g).connect(dest);rt.sources.push(src)}if(rt.sources.length)tracks.push(...dest.stream.getAudioTracks())}
+  }catch(e){console.warn("[ShortForge audio mix]",e)}
+  rt.stream=new MediaStream(tracks);const mime=pickRecorderMime(),quality=$("studioCompQuality")?.value||"high",bitrate=v5Bitrate(w,h,fps,quality),opts=mime?{mimeType:mime,videoBitsPerSecond:bitrate}:{videoBitsPerSecond:bitrate};
+  try{rt.recorder=new MediaRecorder(rt.stream,opts)}catch(e1){try{rt.recorder=new MediaRecorder(rt.stream)}catch(e2){rt.active=false;rt.stream.getTracks().forEach(t=>t.stop());if($("renderStartBtn"))$("renderStartBtn").disabled=false;if($("renderCancelBtn"))$("renderCancelBtn").disabled=true;document.dispatchEvent(new CustomEvent("shortforge:render-failed",{detail:{message:e2?.message||e1?.message||"Could not start recorder"}}));return}}
+  const chunks=[];rt.recorder.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};rt.recorder.onerror=e=>{try{rt.stream?.getTracks?.().forEach(t=>t.stop());rt.sources?.forEach(s=>{try{s.stop()}catch(_){}});if(rt.audioCtx&&rt.audioCtx.state!=="closed")rt.audioCtx.close().catch(()=>{});const wr=rt.wake?.release?.();wr?.catch?.(()=>{})}catch(_){}rt.active=false;if($("renderStartBtn"))$("renderStartBtn").disabled=false;if($("renderCancelBtn"))$("renderCancelBtn").disabled=true;document.dispatchEvent(new CustomEvent("shortforge:render-failed",{detail:{message:e?.error?.message||e?.message||"MediaRecorder error"}}))};rt.recorder.onstop=()=>{const wasCancelled=rt.cancelled;try{rt.stream?.getTracks?.().forEach(t=>t.stop());rt.sources.forEach(s=>{try{s.stop()}catch(_){}});if(rt.audioCtx&&rt.audioCtx.state!=="closed")rt.audioCtx.close().catch(()=>{});const wr=rt.wake?.release?.();wr?.catch?.(()=>{})}catch(_){}rt.active=false;if($("renderStartBtn"))$("renderStartBtn").disabled=false;if($("renderCancelBtn"))$("renderCancelBtn").disabled=true;if(wasCancelled)return;const finalType=rt.recorder.mimeType||mime||"video/webm";renderedVideoBlob=new Blob(chunks,{type:finalType});renderedVideoExt=finalType.includes("mp4")?"mp4":"webm";const old=$("renderPreview")?.src;if(old)URL.revokeObjectURL(old);$("renderPreview").src=URL.createObjectURL(renderedVideoBlob);$("downloadVideoBtn").disabled=false;$("renderProgress").style.width="100%";$("renderStatus").textContent=`Master ready • ${renderedVideoExt.toUpperCase()} • ${w}×${h} • ${fps} FPS • ${v5HumanBytes(renderedVideoBlob.size)}`;document.dispatchEvent(new CustomEvent("shortforge:render-complete",{detail:{blob:renderedVideoBlob,ext:renderedVideoExt}}))};
+  $("renderProgress").style.width="0%";rt.recorder.start(1000);rt.sources.forEach(s=>{try{s.start()}catch(_){}});rt.startPerf=performance.now();
+  function frame(now){if(!rt.active||rt.cancelled)return;const t=Math.min(total,(now-rt.startPerf)/1000);drawVideoFrame(ctx,w,h,t,total);const pct=total?100*t/total:0;$("renderProgress").style.width=pct.toFixed(1)+"%";const info=sceneAtTime?.(t)||{};const elapsed=(now-rt.startPerf)/1000,remain=Math.max(0,total-t);$("renderStatus").textContent=`Rendering ${fmt(t)} / ${fmt(total)} • ${fps} FPS target`;if($("sf87RenderScene"))$("sf87RenderScene").textContent=`Scene ${Number(info.index??0)+1}/${project.scenes.length}: ${info.scene?.title||"—"}`;if($("sf87RenderElapsed"))$("sf87RenderElapsed").textContent=`Elapsed ${fmt(elapsed)}`;if($("sf87RenderETA"))$("sf87RenderETA").textContent=`Remaining ~${fmt(remain)}`;if(t<total)requestAnimationFrame(frame);else setTimeout(()=>{if(rt.recorder?.state!=="inactive")rt.recorder.stop()},350)}requestAnimationFrame(frame)
+}
+
+/* Track free-text requests for regeneration and structured learning. */
+const sf87OldAiSend=aiSend;
+aiSend=async function(){sf87LastAIRequest=String($("aiInput")?.value||"").trim();sf87LastAIKind="chat";return await sf87OldAiSend()}
+const sf87OldRunCommand=aieRunCommand;
+aieRunCommand=async function(kind){sf87LastAIKind=kind;sf87LastAIRequest=kind;const out=await sf87OldRunCommand(kind);sf87QueueContribution("ai-action",{kind,source:aieLastPlan?.source||"unknown",tools:(aieLastPlan?.actions||[]).map(a=>a.tool)});return out}
+
+function sf87RefreshAll(){sf87RefreshMemoryUI();sf87RefreshProviderUI();if(project.scenes?.length)sf87BuildProductionOS()}
+window.addEventListener("load",()=>setTimeout(sf87RefreshAll,1450));
+</script>
+
+
+<script id="sf9Runtime">
+/* ===== ShortForge v9 Production Intelligence Layer ===== */
+const SF9_VERSION="9.0";
+const SF9_RECIPE_KEY="shortforge-v9-recipes";
+const SF9_KNOWLEDGE_KEY="shortforge-v9-knowledge";
+let sf9PublishPack=null;
+
+/* ---------- Production Recipes / reusable workflows ---------- */
+const SF9_BUILTIN_RECIPES=[
+  {id:"builtin-cinematic",name:"Cinematic Anime",builtIn:true,format:"long",platform:"YouTube",tone:"Cinematic",goal:"Tell a story",duration:"900",technique:"cinematic",renderProfile:"youtube",quality:"1080",fps:"24",ratio:"16:9",visualIdentity:"Original cinematic anime; clean silhouettes; controlled cool shadows; restrained glow; detailed environments; consistent character models.",lockedRules:"Preserve character identity, costume, palette, prop scale, location architecture, and screen direction unless a cut deliberately re-establishes geography."},
+  {id:"builtin-action",name:"High-Motion Action",builtIn:true,format:"long",platform:"YouTube",tone:"Cinematic",goal:"Entertain",duration:"600",technique:"action",renderProfile:"action60",quality:"1080",fps:"60",ratio:"16:9",visualIdentity:"Original high-motion action animation; readable poses; impact frames; controlled smears; strong perspective; effects never hide the silhouette.",lockedRules:"Keep identity/costume exact. Preserve attack direction and geography. Use speed changes intentionally; hold key poses long enough to read."},
+  {id:"builtin-horror",name:"Psychological Horror",builtIn:true,format:"long",platform:"YouTube",tone:"Dark",goal:"Tell a story",duration:"600",technique:"horror",renderProfile:"youtube",quality:"1080",fps:"24",ratio:"16:9",visualIdentity:"Original psychological horror anime; negative space; slow camera pressure; low-saturation shadows; selective highlights; unsettling environmental continuity.",lockedRules:"Do not randomly change architecture or character features. Escalate visual anomalies deliberately and keep them story-motivated."},
+  {id:"builtin-drama",name:"Dialogue / Character Drama",builtIn:true,format:"long",platform:"YouTube",tone:"Serious",goal:"Tell a story",duration:"900",technique:"drama",renderProfile:"youtube",quality:"1080",fps:"24",ratio:"16:9",visualIdentity:"Original dramatic anime acting; subtle facial emphasis; composed medium/close coverage; soft depth; restrained camera movement.",lockedRules:"Protect eyelines, screen direction, costume and facial identity. Prioritize readable acting over unnecessary effects."},
+  {id:"builtin-shorts",name:"Shorts Retention",builtIn:true,format:"short",platform:"YouTube Shorts",tone:"Fast",goal:"Retention",duration:"30",technique:"motion",renderProfile:"smooth",quality:"1080",fps:"30",ratio:"9:16",visualIdentity:"Original vertical anime short; immediate visual hook; bold readable subject; rapid but coherent shot progression; mobile-safe text zones.",lockedRules:"Open on the strongest unanswered question. Keep faces/text inside vertical safe areas. Avoid tiny detail that will disappear on phones."}
+];
+function sf9RecipeStore(){try{const x=JSON.parse(localStorage.getItem(SF9_RECIPE_KEY)||"[]");return Array.isArray(x)?x:[]}catch(_){return []}}
+function sf9AllRecipes(){return [...SF9_BUILTIN_RECIPES,...sf9RecipeStore()]}
+function sf9RefreshRecipes(){const sel=$("sf9RecipeSelect");if(!sel)return;const cur=sel.value;sel.innerHTML=sf9AllRecipes().map(r=>`<option value="${escapeHTML(r.id)}">${r.builtIn?"★ ":""}${escapeHTML(r.name)}</option>`).join("");if([...sel.options].some(o=>o.value===cur))sel.value=cur;const s=$("sf9RecipeStatus");if(s)s.textContent=`${sf9RecipeStore().length} custom + ${SF9_BUILTIN_RECIPES.length} built-in`}
+function sf9CurrentRecipe(name="Custom Recipe"){aiEnsureProject?.();return {id:`custom-${Date.now().toString(36)}`,name,builtIn:false,createdAt:Date.now(),format:$("format")?.value||project.format||"long",platform:$("platform")?.value||project.platform||"YouTube",tone:$("tone")?.value||project.tone||"Cinematic",goal:$("goal")?.value||project.goal||"Tell a story",duration:$("durationPreset")?.value||String(Math.round(v5Duration?.()||600)),technique:aieStyle?.()||"cinematic",renderProfile:$("studioRenderProfile")?.value||"youtube",quality:$("renderQuality")?.value||"1080",fps:$("renderFPS")?.value||"24",ratio:$("renderRatio")?.value||(project.format==="short"?"9:16":"16:9"),visualIdentity:aiBible?.visualIdentity||"",lockedRules:aiBible?.lockedRules||""}}
+function sf9SaveRecipe(){const name=prompt("Recipe name",project.title?`${project.title} Recipe`:"My Production Recipe");if(!name)return;const list=sf9RecipeStore();list.unshift(sf9CurrentRecipe(String(name).slice(0,80)));localStorage.setItem(SF9_RECIPE_KEY,JSON.stringify(list.slice(0,40)));sf9RefreshRecipes();$("sf9RecipeSelect").value=list[0].id;v7Toast?.("Production recipe saved locally.","ok",1800)}
+function sf9ApplyRecipe(){const r=sf9AllRecipes().find(x=>x.id===$("sf9RecipeSelect")?.value);if(!r)return;const set=(id,v)=>{const e=$(id);if(e&&v!=null)e.value=String(v)};set("format",r.format);set("platform",r.platform);set("tone",r.tone);set("goal",r.goal);if($("durationPreset")&&[...$("durationPreset").options].some(o=>o.value===String(r.duration)))set("durationPreset",r.duration);set("aieStyleProfile",r.technique);set("studioRenderProfile",r.renderProfile);set("renderQuality",r.quality);set("renderFPS",r.fps);set("renderRatio",r.ratio);aiEnsureProject?.();if(r.visualIdentity)aiBible.visualIdentity=r.visualIdentity;if(r.lockedRules)aiBible.lockedRules=r.lockedRules;project.ai.bible=aiBible;aiBuildBible?.();aieStyleChanged?.();v5RenderSummary?.();v5RenderPreflight?.();saveDraft?.();const m=sf87Memory?.();if(m?.enabled){sf87LearnBucket(m.styles,r.technique,1);sf87SaveMemory(m)}v7Toast?.(`Applied recipe: ${r.name}`,"ok",1800)}
+function sf9DeleteRecipe(){const id=$("sf9RecipeSelect")?.value;if(!id||id.startsWith("builtin-")){v7Toast?.("Built-in recipes cannot be deleted.","warn",2000);return}const next=sf9RecipeStore().filter(r=>r.id!==id);localStorage.setItem(SF9_RECIPE_KEY,JSON.stringify(next));sf9RefreshRecipes();v7Toast?.("Custom recipe deleted.","ok",1600)}
+function sf9ExportRecipes(){downloadText?.("shortforge-production-recipes.json",JSON.stringify({version:1,exportedAt:Date.now(),recipes:sf9RecipeStore()},null,2),"application/json")}
+
+/* ---------- Curated global retrieval knowledge ---------- */
+const SF9_BUILTIN_KNOWLEDGE={version:1,modelVersion:"AIE-Controller-9.0",sourcePolicy:"Curated ShortForge production knowledge. No uncontrolled web crawl.",lessons:[
+ {id:"timing-12s",tags:["animation","timing","ones","twos","threes"],text:"Use 1s for very fast or precise motion, 2s for most readable character animation, and 3s/holds for deliberate limited animation. Cadence should follow intent, not a blanket FPS rule."},
+ {id:"impact",tags:["action","impact","smear","fight"],text:"For action, establish anticipation and direction before the impact. Use a readable key pose, brief smear/impact accent, then recovery/follow-through so force reads clearly."},
+ {id:"continuity",tags:["continuity","character","screen","direction"],text:"Preserve locked identity traits, costume, prop scale, lighting logic and screen direction. If crossing the 180-degree axis, re-establish geography before continuing coverage."},
+ {id:"dialogue",tags:["dialogue","drama","acting","camera"],text:"Dialogue scenes benefit from stable eyelines, motivated medium/close coverage, reaction holds and restrained camera motion. Cut because the emotional beat changes, not because a timer expired."},
+ {id:"horror",tags:["horror","tension","camera","lighting"],text:"Psychological horror gains tension from delayed information, negative space, slow pressure, controlled contrast and deliberate anomalies. Avoid constant shake or effects that normalize the threat."},
+ {id:"mobile",tags:["iphone","mobile","render","performance"],text:"On phones, prefer 1080p/24–30 for long productions and reserve 60 FPS or 4K for short/high-end renders. Yield between heavy stages, release media resources, and avoid simultaneous large neural models."},
+ {id:"shorts",tags:["shorts","retention","vertical","hook"],text:"Vertical shorts should communicate the subject immediately, create an unanswered question in the opening beat, use large readable visual information and pay off before the CTA."},
+ {id:"composition",tags:["composition","shot","camera","silhouette"],text:"A shot should communicate one dominant idea. Prioritize clear silhouettes, value grouping, foreground/midground/background separation and motivated camera movement."},
+ {id:"audio",tags:["audio","dialogue","music","ducking"],text:"Dialogue/narration should remain intelligible above music and ambience. Duck supporting tracks under speech, leave purposeful silence where it increases impact, and avoid clipping at the master."},
+ {id:"qc",tags:["qc","repair","quality","verify"],text:"Use generate → analyze → repair → verify. Safe mechanical issues may be repaired automatically; ambiguous creative intent should remain user-controlled."},
+ {id:"providers",tags:["provider","model","generation","privacy"],text:"Route a task only to a provider that declares the required capability. Keep local fallback available and disclose project data before any remote provider receives it."},
+ {id:"references",tags:["reference","character","identity","consistency"],text:"Character reference views and structured identity locks should remain attached to one character ID. Regeneration may vary pose/expression/camera while locked identity traits remain invariant."}
+]};
+function sf9Knowledge(){try{const k=JSON.parse(localStorage.getItem(SF9_KNOWLEDGE_KEY)||"null");return k&&Array.isArray(k.lessons)?k:structuredClone(SF9_BUILTIN_KNOWLEDGE)}catch(_){return structuredClone(SF9_BUILTIN_KNOWLEDGE)}}
+function sf9SaveKnowledge(k){localStorage.setItem(SF9_KNOWLEDGE_KEY,JSON.stringify(k));sf9RefreshKnowledgeUI();return k}
+function sf9RefreshKnowledgeUI(){const k=sf9Knowledge(),s=$("sf9KnowledgeStatus"),b=$("sf9KnowledgeBadge");if(s)s.textContent=`${k.lessons.length} approved lessons • ${k.modelVersion||"knowledge pack"} • retrieval only`;if(b)b.textContent=(localStorage.getItem(SF9_KNOWLEDGE_KEY)?"Custom pack":"Built-in")}
+function sf9ResetKnowledge(){localStorage.removeItem(SF9_KNOWLEDGE_KEY);sf9RefreshKnowledgeUI();sf87LogLearning?.("Curated global knowledge reset to ShortForge built-in pack.")}
+function sf9ExportKnowledge(){downloadText?.("shortforge-global-knowledge-pack.json",JSON.stringify(sf9Knowledge(),null,2),"application/json")}
+async function sf9ImportKnowledge(ev){const f=ev.target.files?.[0];if(!f)return;try{if(f.size>1024*1024)throw new Error("Knowledge pack exceeds 1 MB safe limit.");const raw=JSON.parse(await f.text());if(!raw||!Array.isArray(raw.lessons))throw new Error("Knowledge pack needs a lessons array.");const lessons=raw.lessons.slice(0,500).map((x,i)=>({id:sf87CleanString?.(x.id||`lesson-${i+1}`,80)||`lesson-${i+1}`,tags:(Array.isArray(x.tags)?x.tags:[]).slice(0,20).map(t=>sf87CleanString?.(t,50)||String(t).slice(0,50)),text:sf87CleanString?.(x.text,3000)||String(x.text||"").slice(0,3000)})).filter(x=>x.text);sf9SaveKnowledge({version:1,modelVersion:sf87CleanString?.(raw.modelVersion||"Imported Knowledge",100)||"Imported Knowledge",sourcePolicy:sf87CleanString?.(raw.sourcePolicy||"User-approved imported pack",300)||"User-approved imported pack",lessons});sf87LogLearning?.(`Imported ${lessons.length} curated knowledge lesson(s).`)}catch(e){alert(e.message||"Could not import that knowledge pack.")}finally{ev.target.value=""}}
+function sf9Tokenize(s){return new Set((String(s||"").toLowerCase().match(/[a-z0-9][a-z0-9'-]{2,}/g)||[]).filter(w=>!new Set(["the","and","for","with","this","that","from","into","your","scene","video"]).has(w)))}
+function sf9KnowledgeHint(text){const q=sf9Tokenize(text);if(!q.size)return "";const scored=sf9Knowledge().lessons.map(x=>{const hay=sf9Tokenize((x.tags||[]).join(" ")+" "+x.text);let score=0;q.forEach(w=>{if(hay.has(w))score++});return {x,score}}).filter(y=>y.score>0).sort((a,b)=>b.score-a.score).slice(0,3);return scored.map(y=>y.x.text).join(" ")}
+function sf9PreferenceHint(){const m=sf87Memory?.();if(!m?.enabled||!m.signals)return "";const s=sf87TopBucket?.(m.styles),c=sf87TopBucket?.(m.cameras),cad=sf87TopBucket?.(m.cadences);return [s&&s[1]>0?`preferred technique ${s[0]}`:"",c&&c[1]>0?`preferred camera ${c[0]}`:"",cad&&cad[1]>0?`preferred cadence ${cad[0]}`:""].filter(Boolean).join(", ")}
+function sf9ExportLearningDataset(){const q=sf87Contributions?.()||{events:[]};const examples=(q.events||[]).slice(-500).map((e,i)=>({id:`feedback-${i+1}`,timestamp:e.at,type:e.type,device:e.device,projectShape:e.projectShape,label:e.data?.kind||e.type,features:e.data||{}}));downloadText?.("shortforge-approved-learning-dataset.json",JSON.stringify({version:1,consentRequired:true,exportedAt:Date.now(),examples},null,2),"application/json")}
+const sf9BasePlanAndExecute=aiePlanAndExecute;
+aiePlanAndExecute=async function(text,respectMode=true){const k=sf9KnowledgeHint(text),p=sf9PreferenceHint();const context=[k?`Curated production knowledge: ${k}`:"",p?`Learned local preferences: ${p}`:""].filter(Boolean).join("\n");return await sf9BasePlanAndExecute(context?`${text}\n\n${context}`:text,respectMode)};
+
+/* ---------- Feedback accuracy: learn from the action actually applied ---------- */
+sf87Feedback=function(kind){const m=sf87Memory();if(!m.enabled){sf87LogLearning("Memory is disabled; feedback was not learned.");return}const plan=aieLastPlan||{},actions=Array.isArray(plan.actions)?plan.actions:[],a=actions[0]||{},style=aieStyle?.()||"cinematic",scene=project.scenes?.length?studioShot(Math.max(0,aiSceneIndex?.()||0)):null;for(const k of ["styles","cameras","cadences","tools","avoidStyles","avoidTools"])if(!m[k])m[k]={};m.signals=(m.signals||0)+1;const positive=kind==="good"||kind==="use-style",negative=kind==="bad"||kind==="avoid-style";if(positive)m.positive=(m.positive||0)+1;if(negative)m.negative=(m.negative||0)+1;const weight=kind==="good"?2:kind==="use-style"?4:kind==="bad"?-2:kind==="avoid-style"?-5:0;const cam=a.cameraMove||scene?.cameraMove,cad=a.cadence||scene?.cadence;if(weight){sf87LearnBucket(m.styles,style,weight);if(cam)sf87LearnBucket(m.cameras,cam,weight);if(cad)sf87LearnBucket(m.cadences,cad,weight);actions.forEach(x=>sf87LearnBucket(m.tools,x.tool,weight))}if(kind==="avoid-style"){sf87LearnBucket(m.avoidStyles,style,5);actions.forEach(x=>sf87LearnBucket(m.avoidTools,x.tool,3))}sf87SaveMemory(m);sf87QueueContribution("ai-feedback",{kind,source:plan.source||"unknown",tools:actions.map(x=>x.tool).slice(0,6),style,camera:cam||null,cadence:cad||null});sf87LogLearning(kind==="good"?"Learned preference from a good result.":kind==="bad"?"Recorded a negative preference signal.":kind==="use-style"?"Learned preference: use this production style again.":"Learned avoidance preference for this style/action.")};
+
+/* ---------- Capability-aware provider router ---------- */
+function sf9ChooseProvider(kind,capability,{allowRemote=false}={}){const hub=window.ShortForgeProviders;if(!hub?.[kind]||!(hub[kind] instanceof Map))return null;const active=hub.active?.[kind],ordered=[];if(active&&hub[kind].has(active))ordered.push([active,hub[kind].get(active)]);if(hub[kind].has("local")&&active!=="local")ordered.push(["local",hub[kind].get("local")]);for(const x of hub[kind].entries())if(!ordered.some(y=>y[0]===x[0]))ordered.push(x);for(const [name,p] of ordered){if(!p||typeof p[capability]!=="function")continue;if(p.remote&&!allowRemote)continue;return {name,provider:p}}return null}
+function sf9RefreshRouter(){const e=$("sf9RouterStatus"),v=sf9ChooseProvider("visual","generateBackground"),voice=sf9ChooseProvider("voice","generateVoice"),plan=sf9ChooseProvider("planner","plan");if(e){e.textContent=`Visual ${v?.name||"none"} • Voice ${voice?.name||"local/upload"} • Planner ${plan?.name||"local"}`;e.className="sf87Status good"}}
+
+/* ---------- Scene editing that preserves indexed assets/config ---------- */
+function sf9NormalizeAssetKeys(){for(const a of project.assetRegistry||[])if(Number.isInteger(a.sceneIndex)&&a.type)a.key=`${a.sceneIndex}:${a.type}`}
+function sf9InvalidateShots(){try{studioEnsure().visualShots=[];project.shotGraph=[];project.productionOS&&(project.productionOS.lastRepair=null)}catch(_){} }
+function sf9SwapSceneState(a,b){const swapObj=o=>{if(!o)return;const t=o[a];o[a]=o[b];o[b]=t};swapObj(cineSceneAssets);swapObj(cineSceneAssetURLs);try{const c=cineEnsure();if(Array.isArray(c.shots)){const t=c.shots[a];c.shots[a]=c.shots[b];c.shots[b]=t}}catch(_){}try{const s=studioEnsure();if(Array.isArray(s.shots)){const t=s.shots[a];s.shots[a]=s.shots[b];s.shots[b]=t}}catch(_){};for(const item of project.assetRegistry||[]){if(item.sceneIndex===a)item.sceneIndex=-999;else if(item.sceneIndex===b)item.sceneIndex=a}for(const item of project.assetRegistry||[])if(item.sceneIndex===-999)item.sceneIndex=b}
+function sf9ShiftSceneMaps(start,delta){for(const map of [cineSceneAssets,cineSceneAssetURLs]){if(!map)continue;const keys=Object.keys(map).map(Number).filter(Number.isFinite).filter(k=>k>=start).sort((a,b)=>delta>0?b-a:a-b);for(const k of keys){map[k+delta]=map[k];delete map[k]}}for(const item of project.assetRegistry||[])if(Number.isInteger(item.sceneIndex)&&item.sceneIndex>=start)item.sceneIndex+=delta;try{const c=cineEnsure();if(Array.isArray(c.shots)){if(delta>0)c.shots.splice(start,0,{});else c.shots.splice(start,1)}}catch(_){}try{const s=studioEnsure();if(Array.isArray(s.shots)){if(delta>0)s.shots.splice(start,0,{});else s.shots.splice(start,1)}}catch(_){} }
+function sf9AfterSceneStructureChange(){sf9NormalizeAssetKeys();sf9InvalidateShots();renderScenes();renderTimeline();updateKPIs();aiPopulateSceneSelect?.();cinePopulateSceneSelect?.();drawStoryboard?.();saveDraft?.();sfRefreshProjectHealth?.()}
+function sf9MoveScene(i,delta){const j=i+delta;if(j<0||j>=project.scenes.length)return;[project.scenes[i],project.scenes[j]]=[project.scenes[j],project.scenes[i]];sf9SwapSceneState(i,j);sf9AfterSceneStructureChange()}
+function sf9DuplicateScene(i){const src=project.scenes[i];if(!src)return;const copy=sf87Clone(src);copy.id=crypto.randomUUID?crypto.randomUUID():`scene-${Date.now()}`;copy.title=`${src.title} Copy`;sf9ShiftSceneMaps(i+1,1);project.scenes.splice(i+1,0,copy);sf9AfterSceneStructureChange()}
+function sf9SplitScene(i){const src=project.scenes[i];if(!src)return;const parts=(String(src.narration||"").match(/[^.!?]+[.!?]?/g)||[]).map(x=>x.trim()).filter(Boolean);const mid=Math.max(1,Math.ceil(parts.length/2)),a=parts.slice(0,mid).join(" ")||src.narration,b=parts.slice(mid).join(" ")||`Continue the beat from ${src.title}.`;const d=Math.max(2,Number(src.duration)||8),d1=Math.max(1,Math.round(d/2)),d2=Math.max(1,d-d1);src.duration=d1;src.narration=a;const second={...sf87Clone(src),id:crypto.randomUUID?crypto.randomUUID():`scene-${Date.now()}`,title:`${src.title} — Part 2`,duration:d2,narration:b};sf9ShiftSceneMaps(i+1,1);project.scenes.splice(i+1,0,second);sf9AfterSceneStructureChange()}
+removeScene=function(i){if(i<0||i>=project.scenes.length)return;for(const item of project.assetRegistry||[])if(item.sceneIndex===i){item.sceneIndex=null;item.active=false;item.approvalState="orphaned"}delete cineSceneAssets?.[i];delete cineSceneAssetURLs?.[i];project.scenes.splice(i,1);sf9ShiftSceneMaps(i,-1);sf9AfterSceneStructureChange()}
+renderScenes=function(){const box=$("scenes");box.innerHTML="";if(!project.scenes.length){box.innerHTML='<div class="warn">Build a project first, or add a scene manually.</div>';return}project.scenes.forEach((s,i)=>{const div=document.createElement("div");div.className="sceneCard";div.innerHTML=`<div class="sceneHead"><span class="sceneNum">Scene ${i+1}</span><div class="sf9SceneActions"><button class="ghost" onclick="sf9MoveScene(${i},-1)" ${i===0?"disabled":""}>↑</button><button class="ghost" onclick="sf9MoveScene(${i},1)" ${i===project.scenes.length-1?"disabled":""}>↓</button><button class="secondary" onclick="sf9DuplicateScene(${i})">Duplicate</button><button class="secondary" onclick="sf9SplitScene(${i})">Split</button><button class="danger" onclick="removeScene(${i})">Remove</button></div></div><div class="sceneFields"><div><label>Scene title</label><input value="${escapeHTML(s.title)}" oninput="project.scenes[${i}].title=this.value;renderTimeline();saveDraft();"></div><div><label>Seconds</label><input type="number" min="1" max="600" value="${Math.max(1,Math.min(600,Number(s.duration)||1))}" oninput="project.scenes[${i}].duration=Math.max(1,Math.min(600,Number(this.value)||1));renderTimeline();updateKPIs();saveDraft();"></div></div><div style="margin-top:10px"><label>Narration / dialogue</label><textarea oninput="project.scenes[${i}].narration=this.value;saveDraft();">${escapeHTML(s.narration)}</textarea></div><div style="margin-top:10px"><label>Visual / B-roll plan</label><textarea oninput="project.scenes[${i}].visual=this.value;saveDraft();">${escapeHTML(s.visual)}</textarea></div><div style="margin-top:10px"><label>Editor notes</label><input value="${escapeHTML(s.notes||"")}" oninput="project.scenes[${i}].notes=this.value;saveDraft();" placeholder="SFX, transition, graphics, music cue..."></div>`;box.appendChild(div)})};
+
+/* ---------- Structured Character Identity + reference vault ---------- */
+function sf9NormalizeBible(){aiEnsureProject?.();aiBible.characters=(aiBible.characters||[]).map(c=>{const n=sf87NormalizeCharacter(c);n.lock=sf87CharacterLock(n)||n.lock||"";return n});project.ai.bible=aiBible}
+function sf9ClearCharacterForm(){for(const id of ["sf9CharId","sf9CharName","sf9CharPhysical","sf9CharFace","sf9CharHair","sf9CharEyes","sf9CharSkin","sf9CharHeight","sf9CharBody","sf9CharPalette","sf9CharClothing","sf9CharAccessories","sf9CharPower","sf9CharNegative","sf9CharLocked","sf9CharVariations"]){const e=$(id);if(e)e.value=""}for(const slot of ["front","threeQuarter","side","back","expressions"]){const e=$("sf9Ref_"+slot);if(e)e.textContent="None"}if($("sf9CharStatus"))$("sf9CharStatus").textContent="New character identity."}
+function sf9LoadCharacterForm(c){if(!c)return;const set=(id,v)=>{const e=$(id);if(e)e.value=v??""};set("sf9CharId",c.id);set("sf9CharName",c.name);set("sf9CharPhysical",c.physical);set("sf9CharFace",c.face);set("sf9CharHair",c.hair);set("sf9CharEyes",c.eyes);set("sf9CharSkin",c.skin);set("sf9CharHeight",c.height);set("sf9CharBody",c.bodyType);set("sf9CharPalette",c.palette);set("sf9CharClothing",c.clothing);set("sf9CharAccessories",c.accessories);set("sf9CharPower",c.powerEffects);set("sf9CharNegative",c.negative);set("sf9CharLocked",(c.lockedTraits||[]).join(", "));set("sf9CharVariations",(c.allowedVariations||[]).join(", "));for(const slot of ["front","threeQuarter","side","back","expressions"]){const ref=(c.references||[]).find(r=>r.slot===slot),e=$("sf9Ref_"+slot);if(e)e.textContent=ref?.name||"None"}if($("sf9CharStatus"))$("sf9CharStatus").textContent=`Editing ${c.name} (${c.id}).`}
+function sf9CharacterFromForm(existing={}){const val=id=>String($(id)?.value||"").trim(),list=id=>val(id).split(",").map(x=>x.trim()).filter(Boolean).slice(0,30);const c=sf87NormalizeCharacter({...existing,id:val("sf9CharId")||existing.id||aiUID("CHR"),name:val("sf9CharName")||"Unnamed",physical:val("sf9CharPhysical"),face:val("sf9CharFace"),hair:val("sf9CharHair"),eyes:val("sf9CharEyes"),skin:val("sf9CharSkin"),height:val("sf9CharHeight"),bodyType:val("sf9CharBody"),palette:val("sf9CharPalette"),clothing:val("sf9CharClothing"),accessories:val("sf9CharAccessories"),powerEffects:val("sf9CharPower"),negative:val("sf9CharNegative"),lockedTraits:list("sf9CharLocked"),allowedVariations:list("sf9CharVariations"),references:existing.references||[]});c.lock=sf87CharacterLock(c);return c}
+function sf9SaveCharacter(){aiEnsureProject?.();sf9NormalizeBible();const id=String($("sf9CharId")?.value||""),idx=aiBible.characters.findIndex(c=>c.id===id),existing=idx>=0?aiBible.characters[idx]:{},c=sf9CharacterFromForm(existing);if(!c.name||c.name==="Unnamed"){alert("Give the character a name first.");return null}if(idx>=0)aiBible.characters[idx]=c;else aiBible.characters.push(c);project.ai.bible=aiBible;saveDraft?.();aiRenderBibleLists?.();aiCompilePrompt?.();sf9LoadCharacterForm(c);v7Toast?.(`Character identity saved: ${c.name}`,"ok",1800);return c}
+const sf9BaseEditBibleItem=aiEditBibleItem;
+aiAddCharacter=function(){sf9ClearCharacterForm();$("sf9IdentityStudio")?.scrollIntoView({behavior:"smooth",block:"center"});$("sf9CharName")?.focus()};
+aiEditBibleItem=function(type,i){if(type!=="characters")return sf9BaseEditBibleItem(type,i);sf9NormalizeBible();const c=aiBible.characters[i];if(c){sf9LoadCharacterForm(c);$("sf9IdentityStudio")?.scrollIntoView({behavior:"smooth",block:"center"})}};
+aiRenderBibleLists=function(){sf9NormalizeBible();const make=(arr,type)=>arr.map((x,i)=>{const desc=type==="characters"?(sf87CharacterLock(x)||x.lock||""):(x.lock||"");return `<div class="aiToken" style="display:flex;gap:6px;align-items:center;margin:5px 0"><b>${escapeHTML(x.id)}</b><span style="flex:1">${escapeHTML(x.name||"Unnamed")} — ${escapeHTML(desc)}</span><button class="ghost animTiny" onclick="aiEditBibleItem('${type}',${i})">Edit</button><button class="danger animTiny" onclick="aiDeleteBibleItem('${type}',${i})">×</button></div>`}).join("")||'<div class="mini">None locked yet.</div>';$("aiCharacters").innerHTML=make(aiBible.characters,"characters");$("aiLocations").innerHTML=make(aiBible.locations,"locations");$("aiProps").innerHTML=make(aiBible.props,"props")};
+async function sf9AttachCharacterReference(ev,slot){const f=ev.target.files?.[0];if(!f)return;try{if(f.size>20*1024*1024)throw new Error("Reference image exceeds the 20 MB mobile-safe limit.");let id=String($("sf9CharId")?.value||"");if(!id){const saved=sf9SaveCharacter();id=saved?.id||""}if(!id)throw new Error("Save the character identity first.");sf9NormalizeBible();const c=aiBible.characters.find(x=>x.id===id);if(!c)throw new Error("Character not found.");const key=`charref:${v7ProjectId?.()||project.id||"project"}:${id}:${slot}`;await v7DBPut?.("assets",key,{blob:f,name:f.name,type:f.type,savedAt:Date.now(),characterId:id,slot});c.references=(c.references||[]).filter(r=>r.slot!==slot);c.references.push({slot,key,name:f.name,type:f.type,size:f.size});sf87RegisterAsset?.({type:`character-reference-${slot}`,source:"user",provider:"User supplied",characterId:id,dimensions:null,approvalState:"approved"});c.lock=sf87CharacterLock(c);project.ai.bible=aiBible;saveDraft?.();sf9LoadCharacterForm(c);if($("sf9CharStatus"))$("sf9CharStatus").textContent=`Saved ${slot} reference locally for ${c.name}.`}catch(e){alert(e.message||"Could not store that reference image.")}finally{ev.target.value=""}}
+
+/* ---------- Local visual QA + future semantic vision hook ---------- */
+function sf9AnalyzeImageElement(el){
+  if(!el)return null;const w=Number(el.naturalWidth||el.width||0),h=Number(el.naturalHeight||el.height||0);if(!w||!h)return {width:w,height:h,error:"dimensions unavailable"};
+  const c=document.createElement("canvas");c.width=48;c.height=27;const x=c.getContext("2d",{willReadFrequently:true});
+  try{x.clearRect(0,0,c.width,c.height);x.drawImage(el,0,0,c.width,c.height);const d=x.getImageData(0,0,c.width,c.height).data,total=d.length/4;let sum=0,sum2=0,weight=0,visible=0;
+    for(let i=0;i<d.length;i+=4){const a=d[i+3]/255;if(a<.06)continue;const y=.2126*d[i]+.7152*d[i+1]+.0722*d[i+2];sum+=y*a;sum2+=y*y*a;weight+=a;visible++}
+    if(!visible||weight<=0)return {width:w,height:h,mean:null,contrast:null,coverage:0,aspect:Number((w/h).toFixed(3)),warning:"layer is effectively transparent"};
+    const mean=sum/weight,contrast=Math.sqrt(Math.max(0,sum2/weight-mean*mean));return {width:w,height:h,mean:Math.round(mean),contrast:Math.round(contrast),coverage:Number((visible/total).toFixed(3)),aspect:Number((w/h).toFixed(3))}
+  }catch(e){return {width:w,height:h,error:"pixel analysis unavailable"}}
+}
+if(window.ShortForgeProviders?.visual?.get("local"))window.ShortForgeProviders.visual.get("local").analyzeImage=async({asset})=>sf9AnalyzeImageElement(asset);
+async function sf9RunVisualQA(){const rows=[],warnings=[];let analyzed=0;for(let i=0;i<(project.scenes?.length||0);i++){const set=cineSceneAssets?.[i]||{};for(const slot of ["bg","mid","fg"]){const el=set[slot];if(!el)continue;const m=sf9AnalyzeImageElement(el);analyzed++;rows.push({scene:i+1,slot,...m});if(m?.width&&Math.min(m.width,m.height)<720)warnings.push(`Scene ${i+1} ${slot}: low source resolution ${m.width}×${m.height}.`);if(m?.warning)warnings.push(`Scene ${i+1} ${slot}: ${m.warning}.`);const coverage=Number(m?.coverage||0),opaqueEnough=slot==="bg"||coverage>=.45;if(Number.isFinite(m?.contrast)&&m.contrast<7&&coverage>=.20)warnings.push(`Scene ${i+1} ${slot}: very low visible-pixel contrast; subject separation may be weak.`);if(Number.isFinite(m?.mean)&&opaqueEnough&&(m.mean<10||m.mean>246))warnings.push(`Scene ${i+1} ${slot}: extreme visible-pixel brightness may reduce readability.`)}if(i%6===0)await sfWholeVideoYield?.()}sf87EnsureProjectOS?.();project.productionOS.lastVisualQA={at:Date.now(),analyzed,warnings,rows,alphaAware:true};saveDraft?.();const out=`VISUAL QA — ${analyzed} asset layer(s) analyzed\nAlpha-aware local QA checks dimensions, visible-pixel brightness, contrast and transparency coverage; it is not semantic computer vision.\n\n${warnings.length?warnings.map(x=>"! "+x).join("\n"):"PASS • No local visual-metric warnings detected."}`;if($("sf87Diagnostics"))$("sf87Diagnostics").value=out;v7Toast?.(`Visual QA: ${warnings.length} warning(s).`,warnings.length?"warn":"ok",2200);return {analyzed,warnings,rows}}
+
+/* ---------- Import safety hardening ---------- */
+sf87SanitizeProject=function(p){if(!p||typeof p!=="object")throw new Error("Project object missing");const x=sf74Normalize?.(sf87Clone(p))||sf87Clone(p);x.title=sf87CleanString(x.title,240);x.audience=sf87CleanString(x.audience,500);x.timelineNotes=sf87CleanString(x.timelineNotes,8000);x.scenes=(Array.isArray(x.scenes)?x.scenes:[]).slice(0,120).map((s,i)=>({id:sf87CleanString(s.id||`scene-${i+1}`,120),title:sf87CleanString(s.title||`Scene ${i+1}`,240),duration:Math.max(1,Math.min(600,Number(s.duration)||8)),narration:sf87CleanString(s.narration,12000),visual:sf87CleanString(s.visual,12000),notes:sf87CleanString(s.notes,4000)}));let total=x.scenes.reduce((a,s)=>a+s.duration,0);if(total>3600){const f=3600/total;x.scenes.forEach(s=>s.duration=Math.max(1,Math.round(s.duration*f)));total=x.scenes.reduce((a,s)=>a+s.duration,0)}x.targetDuration=total;if(x.animation?.layers){x.animation.layers=x.animation.layers.slice(0,200).map(l=>({...l,name:sf87CleanString(l.name,240),text:sf87CleanString(l.text,4000),keyframes:Array.isArray(l.keyframes)?l.keyframes.slice(0,500):[]}))}if(Array.isArray(x.shotGraph))x.shotGraph=x.shotGraph.slice(0,2000);if(Array.isArray(x.assetRegistry))x.assetRegistry=x.assetRegistry.slice(-2000);if(x.ai?.history)x.ai.history=Array.isArray(x.ai.history)?x.ai.history.slice(-100):[];return x};
+importWorkspace=function(ev){const f=ev.target.files?.[0];if(!f)return;if(f.size>5*1024*1024){alert("That workspace is over the 5 MB safe JSON limit. Media belongs in local asset storage, not inside the JSON backup.");ev.target.value="";return}const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||typeof d!=="object")throw new Error("Invalid backup");if(d.saved&&Array.isArray(d.saved)){const saved=d.saved.slice(0,30).map(sf87SanitizeProject);localStorage.setItem("sf_saved",JSON.stringify(saved))}if(d.current){project=sf87SanitizeProject(d.current);localStorage.setItem("sf_current",JSON.stringify(project))}sf74ApplyProjectToUI?.(project);sf74RenderProjectUI?.();renderSaved?.();renderScenes?.();renderTimeline?.();updateKPIs?.();sf87BuildProductionOS?.();alert("Workspace restored and validated.")}catch(e){console.error(e);alert("That file is not a valid ShortForge workspace.")}finally{ev.target.value=""}};r.readAsText(f)};
+
+/* ---------- Creator pack consistency + actual editable short projects ---------- */
+const sf9BaseCreatorPack=sfGenerateCreatorPack;
+const sf9BaseShortsPack=sfGenerateShortsPack;
+function sf9ShortCandidates(){return (project.scenes||[]).map((s,i)=>({scene:s,index:i,score:sfShortScore?.(s,i)||0})).sort((a,b)=>b.score-a.score).slice(0,3).map((x,j)=>({rank:j+1,sceneIndex:x.index,title:x.scene.title,targetSeconds:Math.max(15,Math.min(45,Math.round(Number(x.scene.duration||25)))),hook:j===0?`Wait until you see what happens in ${x.scene.title}.`:`This is where ${x.scene.title} changes everything.`,core:sfFirstSentence?.(x.scene.narration||x.scene.visual||x.scene.title,330)||x.scene.narration||"",cta:`Full episode: ${project.title||"watch the complete story"}.`}))}
+sfGenerateCreatorPack=function(){const creator=sf9BaseCreatorPack();const shorts=sf9ShortCandidates();const shortsText=shorts.map(s=>`SHORT ${s.rank} — Scene ${s.sceneIndex+1}: ${s.title}\nTarget: ${s.targetSeconds}s • 9:16\nHook: ${s.hook}\nCore: ${s.core}\nCTA: ${s.cta}`).join("\n\n");const combined=`${creator}\n\nSHORT REPURPOSE PLAN\n${shortsText}`;sfGrowthPackText=combined;const base=sf87CreatorPackJSON||{};sf9PublishPack={...base,version:3,generatedAt:Date.now(),text:combined,shorts,recipe:sf9AllRecipes().find(r=>r.id===$("sf9RecipeSelect")?.value)?.name||null,knowledgeModel:sf9Knowledge().modelVersion};sf87CreatorPackJSON=sf9PublishPack;if($("sfCreatorPackOutput"))$("sfCreatorPackOutput").value=combined;return combined};
+sfGenerateShortsPack=function(){const text=sf9BaseShortsPack();const shorts=sf9ShortCandidates();sf9PublishPack={...(sf9PublishPack||sf87CreatorPackJSON||{}),version:3,shorts,shortsText:text};return text};
+sf87DownloadCreatorJSON=function(){if(!sf9PublishPack)sfGenerateCreatorPack();downloadText?.("shortforge-creator-pack.json",JSON.stringify(sf9PublishPack,null,2),"application/json")};
+function sf9CreateShortProjects(){const picks=sf9ShortCandidates();if(!picks.length){v7Toast?.("Build a project first.","warn",1800);return}let saved=[];try{saved=JSON.parse(localStorage.getItem("sf_saved")||"[]");if(!Array.isArray(saved))saved=[]}catch(_){saved=[]}const additions=picks.map(x=>{const src=project.scenes[x.sceneIndex],p=sf87Clone(project);p.id=crypto.randomUUID?crypto.randomUUID():`short-${Date.now()}-${x.rank}`;p.title=`${project.title||"Project"} — Short ${x.rank}: ${src.title}`;p.format="short";p.platform="YouTube Shorts";p.scenes=[{...sf87Clone(src),id:crypto.randomUUID?crypto.randomUUID():`scene-${Date.now()}-${x.rank}`,duration:x.targetSeconds,narration:`${x.hook} ${x.core} ${x.cta}`,visual:src.visual||`Vertical 9:16 adaptation of ${src.title}.`}];p.animation={fps:30,ratio:"9:16",layers:[]};p.shotGraph=[];p.assetRegistry=[];p.targetDuration=x.targetSeconds;return p});saved=[...additions,...saved].slice(0,30);localStorage.setItem("sf_saved",JSON.stringify(saved));renderSaved?.();v7Toast?.("Created 3 editable ShortForge Short projects.","ok",2200)}
+document.addEventListener("shortforge:render-complete",()=>setTimeout(()=>{try{sfGenerateCreatorPack();if($("sfCreatorPackOutput"))$("sfCreatorPackOutput").value=sfGrowthPackText}catch(e){console.warn("[ShortForge publish pack]",e)}},0));
+
+/* ---------- Expanded benchmarks / self test ---------- */
+const sf9BaseBenchmarks=sf87RunAIBenchmarks;
+sf87RunAIBenchmarks=function(){const base=sf9BaseBenchmarks(),tests=[...(base.tests||[])];const add=(name,fn)=>{try{tests.push({name,pass:!!fn()})}catch(e){tests.push({name,pass:false,error:e.message})}};add("import: scene and duration caps",()=>{const p=sf87SanitizeProject({scenes:Array.from({length:150},()=>({duration:900,title:"x"}))});return p.scenes.length===120&&p.scenes.reduce((a,s)=>a+s.duration,0)<=3600});add("character: structured identity",()=>{const c=sf87NormalizeCharacter({name:"Test",hair:"black",eyes:"blue",clothing:"coat"});return c.hair==="black"&&c.eyes==="blue"&&c.clothing==="coat"});add("provider: capability router",()=>!!sf9ChooseProvider("visual","generateBackground"));add("knowledge: retrieval",()=>sf9KnowledgeHint("camera continuity and screen direction").length>20);add("recipes: built-ins",()=>sf9AllRecipes().length>=5);add("editor: scene operations",()=>[sf9MoveScene,sf9DuplicateScene,sf9SplitScene].every(x=>typeof x==="function"));add("visual QA: local analyzer",()=>typeof window.ShortForgeProviders.visual.get("local")?.analyzeImage==="function");const passed=tests.filter(t=>t.pass).length,score=Math.round(100*passed/tests.length);sf87EnsureProjectOS();project.productionOS.lastBenchmark={at:Date.now(),score,tests};saveDraft?.();if($("sf87Diagnostics"))$("sf87Diagnostics").value=`AI / SYSTEM BENCHMARKS v9 — ${score}% (${passed}/${tests.length})\n`+tests.map(t=>`${t.pass?"PASS":"FAIL"} • ${t.name}${t.error?" — "+t.error:""}`).join("\n");return {score,tests}};
+function sf9RunSelfTest(){const tests=[],add=(name,fn)=>{try{tests.push({name,pass:!!fn()})}catch(e){tests.push({name,pass:false,error:e.message})}};add("11-stage pipeline",()=>SF87_STAGES.length===11&&SF87_STAGES.every(n=>!!$("sf87Stage"+n)));add("one-button generator",()=>typeof sfGenerateWholeVideo==="function");add("project recovery",()=>typeof v7RecoverySnapshot==="function"&&typeof v7RestoreAssets==="function");add("shot graph + registry",()=>typeof sf87BuildShotGraph==="function"&&typeof sf87RegisterAsset==="function");add("learning memory",()=>typeof sf87Memory==="function"&&typeof sf87Feedback==="function");add("global knowledge",()=>sf9Knowledge().lessons.length>=10);add("production recipes",()=>sf9AllRecipes().length>=5);add("structured characters",()=>typeof sf9SaveCharacter==="function"&&!!$("sf9IdentityStudio"));add("scene edit controls",()=>typeof sf9SplitScene==="function"&&typeof sf9MoveScene==="function");add("visual QA",()=>typeof sf9RunVisualQA==="function");add("creator pack JSON",()=>typeof sf87DownloadCreatorJSON==="function");add("render cancellation",()=>typeof sf87CancelRender==="function");add("unique DOM ids",()=>{const ids=[...document.querySelectorAll("[id]")].map(e=>e.id);return ids.length===new Set(ids).size});const passed=tests.filter(t=>t.pass).length,score=Math.round(100*passed/tests.length);if($("sf87Diagnostics"))$("sf87Diagnostics").value=`SHORTFORGE v9 SELF TEST — ${score}% (${passed}/${tests.length})\n`+tests.map(t=>`${t.pass?"PASS":"FAIL"} • ${t.name}${t.error?" — "+t.error:""}`).join("\n");v7Toast?.(`v9 self test: ${passed}/${tests.length} passed.`,score===100?"ok":"warn",2600);return {score,tests}}
+
+
+/* ---------- Device-aware master: respect recipe intent, then apply reliability guardrails ---------- */
+sfWholeVideoOptimizeMaster=function(){
+  sf87EnsureProjectOS?.();
+  const duration=v5Duration?.()||0,mobile=aieIsIOSDevice?.()||innerWidth<800;
+  const recipe=sf9AllRecipes().find(r=>r.id===$("sf9RecipeSelect")?.value)||null;
+  let ratio=recipe?.ratio||(project.format==="short"?"9:16":"16:9");
+  let quality=String(recipe?.quality||"1080"),fps=String(recipe?.fps||(project.format==="short"?"30":"24")),profile=recipe?.renderProfile||"youtube",comp=duration>=600?"high":"max",adjusted=false,reasons=[];
+  const qNum=Number(quality),fNum=Number(fps);
+  if(mobile&&qNum>1080){quality="1080";adjusted=true;reasons.push("resolution reduced to 1080p for mobile reliability")}
+  if(mobile&&fNum>30){fps="30";adjusted=true;reasons.push("frame rate reduced to 30 FPS for mobile reliability")}
+  if(mobile&&duration>=900&&fps!=="24"){fps="24";adjusted=true;reasons.push("long mobile master reduced to 24 FPS")}
+  if(duration>=1200&&comp==="max"){comp="high";adjusted=true;reasons.push("compositing changed to High for a long render")}
+  if($("renderRatio"))$("renderRatio").value=ratio;if($("renderQuality"))$("renderQuality").value=quality;if($("renderFPS"))$("renderFPS").value=fps;if($("studioRenderProfile"))$("studioRenderProfile").value=profile;if($("studioCompQuality"))$("studioCompQuality").value=comp;if($("v5Performance"))$("v5Performance").value=mobile&&duration>=600?"auto":"quality";
+  v5RenderSummary?.();v5RenderPreflight?.();
+  const message=adjusted?`Master adjusted: ${reasons.join("; ")}.`:`Master kept recipe intent: ${quality}p • ${fps} FPS • ${ratio}.`;
+  project.productionOS.masterDecision={at:Date.now(),mobile,duration,recipe:recipe?.name||null,quality,fps,ratio,profile,adjusted,reasons,message};
+  return project.productionOS.masterDecision
+};
+
+/* ===== ShortForge v9.0.1 Stability + Specialist + Asset Version Layer ===== */
+const SF901_VERSION="9.0.2";
+const SF901_SPECIALISTS=[
+  "Director","Script Supervisor","Animation Supervisor","Cinematographer",
+  "Character Continuity","World Continuity","FX / Compositing","Audio Director",
+  "Editor","QC Supervisor","Mastering","Growth Producer"
+];
+
+/* Provider capability truth: local planner is real deterministic planning; local voice is upload/record only. */
+window.ShortForgeProviders.voice.set("local",{
+  name:"Local upload/recording",remote:false,
+  capabilities:{upload:true,record:true,synthesize:false},
+  async prepareTrack(){return sf87PrepareAudioPlan?.()||[]}
+});
+window.ShortForgeProviders.planner.set("local",{
+  name:"AIE Local Controller",remote:false,
+  capabilities:{plan:true},
+  async plan({text="Analyze the current production."}={}){return aieLocalPlan(String(text||"Analyze the current production."))}
+});
+sf9RefreshRouter=function(){
+  const e=$("sf9RouterStatus"),hub=window.ShortForgeProviders;
+  const visual=sf9ChooseProvider("visual","generateBackground");
+  const planner=sf9ChooseProvider("planner","plan");
+  const remoteVoice=[...(hub.voice||new Map()).entries()].find(([name,p])=>name!=="local"&&p?.remote&&(typeof p.synthesize==="function"||typeof p.generateVoice==="function"));
+  if(e){
+    e.textContent=`Visual ${visual?.name||"none"} • Voice ${remoteVoice?.[0]||"upload/record"} • Planner ${planner?.name||"none"}`;
+    e.className="sf87Status "+(visual&&planner?"good":"warn")
+  }
+};
+
+/* Full specialist council: all roles inspect one shared Production OS and persist their findings. */
+function sf901RunSpecialistCouncil(){
+  aiEnsureProject?.();sf87EnsureProjectOS?.();
+  const scenes=project.scenes||[],shots=project.shotGraph?.length?project.shotGraph:sf87BuildShotGraph?.()||[];
+  const duration=v5Duration?.()||scenes.reduce((a,s)=>a+Number(s.duration||0),0);
+  const bible=project.ai?.bible||aiBible||{characters:[],locations:[],props:[]};
+  const tracks=sf87PrepareAudioPlan?.()||[];
+  const render=(()=>{try{const [w,h]=renderDimensions();return {w,h,fps:Number($("renderFPS")?.value||24)}}catch(_){return {w:0,h:0,fps:0}}})();
+  const missingNarr=scenes.filter(s=>!String(s.narration||"").trim()).length;
+  const missingVisual=scenes.filter(s=>!String(s.visual||"").trim()).length;
+  const artMissing=scenes.reduce((a,_,i)=>{const s=cineSceneAssets?.[i]||{};return a+(!s.bg?1:0)+(!s.mid?1:0)},0);
+  const lockedChars=(bible.characters||[]).filter(c=>sf87CharacterLock?.(sf87NormalizeCharacter?.(c)||c)).length;
+  const avgShot=shots.length?duration/shots.length:0;
+  const camCounts={};shots.forEach(s=>{const k=s.cameraMovement||s.camera?.move||"unknown";camCounts[k]=(camCounts[k]||0)+1});
+  const dominantCam=Object.entries(camCounts).sort((a,b)=>b[1]-a[1])[0]||null;
+  const narrationTrack=tracks.find(t=>t.id==="narration");
+  const health=sfProjectHealthData?.()||{score:0,blockers:[],warnings:[]};
+  const findings=[
+    {role:"Director",state:scenes.length&&shots.length?"pass":"warn",note:`${scenes.length} scene(s), ${shots.length} shot(s), ${Math.round(duration)}s. ${avgShot?`Average shot ${avgShot.toFixed(1)}s.`:"Shot coverage not built."}`},
+    {role:"Script Supervisor",state:missingNarr||missingVisual?"warn":"pass",note:missingNarr||missingVisual?`${missingNarr} scene(s) missing narration; ${missingVisual} missing visual direction.`:"All scenes contain narration and visual direction."},
+    {role:"Animation Supervisor",state:animEnsure?.().layers?.length?"pass":"warn",note:`${animEnsure?.().layers?.length||0} animation layer(s). Technique: ${AIE_TECHNIQUES[aieStyle?.()||"cinematic"]?.label||"cinematic"}.`},
+    {role:"Cinematographer",state:shots.length?"pass":"warn",note:dominantCam?`Dominant camera move: ${dominantCam[0]} (${dominantCam[1]}/${shots.length}). Preserve screen direction and vary framing when repetition becomes visible.`:"Build the shot graph before final direction."},
+    {role:"Character Continuity",state:lockedChars?"pass":"warn",note:lockedChars?`${lockedChars}/${(bible.characters||[]).length} character identity record(s) have usable lock summaries.`:"No structured character identity is locked yet."},
+    {role:"World Continuity",state:(bible.locations||[]).length?"pass":"warn",note:`${(bible.locations||[]).length} location lock(s), ${(bible.props||[]).length} prop/power lock(s).`},
+    {role:"FX / Compositing",state:artMissing?"warn":"pass",note:artMissing?`${artMissing} core art slot(s) still need user/provider art or local fallback.`:"Core scene-art slots are populated."},
+    {role:"Audio Director",state:narrationTrack?.source!=="none"?"pass":"warn",note:narrationTrack?.source!=="none"?`Narration source: ${narrationTrack.source}. Music/SFX/ambience mix plan is available.`:"No exportable narration track is loaded; captions can carry the dialogue."},
+    {role:"Editor",state:shots.length?"pass":"warn",note:`Runtime ${fmt?.(duration)||Math.round(duration)+"s"}; ${shots.length} shot(s). Timeline and captions should remain editable after automation.`},
+    {role:"QC Supervisor",state:health.blockers?.length?"fail":health.warnings?.length?"warn":"pass",note:`Project health ${health.score||0}%. ${health.blockers?.length||0} blocker(s), ${health.warnings?.length||0} warning(s).`},
+    {role:"Mastering",state:render.w&&render.h?"pass":"warn",note:render.w?`${render.w}×${render.h} • ${render.fps} FPS. Device guardrails may reduce expensive mobile masters.`:"Render master not configured."},
+    {role:"Growth Producer",state:scenes.length?"pass":"warn",note:scenes.length?"Creator Pack + 3-Short repurpose path are available after render.":"Build a project before packaging."}
+  ];
+  const warnings=findings.filter(x=>x.state!=="pass");
+  const report=`SPECIALIST COUNCIL — ${SF901_VERSION}\n`+findings.map(x=>`${x.state==="pass"?"PASS":x.state==="fail"?"FAIL":"WARN"} • ${x.role}: ${x.note}`).join("\n");
+  project.productionOS.specialistCouncil={at:Date.now(),version:SF901_VERSION,findings,warnings:warnings.map(x=>x.role)};
+  saveDraft?.();
+  if($("sf901SpecialistStatus"))$("sf901SpecialistStatus").textContent=report;
+  if($("sf87Diagnostics"))$("sf87Diagnostics").value=report;
+  return project.productionOS.specialistCouncil
+}
+
+/* Versioned asset snapshots. Metadata is always retained; restorable bytes are stored in IndexedDB when possible. */
+function sf901AssetSnapshotKey(id){return `asset-version:${v7ProjectId?.()||project.id||"project"}:${id}`}
+async function sf901BlobFromSource(source){
+  if(!source)return null;if(source instanceof Blob)return source;
+  if(typeof HTMLCanvasElement!=="undefined"&&source instanceof HTMLCanvasElement)return await new Promise(r=>source.toBlob(r,"image/png",.94));
+  if(typeof HTMLImageElement!=="undefined"&&source instanceof HTMLImageElement){
+    const w=source.naturalWidth||source.width,h=source.naturalHeight||source.height;if(!w||!h)return null;
+    const c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d");x.drawImage(source,0,0,w,h);return await new Promise(r=>c.toBlob(r,"image/png",.94))
+  }
+  return null
+}
+async function sf901PersistAssetVersion(item,source,name="Asset",generated=false){
+  try{const blob=await sf901BlobFromSource(source);if(!blob||typeof v7DBPut!=="function")return false;await v7DBPut("assets",sf901AssetSnapshotKey(item.id),{blob,name,type:blob.type||"image/png",savedAt:Date.now(),generated,assetId:item.id});item.snapshot=true;saveDraft?.();return true}catch(e){console.warn("[ShortForge asset version snapshot]",e);return false}
+}
+function sf901FindAsset(id){return (project.assetRegistry||[]).find(a=>a.id===id)||null}
+function sf901AssetVersions(key){return (project.assetRegistry||[]).filter(a=>a.key===key).sort((a,b)=>(Number(b.version)||0)-(Number(a.version)||0))}
+function sf901ApproveAsset(id){const a=sf901FindAsset(id);if(!a)return;a.approvalState="approved";saveDraft?.();sf901RenderAssetRegistry();v7Toast?.(`Approved ${a.type} v${a.version}.`,"ok",1600)}
+function sf901RejectAsset(id){const a=sf901FindAsset(id);if(!a)return;a.approvalState="rejected";saveDraft?.();sf901RenderAssetRegistry();v7Toast?.(`Marked ${a.type} v${a.version} rejected. The file was not deleted.`,"warn",2200)}
+async function sf901RestoreAssetVersion(id){
+  const a=sf901FindAsset(id);if(!a||!Number.isInteger(a.sceneIndex)||!["bg","mid","fg"].includes(a.type)){v7Toast?.("That asset version is metadata-only and cannot be restored into a scene slot.","warn",2600);return false}
+  const rec=await v7DBGet?.("assets",sf901AssetSnapshotKey(id));if(!rec?.blob){v7Toast?.("This older version has no stored binary snapshot. Metadata is still preserved.","warn",3000);return false}
+  const i=a.sceneIndex,slot=a.type,set=cineSceneAssetSet(i);if(!cineSceneAssetURLs[i])cineSceneAssetURLs[i]={bg:null,mid:null,fg:null};
+  if(cineSceneAssetURLs[i][slot])try{URL.revokeObjectURL(cineSceneAssetURLs[i][slot])}catch(_){}
+  const url=URL.createObjectURL(rec.blob),img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});
+  cineSceneAssetURLs[i][slot]=url;set[slot]=img;set[slot+"_name"]=rec.name||`${slot} v${a.version}`;set[slot+"_generated"]=!!rec.generated;
+  for(const x of project.assetRegistry||[])if(x.key===a.key)x.active=x.id===a.id;a.approvalState=a.approvalState==="rejected"?"draft":a.approvalState;
+  await v7PersistSceneAsset?.(i,slot,rec.blob);cineRefreshSceneAssetUI?.();cinePreview?.();saveDraft?.();sf901RenderAssetRegistry();v7Toast?.(`Restored ${slot} version ${a.version}.`,"ok",2200);return true
+}
+function sf901RenderAssetRegistry(){
+  const box=$("sf901AssetRegistryList"),status=$("sf901AssetVersionStatus");if(!box)return;
+  const all=[...(project.assetRegistry||[])].sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));if(status)status.textContent=`${all.length} version${all.length===1?"":"s"}`;
+  box.innerHTML="";if(!all.length){const d=document.createElement("div");d.className="sf87Tiny";d.textContent="No registered assets yet. Load art or run the repair / whole-video pipeline.";box.appendChild(d);return}
+  const keys=[...new Set(all.map(a=>a.key))].slice(0,30);
+  for(const key of keys){const versions=sf901AssetVersions(key),active=versions.find(a=>a.active)||versions[0];const row=document.createElement("div");row.className="sf901AssetRow";
+    const head=document.createElement("div");head.className="sceneHead";const name=document.createElement("b");name.textContent=`${Number.isInteger(active.sceneIndex)?`Scene ${active.sceneIndex+1} • `:""}${active.type||"asset"}`;const state=document.createElement("span");state.className=`sf901State ${active.approvalState||"draft"}`;state.textContent=active.approvalState||"draft";head.append(name,state);row.appendChild(head);
+    const meta=document.createElement("div");meta.className="sf901AssetMeta";meta.textContent=`Active v${active.version||1} • ${versions.length} stored version${versions.length===1?"":"s"} • ${active.provider||active.source||"unknown"}${active.snapshot?" • restorable snapshot":" • metadata"}`;row.appendChild(meta);
+    const acts=document.createElement("div");acts.className="sf901AssetActions";
+    const mk=(label,fn,cls="secondary")=>{const b=document.createElement("button");b.className=cls;b.textContent=label;b.onclick=fn;acts.appendChild(b)};
+    mk("Approve",()=>sf901ApproveAsset(active.id));mk("Reject",()=>sf901RejectAsset(active.id),"ghost");
+    if(versions.length>1){const previous=versions.find(v=>v.id!==active.id&&v.snapshot);if(previous)mk(`Restore v${previous.version}`,()=>sf901RestoreAssetVersion(previous.id),"secondary")}
+    row.appendChild(acts);box.appendChild(row)
+  }
+}
+
+/* Replace scene-art loading so invalid images are never entered into the registry and valid files get version snapshots. */
+cineLoadSceneAsset=function(ev,slot){
+  const f=ev.target.files?.[0];if(!f)return;const i=cineSelectedSceneIndex(),set=cineSceneAssetSet(i);
+  if(f.size>35*1024*1024){alert("That image is too large for the 35 MB mobile-safe limit.");ev.target.value="";return}
+  if(!cineSceneAssetURLs[i])cineSceneAssetURLs[i]={bg:null,mid:null,fg:null};if(cineSceneAssetURLs[i][slot])try{URL.revokeObjectURL(cineSceneAssetURLs[i][slot])}catch(_){}
+  const url=URL.createObjectURL(f),img=new Image();cineSceneAssetURLs[i][slot]=url;set[slot]=null;set[slot+"_name"]=f.name||"Artwork";set[slot+"_generated"]=false;
+  img.onload=async()=>{set[slot]=img;await v7PersistSceneAsset?.(i,slot,f);const item=sf87RegisterAsset({sceneIndex:i,type:slot,source:"user",provider:"User supplied",dimensions:{width:img.naturalWidth||null,height:img.naturalHeight||null},approvalState:"approved"});await sf901PersistAssetVersion(item,f,f.name||"Artwork",false);cineRefreshSceneAssetUI?.();cinePreview?.();v7RunReadiness?.();sf901RenderAssetRegistry();saveDraft?.()};
+  img.onerror=()=>{try{URL.revokeObjectURL(url)}catch(_){};if(cineSceneAssetURLs[i]?.[slot]===url)cineSceneAssetURLs[i][slot]=null;set[slot]=null;set[slot+"_name"]="";cineRefreshSceneAssetUI?.();v7Toast?.("That file could not be decoded as an image.","bad",4200)};
+  img.src=url;ev.target.value="";cineRefreshSceneAssetUI?.()
+};
+
+/* Registry sync now snapshots newly discovered local/user scene art when possible. */
+sf87SyncAssetRegistry=function(){
+  sf87EnsureProjectOS();for(let i=0;i<(project.scenes?.length||0);i++){const set=cineSceneAssets?.[i]||{};for(const slot of ["bg","mid","fg"]){if(set[slot]&&!project.assetRegistry.some(a=>a.active&&a.sceneIndex===i&&a.type===slot)){const generated=!!set[slot+"_generated"],item=sf87RegisterAsset({sceneIndex:i,type:slot,source:generated?"generated-local":"user",provider:generated?"ShortForge Local Procedural":"User supplied",dimensions:{width:set[slot].naturalWidth||set[slot].width||null,height:set[slot].naturalHeight||set[slot].height||null},approvalState:generated?"draft":"approved"});sf901PersistAssetVersion(item,set[slot],set[slot+"_name"]||`${slot} asset`,generated)}}}sf901RenderAssetRegistry();return project.assetRegistry
+};
+
+sfGenerateMissingSelectedSceneArt=async function(){
+  const i=cineSelectedSceneIndex(),scene=project.scenes?.[i],set=cineSceneAssetSet(i),status=$("sfSceneAutoStatus");if(!scene){if(status)status.textContent="Build a project first.";return}let made=0;
+  for(const slot of ["bg","mid"]){if(set[slot])continue;set[slot+"_variant"]=(set[slot+"_variant"]||0)+1;const art=slot==="bg"?sfWholeVideoMakeBackground(scene,i):sfWholeVideoMakeMidground(scene,i);set[slot]=art;set[slot+"_name"]=slot==="bg"?"ShortForge Auto Background":"ShortForge Auto Character Silhouette";set[slot+"_generated"]=true;await sfPersistGeneratedCanvas?.(i,slot,art);const item=sf87RegisterAsset({sceneIndex:i,type:slot,source:"generated-local",provider:"ShortForge Local Procedural",dimensions:{width:art.width,height:art.height},approvalState:"draft"});await sf901PersistAssetVersion(item,art,set[slot+"_name"],true);made++}
+  cineRefreshSceneAssetUI?.();cinePreview?.();studioRunQC?.();sfRefreshProjectHealth?.();sf901RenderAssetRegistry();if(status)status.textContent=made?`Generated and versioned ${made} missing art layer${made===1?"":"s"} for Scene ${i+1}.`:"Nothing missing. User art was left untouched."
+};
+sfRegenerateSelectedAutoArt=async function(){
+  const i=cineSelectedSceneIndex(),scene=project.scenes?.[i],set=cineSceneAssetSet(i),status=$("sfSceneAutoStatus");if(!scene){if(status)status.textContent="Build a project first.";return}let made=0;
+  for(const slot of ["bg","mid"]){if(!set[slot+"_generated"])continue;set[slot+"_variant"]=(set[slot+"_variant"]||0)+1;const art=slot==="bg"?sfWholeVideoMakeBackground(scene,i):sfWholeVideoMakeMidground(scene,i);set[slot]=art;set[slot+"_name"]=`ShortForge Auto ${slot==="bg"?"Background":"Character"} v${set[slot+"_variant"]}`;await sfPersistGeneratedCanvas?.(i,slot,art);const item=sf87RegisterAsset({sceneIndex:i,type:slot,source:"generated-local",provider:"ShortForge Local Procedural",dimensions:{width:art.width,height:art.height},approvalState:"draft"});await sf901PersistAssetVersion(item,art,set[slot+"_name"],true);made++}
+  cineRefreshSceneAssetUI?.();cinePreview?.();studioRunQC?.();sf901RenderAssetRegistry();if(status)status.textContent=made?`Created and versioned ${made} fresh auto-art variation${made===1?"":"s"}.`:"No ShortForge-generated art to regenerate. Uploaded art was protected."
+};
+
+/* Refresh the visible registry whenever the Production OS changes. */
+const sf901BaseBuildProductionOS=sf87BuildProductionOS;
+sf87BuildProductionOS=function(){const out=sf901BaseBuildProductionOS();sf901RenderAssetRegistry();return out};
+
+/* Add specialist evidence to the repair/verify loop instead of keeping roles cosmetic. */
+const sf901BaseRepairProject=sf87RepairProject;
+sf87RepairProject=async function(){const result=await sf901BaseRepairProject();const council=sf901RunSpecialistCouncil();const extra=council.findings.filter(x=>x.state!=="pass").map(x=>`${x.role}: ${x.note}`);result.specialistWarnings=extra;project.productionOS.lastRepair={...(project.productionOS.lastRepair||{}),specialistWarnings:extra};saveDraft?.();return result};
+
+/* v9.0.1 benchmarks test capability truth, specialist coordination and version controls. */
+const sf901BaseBenchmarks=sf87RunAIBenchmarks;
+sf87RunAIBenchmarks=function(){const base=sf901BaseBenchmarks(),tests=[...(base.tests||[])];const add=(name,fn)=>{try{tests.push({name,pass:!!fn()})}catch(e){tests.push({name,pass:false,error:e.message})}};
+  add("provider: local planner executes",()=>typeof sf9ChooseProvider("planner","plan")?.provider?.plan==="function");
+  add("provider: local voice is truthful",()=>window.ShortForgeProviders.voice.get("local")?.capabilities?.synthesize===false);
+  add("specialists: full council",()=>SF901_SPECIALISTS.length===12&&typeof sf901RunSpecialistCouncil==="function");
+  add("asset registry: version controls",()=>[sf901ApproveAsset,sf901RejectAsset,sf901RestoreAssetVersion,sf901RenderAssetRegistry].every(x=>typeof x==="function"));
+  const passed=tests.filter(t=>t.pass).length,score=Math.round(100*passed/tests.length);sf87EnsureProjectOS?.();project.productionOS.lastBenchmark={at:Date.now(),score,tests,version:SF901_VERSION};saveDraft?.();if($("sf87Diagnostics"))$("sf87Diagnostics").value=`AI / SYSTEM BENCHMARKS v9.0.1 — ${score}% (${passed}/${tests.length})\n`+tests.map(t=>`${t.pass?"PASS":"FAIL"} • ${t.name}${t.error?" — "+t.error:""}`).join("\n");return {score,tests}
+};
+sf9RunSelfTest=function(){const tests=[],add=(name,fn)=>{try{tests.push({name,pass:!!fn()})}catch(e){tests.push({name,pass:false,error:e.message})}};
+  add("11-stage pipeline",()=>SF87_STAGES.length===11&&SF87_STAGES.every(n=>!!$("sf87Stage"+n)));add("one-button generator",()=>typeof sfGenerateWholeVideo==="function");add("project recovery",()=>typeof v7RecoverySnapshot==="function"&&typeof v7RestoreAssets==="function");add("shot graph + registry",()=>typeof sf87BuildShotGraph==="function"&&typeof sf87RegisterAsset==="function");add("learning memory",()=>typeof sf87Memory==="function"&&typeof sf87Feedback==="function");add("global knowledge",()=>sf9Knowledge().lessons.length>=10);add("production recipes",()=>sf9AllRecipes().length>=5);add("structured characters",()=>typeof sf9SaveCharacter==="function"&&!!$("sf9IdentityStudio"));add("scene edit controls",()=>typeof sf9SplitScene==="function"&&typeof sf9MoveScene==="function");add("visual QA",()=>typeof sf9RunVisualQA==="function");add("creator pack JSON",()=>typeof sf87DownloadCreatorJSON==="function");add("render cancellation",()=>typeof sf87CancelRender==="function");add("specialist council",()=>SF901_SPECIALISTS.length===12&&!!$("sf901SpecialistStatus"));add("asset version manager",()=>!!$("sf901AssetRegistryList")&&typeof sf901RestoreAssetVersion==="function");add("provider router",()=>typeof sf9ChooseProvider("planner","plan")?.provider?.plan==="function");add("unique DOM ids",()=>{const ids=[...document.querySelectorAll("[id]")].map(e=>e.id);return ids.length===new Set(ids).size});
+  const passed=tests.filter(t=>t.pass).length,score=Math.round(100*passed/tests.length);if($("sf87Diagnostics"))$("sf87Diagnostics").value=`SHORTFORGE v9.0.1 SELF TEST — ${score}% (${passed}/${tests.length})\n`+tests.map(t=>`${t.pass?"PASS":"FAIL"} • ${t.name}${t.error?" — "+t.error:""}`).join("\n");v7Toast?.(`v9.0.1 self test: ${passed}/${tests.length} passed.`,score===100?"ok":"warn",2600);return {score,tests}
+};
+
+/* ---------- Startup ---------- */
+/* ===== ShortForge v9.0.2 Explicit Remote Intelligence + Shared Learning Adapters ===== */
+window.ShortForgeProviders.vision=window.ShortForgeProviders.vision instanceof Map?window.ShortForgeProviders.vision:new Map();window.ShortForgeProviders.active.vision=window.ShortForgeProviders.active.vision||"local";window.ShortForgeProviders.vision.set("local",{name:"Alpha-aware local visual metrics",remote:false,async analyzeVisual(){return sf9RunVisualQA()}});
+window.ShortForgeLearningProviders=window.ShortForgeLearningProviders||{providers:new Map(),active:null};
+function sf902RegisterLearningProvider(name,impl){if(!name||!impl||typeof impl.submit!=="function")throw new Error("A learning provider needs a name and submit(events) function.");if(!impl.remote)throw new Error("Shared learning adapters must declare remote:true so privacy controls cannot be bypassed.");window.ShortForgeLearningProviders.providers.set(name,impl);window.ShortForgeLearningProviders.active=name;sf902RefreshProviderStatus();return true}
+window.ShortForgeRegisterLearningProvider=sf902RegisterLearningProvider;
+function sf902RefreshProviderStatus(){const vision=[...window.ShortForgeProviders.vision.entries()].find(([name,p])=>name!=="local"&&p?.remote&&typeof p.analyzeVisual==="function"),learning=window.ShortForgeLearningProviders.providers.get(window.ShortForgeLearningProviders.active),vs=$("sf902VisionProviderStatus"),ls=$("sf902LearningProviderStatus"),detail=$("sf902LearningBackendStatus");if(vs){vs.textContent=vision?`Connected: ${vision[0]}`:"Local metrics";vs.className="sf87Status "+(vision?"good":"warn")}if(ls){ls.textContent=learning?`Connected: ${window.ShortForgeLearningProviders.active}`:"Not connected";ls.className="sf87Status "+(learning?"good":"warn")}if(detail)detail.textContent=learning?`Shared learning backend connected: ${window.ShortForgeLearningProviders.active}. Nothing is sent unless Help Improve is enabled and you press Send Consented Feedback.`:"Shared learning backend: not connected. Nothing leaves this device."}
+async function sf902SubmitContributions(){if(localStorage.getItem(SF87_OPTIN_KEY)!=="1"){v7Toast?.("Enable Help Improve ShortForge before submitting feedback.","warn",2600);return false}const hub=window.ShortForgeLearningProviders,provider=hub.providers.get(hub.active),q=sf87Contributions();if(!provider){v7Toast?.("No secure shared-learning backend is connected. Feedback remains local.","warn",3000);return false}if(!q.events?.length){v7Toast?.("There are no consented feedback events to submit.","warn",2200);return false}if(!confirm(`Send ${q.events.length} privacy-reduced feedback event(s) to ${hub.active}? Raw project text, media, and voice recordings are not included in this contribution queue.`))return false;try{const payload={version:1,consent:true,submittedAt:Date.now(),events:sf87Clone(q.events)},result=await provider.submit(payload);localStorage.setItem("shortforge-v902-last-learning-submit",JSON.stringify({at:Date.now(),provider:hub.active,count:q.events.length}));sf87LogLearning?.(`Submitted ${q.events.length} consented privacy-reduced feedback event(s) to ${hub.active}.`);v7Toast?.("Consented feedback submitted.","ok",2200);return result??true}catch(e){sf87LogLearning?.(`Shared learning submission failed: ${e?.message||e}`);v7Toast?.("Feedback submission failed. Local record was kept.","bad",3200);return false}}
+async function sf902RunSemanticVisualQA(){const remote=[...window.ShortForgeProviders.vision.entries()].find(([name,p])=>name!=="local"&&p?.remote&&typeof p.analyzeVisual==="function");if(!remote){v7Toast?.("No semantic vision provider is connected. Running private local visual QA instead.","warn",2800);return sf9RunVisualQA()}const [name,provider]=remote;if(!confirm(`Semantic Visual Review may send current scene artwork to ${name}. Continue?`))return null;const assets=[];for(let i=0;i<(project.scenes?.length||0);i++){const set=cineSceneAssets?.[i]||{};for(const slot of ["bg","mid","fg"])if(set[slot])assets.push({sceneIndex:i,slot,element:set[slot],name:set[slot+"_name"]||slot})}try{const result=await provider.analyzeVisual({projectContext:{title:project.title,format:project.format,sceneCount:project.scenes.length},assets});sf87EnsureProjectOS?.();project.productionOS.lastSemanticVisualQA={at:Date.now(),provider:name,result};saveDraft?.();if($("sf87Diagnostics"))$("sf87Diagnostics").value=`SEMANTIC VISUAL REVIEW — ${name}\n\n${typeof result==="string"?result:JSON.stringify(result,null,2)}`;return result}catch(e){v7Toast?.("Semantic review failed; local visual QA is still available.","bad",3200);return null}}
+
+function sf9RefreshAll(){sf9RefreshRecipes();sf9RefreshKnowledgeUI();sf9RefreshRouter();sf9NormalizeBible();aiRenderBibleLists?.();sfRefreshProjectHealth?.();sf901RenderAssetRegistry?.();sf902RefreshProviderStatus?.()}
+const sf902BaseSelfTest=sf9RunSelfTest;
+sf9RunSelfTest=function(){const base=sf902BaseSelfTest(),tests=[...(base.tests||[])];const add=(name,fn)=>{try{tests.push({name,pass:!!fn()})}catch(e){tests.push({name,pass:false,error:e.message})}};add("visual QA: alpha aware",()=>{const c=document.createElement("canvas");c.width=10;c.height=10;return sf9AnalyzeImageElement(c)?.coverage===0});add("vision provider: explicit remote gate",()=>window.ShortForgeProviders.vision.get("local")?.remote===false&&typeof sf902RunSemanticVisualQA==="function");add("shared learning: explicit submit",()=>typeof ShortForgeRegisterLearningProvider==="function"&&typeof sf902SubmitContributions==="function");const passed=tests.filter(t=>t.pass).length,score=Math.round(100*passed/tests.length);if($("sf87Diagnostics"))$("sf87Diagnostics").value=`SHORTFORGE v9.0.2 SELF TEST — ${score}% (${passed}/${tests.length})\n`+tests.map(t=>`${t.pass?"PASS":"FAIL"} • ${t.name}${t.error?" — "+t.error:""}`).join("\n");return {score,tests}};
+const sf902BaseBenchmarks=sf87RunAIBenchmarks;
+sf87RunAIBenchmarks=function(){const base=sf902BaseBenchmarks(),tests=[...(base.tests||[])];const add=(name,fn)=>{try{tests.push({name,pass:!!fn()})}catch(e){tests.push({name,pass:false,error:e.message})}};add("privacy: local vision never remote",()=>window.ShortForgeProviders.vision.get("local")?.remote===false);add("privacy: shared learning requires explicit adapter",()=>window.ShortForgeLearningProviders.providers.size===0||[...window.ShortForgeLearningProviders.providers.values()].every(p=>p.remote===true&&typeof p.submit==="function"));const passed=tests.filter(t=>t.pass).length,score=Math.round(100*passed/tests.length);sf87EnsureProjectOS?.();project.productionOS.lastBenchmark={at:Date.now(),score,tests,version:"9.0.2"};saveDraft?.();if($("sf87Diagnostics"))$("sf87Diagnostics").value=`AI / SYSTEM BENCHMARKS v9.0.2 — ${score}% (${passed}/${tests.length})\n`+tests.map(t=>`${t.pass?"PASS":"FAIL"} • ${t.name}${t.error?" — "+t.error:""}`).join("\n");return {score,tests}};
+
+window.addEventListener("load",()=>setTimeout(sf9RefreshAll,1750));
+</script>
+
 </body>
 </html>

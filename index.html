@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070a11">
-<title>ShortForge Studio v9.0.2 Learning & Visual QA Hardened</title>
+<title>ShortForge Studio v9.0.3 Interaction Feedback Hardened</title>
 <meta name="description" content="A free local-first production studio for Shorts and long-form videos.">
 <style>
 :root{
@@ -38,6 +38,29 @@ label{display:block;font-weight:760;margin:0 0 7px}
 input,select,textarea{width:100%;background:var(--panel3);color:var(--text);border:1px solid var(--border);border-radius:11px;padding:12px;font-size:16px;outline:none}
 textarea{min-height:112px;resize:vertical}
 .btn,button{appearance:none;border:0;border-radius:12px;padding:12px 14px;font-size:14px;font-weight:850;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.btn,button,.tab,.aiMode,.aieToolButton{
+  position:relative;transform:translateZ(0);
+  transition:transform .14s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease,color .18s ease,opacity .18s ease;
+  -webkit-tap-highlight-color:transparent
+}
+.btn:active,button:active,.tab:active,.aiMode:active,.aieToolButton:active,.sfPressing{transform:scale(.965)}
+.sfPressedFlash{animation:sfPressedFlash .38s ease}
+@keyframes sfPressedFlash{0%{box-shadow:0 0 0 0 rgba(142,167,255,.7)}45%{box-shadow:0 0 0 6px rgba(142,167,255,.20)}100%{box-shadow:0 0 0 0 rgba(142,167,255,0)}}
+.sfSelectedControl{border-color:#8ea7ff!important;box-shadow:0 0 0 2px rgba(142,167,255,.18),0 10px 24px rgba(0,0,0,.18)!important}
+.panel.sfPanelEnter{animation:sfPanelEnter .24s ease both}
+@keyframes sfPanelEnter{from{opacity:.35;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.sfNavPulse{animation:sfNavPulse .38s ease}
+@keyframes sfNavPulse{0%{transform:scale(1)}45%{transform:scale(1.045)}100%{transform:scale(1)}}
+#sfActionConfirm{
+  position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%) translateY(18px);
+  z-index:9999;max-width:min(92vw,520px);padding:10px 14px;border-radius:999px;
+  background:rgba(12,18,30,.95);border:1px solid rgba(142,167,255,.48);color:#f7f9fc;
+  font-size:12px;font-weight:800;box-shadow:0 12px 34px rgba(0,0,0,.35);
+  opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;backdrop-filter:blur(12px)
+}
+#sfActionConfirm.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(prefers-reduced-motion:reduce){.btn,button,.tab,.aiMode,.aieToolButton,.panel{transition:none!important;animation:none!important}}
+
 .primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#08101e}
 .secondary{background:var(--panel2);color:var(--text);border:1px solid var(--border)}
 .ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
@@ -1048,7 +1071,7 @@ input:focus,select:focus,textarea:focus{
             <h3>Creator Command Center</h3>
             <div class="mini">One place to build, check, finish, package, and repurpose the production.</div>
           </div>
-          <span class="animProBadge">v9.0.2</span>
+          <span class="animProBadge">v9.0.3</span>
         </div>
         <div class="sfHealthRow">
           <span class="mini">Project health</span>
@@ -1202,7 +1225,7 @@ input:focus,select:focus,textarea:focus{
               <h3>Animation Intelligence Engine</h3>
               <div class="mini">Local controller runs immediately. Deep Mode adds a real on-device neural model and turns its decisions into validated ShortForge tool actions.</div>
             </div>
-            <span class="animProBadge">v9.0.2</span>
+            <span class="animProBadge">v9.0.3</span>
           </div>
 
           <div class="aieStatusRow">
@@ -6522,7 +6545,95 @@ const sf902BaseBenchmarks=sf87RunAIBenchmarks;
 sf87RunAIBenchmarks=function(){const base=sf902BaseBenchmarks(),tests=[...(base.tests||[])];const add=(name,fn)=>{try{tests.push({name,pass:!!fn()})}catch(e){tests.push({name,pass:false,error:e.message})}};add("privacy: local vision never remote",()=>window.ShortForgeProviders.vision.get("local")?.remote===false);add("privacy: shared learning requires explicit adapter",()=>window.ShortForgeLearningProviders.providers.size===0||[...window.ShortForgeLearningProviders.providers.values()].every(p=>p.remote===true&&typeof p.submit==="function"));const passed=tests.filter(t=>t.pass).length,score=Math.round(100*passed/tests.length);sf87EnsureProjectOS?.();project.productionOS.lastBenchmark={at:Date.now(),score,tests,version:"9.0.2"};saveDraft?.();if($("sf87Diagnostics"))$("sf87Diagnostics").value=`AI / SYSTEM BENCHMARKS v9.0.2 — ${score}% (${passed}/${tests.length})\n`+tests.map(t=>`${t.pass?"PASS":"FAIL"} • ${t.name}${t.error?" — "+t.error:""}`).join("\n");return {score,tests}};
 
 window.addEventListener("load",()=>setTimeout(sf9RefreshAll,1750));
+
+/* ===== ShortForge v9.0.3 Interaction Feedback ===== */
+let sfActionConfirmTimer=null;
+function sfInteractionConfirm(message,el){
+  const box=document.getElementById("sfActionConfirm");
+  if(el){
+    el.classList.remove("sfPressedFlash"); void el.offsetWidth; el.classList.add("sfPressedFlash");
+    setTimeout(()=>el.classList.remove("sfPressedFlash"),420);
+  }
+  if(!box)return;
+  box.textContent=String(message||"Selected");
+  box.classList.add("show");
+  clearTimeout(sfActionConfirmTimer);
+  sfActionConfirmTimer=setTimeout(()=>box.classList.remove("show"),1050)
+}
+function sfReadableActionLabel(el){
+  if(!el)return "Action selected";
+  const explicit=el.getAttribute("aria-label")||el.getAttribute("title");
+  if(explicit)return explicit.trim();
+  const txt=String(el.innerText||el.textContent||"").replace(/\s+/g," ").trim();
+  return txt?txt.slice(0,72):"Action selected"
+}
+function sfMarkSelectedInGroup(el){
+  const group=el?.closest?.(".aiModes,.tabs,.aieControlGrid");
+  if(!group)return;
+  group.querySelectorAll(".sfSelectedControl").forEach(x=>{
+    if(x!==el&&!x.classList.contains("active"))x.classList.remove("sfSelectedControl")
+  });
+  el.classList.add("sfSelectedControl")
+}
+document.addEventListener("pointerdown",e=>{
+  const el=e.target.closest?.("button,.btn,.tab,.aiMode,.aieToolButton");
+  if(el&&!el.disabled)el.classList.add("sfPressing")
+},{passive:true});
+["pointerup","pointercancel","pointerleave"].forEach(type=>{
+  document.addEventListener(type,e=>{
+    const el=e.target.closest?.("button,.btn,.tab,.aiMode,.aieToolButton");
+    if(el)el.classList.remove("sfPressing")
+  },{passive:true})
+});
+document.addEventListener("click",e=>{
+  const el=e.target.closest?.("button,.btn,.tab,.aiMode,.aieToolButton");
+  if(!el||el.disabled)return;
+  sfMarkSelectedInGroup(el);
+  const label=sfReadableActionLabel(el);
+  sfInteractionConfirm(el.classList.contains("tab")?`Opened ${label}`:label,el);
+},true);
+document.querySelectorAll(".tab").forEach(tab=>{
+  tab.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("sfSelectedControl",x===tab));
+    const panel=document.getElementById(tab.dataset.tab);
+    if(panel){
+      panel.classList.remove("sfPanelEnter");
+      requestAnimationFrame(()=>panel.classList.add("sfPanelEnter"))
+    }
+    tab.classList.add("sfNavPulse");
+    setTimeout(()=>tab.classList.remove("sfNavPulse"),420)
+  })
+});
+(function(){
+  const oldSwitch=window.switchTab;
+  if(typeof oldSwitch==="function"){
+    window.switchTab=function(id,...rest){
+      const result=oldSwitch.call(this,id,...rest);
+      const panel=document.getElementById(id);
+      const tab=[...document.querySelectorAll(".tab")].find(t=>t.dataset.tab===id);
+      document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("sfSelectedControl",x===tab));
+      if(panel){panel.classList.remove("sfPanelEnter");requestAnimationFrame(()=>panel.classList.add("sfPanelEnter"))}
+      if(tab)sfInteractionConfirm(`Opened ${String(tab.textContent||id).trim()}`,tab);
+      return result
+    }
+  }
+})();
+(function(){
+  const oldMode=window.aiSetMode;
+  if(typeof oldMode==="function"){
+    window.aiSetMode=function(mode,...rest){
+      const result=oldMode.call(this,mode,...rest);
+      const btn=[...document.querySelectorAll(".aiMode")].find(b=>b.dataset.aiMode===mode);
+      document.querySelectorAll(".aiMode").forEach(x=>x.classList.toggle("sfSelectedControl",x===btn));
+      if(btn)sfInteractionConfirm(`AI mode: ${String(btn.textContent||mode).trim()}`,btn);
+      return result
+    }
+  }
+})();
+window.addEventListener("load",()=>document.querySelectorAll(".tab.active,.aiMode.active").forEach(el=>el.classList.add("sfSelectedControl")));
+
 </script>
 
+<div id="sfActionConfirm" role="status" aria-live="polite">Selected</div>
 </body>
 </html>
